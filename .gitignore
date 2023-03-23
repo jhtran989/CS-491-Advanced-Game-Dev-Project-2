@@ -67,5 +67,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+##################################################
+
+# Personal Additions
+
 .DS_Store
 .vscode/
+.idea
+*.idea
+**.idea
+
