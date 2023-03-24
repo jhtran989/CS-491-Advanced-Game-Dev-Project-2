@@ -1,44 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    public float movementSpeed;
-
-    public Transform orientation;
-
-    float horizontalInput, verticalInput;
-
-    Vector3 moveDirection;
-
-    Rigidbody rb;
-
-    private void Start() 
+    public class PlayerMovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-    }
+        public float movementSpeed;
 
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
+        public Transform orientation;
 
-    private void Update() 
-    {
-        PlayerInput();
-    }
+        float horizontalInput, verticalInput;
 
-    private void PlayerInput()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-    }
+        Vector3 moveDirection;
 
-    private void MovePlayer()
-    {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);        
+        Rigidbody rb;
+
+        private void Start() 
+        {
+            rb = GetComponent<Rigidbody>();
+            rb.freezeRotation = true;
+        }
+
+        private void FixedUpdate()
+        {
+            MovePlayer();
+        }
+
+        private void Update() 
+        {
+            PlayerInput();
+        }
+
+        private void PlayerInput()
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        }
+
+        private void MovePlayer()
+        {
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);        
+        }
     }
 }
