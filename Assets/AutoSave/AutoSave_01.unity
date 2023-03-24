@@ -1493,5 +1493,4 @@ MonoBehaviour:
   oxygenDrainPerSecond: 1
   lerpSpeed: 0
   lerpSpeedMultiplier: 100
-  currentTime: 0
   currentOxygenLevel: 0

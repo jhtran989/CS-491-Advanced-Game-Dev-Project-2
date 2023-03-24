@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace UI_Elements
 {
-    public class PowerChargeBar : MonoBehaviour
+    public class PowerCharge : MonoBehaviour
     {
         public Image[] powerCharges;
         public int maxNumPowerCharges = 4;
@@ -11,12 +11,8 @@ namespace UI_Elements
         [SerializeField]
         private int currentNumPowerCharges;
 
-        public delegate void PowerChargeBarDelegate();
-        public static PowerChargeBarDelegate UpdatePowerChargeBar;
-
         private void OnEnable()
         {
-            // UpdatePowerChargeBar += PowerChargeFiller;
             Door.DoorOpen += ConsumePowerCharge;
             Door.DoorOpen += PowerChargeFiller;
         }
@@ -27,13 +23,6 @@ namespace UI_Elements
             currentNumPowerCharges = maxNumPowerCharges;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            // FIXME: update on some action (like opening a door)
-            // PowerChargeFiller();
-        }
-    
         private void PowerChargeFiller()
         {
             for (int i = 0; i < powerCharges.Length; i++)
