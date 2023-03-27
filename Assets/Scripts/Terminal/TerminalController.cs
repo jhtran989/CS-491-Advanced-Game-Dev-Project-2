@@ -7,9 +7,7 @@ public class TerminalController : MonoBehaviour
     public TextMeshProUGUI codeText;
     private string playerCode = "";
     private bool[] letterIsUsed = new bool[10];
-    public Camera terminalCamera;
 
-    // Update is called once per frame
     void Update()
     {
         if (playerCode.Length < 4) {
@@ -34,7 +32,7 @@ public class TerminalController : MonoBehaviour
             }
         } else {
             if (Input.GetKeyDown("return")) {
-                terminalCamera.enabled = false;
+                gameObject.SetActive(false);
             }
         }
         
