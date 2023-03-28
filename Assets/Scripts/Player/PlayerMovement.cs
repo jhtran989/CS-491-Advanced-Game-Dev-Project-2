@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -12,12 +13,25 @@ namespace Player
 
         Vector3 moveDirection;
 
-        Rigidbody rb;
+        Rigidbody _player_rb;
+
+        private void OnEnable()
+        {
+            // TODO: maybe create a file with all delegates and move the declarations there (instead of having a delegate in different scripts)
+            TerminalTrigger.TerminalTriggerPlayerEnter += StopPlayerMovement;
+            TerminalController.TerminalControllerPlayerLeave += ResumePlayerMovement;
+        }
+        
+        private void OnDisable()
+        {
+            TerminalTrigger.TerminalTriggerPlayerEnter -= StopPlayerMovement;
+            TerminalController.TerminalControllerPlayerLeave -= ResumePlayerMovement;
+        }
 
         private void Start() 
         {
-            rb = GetComponent<Rigidbody>();
-            rb.freezeRotation = true;
+            _player_rb = GetComponent<Rigidbody>();
+            _player_rb.freezeRotation = true;
         }
 
         private void FixedUpdate()
@@ -39,7 +53,23 @@ namespace Player
         private void MovePlayer()
         {
             moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-            rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);        
+            _player_rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);        
+        }
+
+        private void StopPlayerMovement()
+        {
+            _player_rb.velocity = Vector3.zero;
+            
+            // also freeze player position
+            // constraints is just a bit mask -- to freeze, BITWISE AND with the Freeze Position constraint
+            _player_rb.constraints |= RigidbodyConstraints.FreezePosition;
+        } 
+
+        private void ResumePlayerMovement()
+        {
+            // no unfreeze option...
+            // constraints is just a bit mask -- to unfreeze, BITWISE AND with the negation of the Freeze Position constraint
+            _player_rb.constraints &= ~RigidbodyConstraints.FreezePosition;
         }
     }
 }

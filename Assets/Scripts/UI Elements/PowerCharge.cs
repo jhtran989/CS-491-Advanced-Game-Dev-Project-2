@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,12 @@ namespace UI_Elements
         {
             Door.DoorOpen += ConsumePowerCharge;
             Door.DoorOpen += PowerChargeFiller;
+        }
+
+        private void OnDisable()
+        {
+            Door.DoorOpen -= ConsumePowerCharge;
+            Door.DoorOpen -= PowerChargeFiller;
         }
 
         // Start is called before the first frame update

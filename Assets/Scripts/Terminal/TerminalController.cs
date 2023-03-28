@@ -7,6 +7,9 @@ public class TerminalController : MonoBehaviour
     public TextMeshProUGUI codeText;
     private string playerCode = "";
     private bool[] letterIsUsed = new bool[10];
+    
+    public delegate void TerminalControllerDelegate();
+    public static TerminalControllerDelegate TerminalControllerPlayerLeave;
 
     void Update()
     {
@@ -33,12 +36,15 @@ public class TerminalController : MonoBehaviour
         } else {
             if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
+                
+                // need to unlock the constraints on Player position
+                TerminalControllerPlayerLeave?.Invoke();
             }
         }
         
         if (Input.GetKeyDown("backspace")) {
                 RemoveFromCode();
-            }
+        }
     }
 
     private void RemoveFromCode() {

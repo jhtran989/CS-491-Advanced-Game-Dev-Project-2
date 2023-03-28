@@ -8,7 +8,6 @@ public class Door : MonoBehaviour
     public Animator doorAnimator;
     
     public delegate void DoorDelegate();
-
     public static DoorDelegate DoorOpen;
     
 
