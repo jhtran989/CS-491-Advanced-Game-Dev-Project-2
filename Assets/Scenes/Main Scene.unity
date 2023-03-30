@@ -912,6 +912,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065044026}
   m_CullTransparentMesh: 1
+--- !u!4 &1277654001 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+  m_PrefabInstance: {fileID: 1040841389236691501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297856712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,6 +1401,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 937834960}
+  - {fileID: 1277654001}
   m_Father: {fileID: 6205428}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1664,3 +1670,60 @@ MonoBehaviour:
   lerpSpeedMultiplier: 100
   currentTime: 0
   currentOxygenLevel: 0
+--- !u!1001 &1040841389236691501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1924977259}
+    m_Modifications:
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040841390241436125, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
+      propertyPath: m_Name
+      value: WaterHose
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
