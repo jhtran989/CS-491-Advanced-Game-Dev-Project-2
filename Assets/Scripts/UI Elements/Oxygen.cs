@@ -16,6 +16,7 @@ public class Oxygen : MonoBehaviour
     public float oxygenDrainPerSecond = 1.0f;
     public float lerpSpeed;
     public float lerpSpeedMultiplier = 100.0f;
+    public Color[] colors;
 
     private float _startTime;
     [SerializeField]
@@ -66,7 +67,7 @@ public class Oxygen : MonoBehaviour
 
     private void ColorChanger()
     {
-        Color oxygenColor = Color.Lerp(Color.red, Color.green, currentOxygenLevel / maxOxygenLevel);
+        Color oxygenColor = Color.Lerp(Color.red, Color.blue, currentOxygenLevel / maxOxygenLevel);
 
         oxygenMeter.color = oxygenColor;
         oxygenText.color = oxygenColor;

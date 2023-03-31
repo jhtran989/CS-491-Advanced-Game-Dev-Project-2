@@ -2398,9 +2398,6 @@ MonoBehaviour:
   oxygenDrainPerSecond: 1
   lerpSpeed: 0
   lerpSpeedMultiplier: 100
-  colors:
-  - {r: 0.43120328, g: 0.68594944, b: 0.9622642, a: 0}
-  - {r: 0.5641521, g: 0.43137252, b: 0.9607843, a: 0}
   currentTime: 0
   currentOxygenLevel: 0
 --- !u!1001 &1040841389236691501
