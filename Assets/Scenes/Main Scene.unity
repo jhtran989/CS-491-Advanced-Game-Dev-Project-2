@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.040280662, g: 0.018312745, b: 0.011087885, a: 1}
+  m_IndirectSpecularColor: {r: 0.04027691, g: 0.018328764, b: 0.01110571, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,15 +160,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6205426}
-  m_LocalRotation: {x: -0, y: -0.693295, z: -0, w: 0.72065395}
-  m_LocalPosition: {x: -5.264, y: 2, z: -0.007}
+  m_LocalRotation: {x: -0, y: -0.73826844, z: -0, w: -0.674507}
+  m_LocalPosition: {x: 16.591, y: 2, z: -0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1924977259}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -87.783, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -264.832, z: 0}
 --- !u!1 &54975710
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +643,6 @@ GameObject:
   - component: {fileID: 907896021}
   - component: {fileID: 907896020}
   - component: {fileID: 907896022}
-  - component: {fileID: 907896023}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -674,8 +673,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907896019}
-  m_LocalRotation: {x: -0, y: -0.693295, z: -0, w: 0.72065395}
-  m_LocalPosition: {x: -5.264, y: 0, z: -0.007}
+  m_LocalRotation: {x: -0, y: -0.73826844, z: -0, w: -0.674507}
+  m_LocalPosition: {x: 16.591, y: 0, z: -0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -684,7 +683,7 @@ Transform:
   - {fileID: 1617142134}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -87.783, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -264.832, z: 0}
 --- !u!114 &907896022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,19 +698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 4
   orientation: {fileID: 1730669805}
---- !u!135 &907896023
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907896019}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3139846
-  m_Center: {x: 0.0000000010870067, y: 1.8469982, z: -0.68295753}
 --- !u!1 &937834959
 GameObject:
   m_ObjectHideFlags: 0
