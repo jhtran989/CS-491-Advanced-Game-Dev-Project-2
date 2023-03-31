@@ -11,6 +11,9 @@ public class CameraShake : MonoBehaviour
     private void Update() {
         if (doShake) {
             doShake = false;
+
+            // TODO: Lock player movement, shake can sometimes separate player & camera
+
             StartCoroutine(Shake());
         }
     }

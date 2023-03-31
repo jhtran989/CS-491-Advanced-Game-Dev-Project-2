@@ -61,7 +61,7 @@ public class Oxygen : MonoBehaviour
         
         // oxygenText.SetText(Math.Ceiling(oxygenMeter.fillAmount * maxOxygenLevel).ToString());
         
-        oxygenText.SetText(Math.Ceiling(currentOxygenLevel).ToString());
+        oxygenText.SetText(Math.Ceiling(currentOxygenLevel).ToString()+"%");
     }
 
     private void ColorChanger()
