@@ -10,7 +10,7 @@ public class FireExtinguisher : MonoBehaviour
 
     // should be some value less than 1 (since intensity is a proportion of total intensity)
     [FormerlySerializedAs("amountExtinguishedPerSecond")] [SerializeField]
-    private float extinguishedPerSecond = 0.1f;
+    private float extinguishedPerSecond = 0.5f;
 
     [SerializeField] private int fireLayerMask;
 
@@ -22,9 +22,14 @@ public class FireExtinguisher : MonoBehaviour
     [Space, Header("Water Hose")] [SerializeField]
     private GameObject waterHoseObject = null;
 
+    [SerializeField]
+    private float fireRaycastDistance = 5.0f;
+    
     // anonymous function to check Raycast
     private bool IsRaycastingSomething(out RaycastHit hit) => Physics.Raycast(raycastOrigin.position,
-        raycastOrigin.forward, out hit, 100f, fireLayerMask);
+        raycastOrigin.forward, out hit, fireRaycastDistance, fireLayerMask);
+
+    public bool steamFireCheck = false;
 
     private bool IsRaycastingFire(out Fire fire)
     {
@@ -36,6 +41,18 @@ public class FireExtinguisher : MonoBehaviour
     private void Awake()
     {
         fireLayerMask = LayerMask.GetMask(Constants.FireLayer);
+    }
+
+    private void OnEnable()
+    {
+        SteamParticle.SteamFireNone += DisableSteam;
+        WaterParticle.WaterFireInteract += ExtinguishFire;
+    }
+
+    private void OnDisable()
+    {
+        SteamParticle.SteamFireNone -= DisableSteam;
+        WaterParticle.WaterFireInteract -= ExtinguishFire;
     }
 
     // Start is called before the first frame update
@@ -71,21 +88,14 @@ public class FireExtinguisher : MonoBehaviour
         //     fire.TryExtinguish(extinguishedPerSecond * Time.fixedTime);
         // }
 
+        // abstracted logic
         if (IsRaycastingFire(out Fire fire))
         {
-            ExtinguishFire(fire);
+            EnableWater(fire);
         }
         else
         {
-            if (steamObject.activeSelf)
-            {
-                steamObject.SetActive(false);
-            }
-            
-            if (waterHoseObject.activeSelf)
-            {
-                waterHoseObject.SetActive(false);
-            }
+            DisableWater();
         }
     }
 
@@ -97,13 +107,33 @@ public class FireExtinguisher : MonoBehaviour
     private void ExtinguishFire(Fire fire)
     {
         // need to use Time.fixedDeltaTime instead of Time.deltaTime for FixedUpdate
-        fire.TryExtinguish(extinguishedPerSecond * Time.fixedDeltaTime);
-
-        // activate the water hose
-        waterHoseObject.SetActive(fire.CurrentIntensity > 0.0f);
-
+        // FIXME: particle system actually uses the normal frame instead of the fixed (physics) frame...
+        fire.TryExtinguish(extinguishedPerSecond * Time.deltaTime);
+        
         // spawn the steam at the same place as the fire
         steamObject.transform.position = fire.transform.position;
         steamObject.SetActive(fire.CurrentIntensity > 0.0f);
+    }
+
+    private void EnableWater(Fire fire)
+    {
+        // activate the water hose
+        waterHoseObject.SetActive(fire.CurrentIntensity > 0.0f);
+    }
+
+    private void DisableWater()
+    {
+        if (waterHoseObject.activeSelf)
+        {
+            waterHoseObject.SetActive(false);
+        }
+    }
+
+    private void DisableSteam()
+    {
+        if (steamObject.activeSelf)
+        {
+            steamObject.SetActive(false);
+        }
     }
 }
