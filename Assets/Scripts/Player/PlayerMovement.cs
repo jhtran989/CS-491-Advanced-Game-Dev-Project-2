@@ -14,6 +14,13 @@ namespace Player
         Vector3 moveDirection;
 
         Rigidbody _player_rb;
+        
+        // delegate to update oxygen level
+        public delegate void UpdateOxygenRateDelegate();
+
+        public UpdateOxygenRateDelegate UpdateOxygenRateFire;
+        public UpdateOxygenRateDelegate UpdateOxygenRateNormal;
+        public UpdateOxygenRateDelegate UpdateOxygenRateIdle;
 
         private void OnEnable()
         {
@@ -42,6 +49,22 @@ namespace Player
         private void Update() 
         {
             PlayerInput();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag(Constants.FireTag))
+            {
+                UpdateOxygenRateFire?.Invoke();
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag(Constants.FireTag))
+            {
+                UpdateOxygenRateNormal?.Invoke();
+            }
         }
 
         private void PlayerInput()
