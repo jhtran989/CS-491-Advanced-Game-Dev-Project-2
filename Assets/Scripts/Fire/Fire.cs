@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,15 +30,33 @@ public class Fire : MonoBehaviour
     private float fireRegenRatePerSecond = 0.1f;
 
     private bool isLit = true;
+    
+    // link each fire to a corresponding door (instead of doing spatial checks...)
+    [Space, Header("Door")] 
+    public string doorObjectName;
+    private GameObject _doorObject;
+    private Door _door;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _startIntensityArray = new float[firePSArray.Length];
 
         for (int i = 0; i < firePSArray.Length; i++)
         {
             _startIntensityArray[i] = firePSArray[i].emission.rateOverTime.constant;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // last fire won't have a name...
+        if (doorObjectName != null)
+        {
+            _doorObject = GameObject.Find(doorObjectName);
+            
+            // returns only the first component found - only the DoorCenterFrame should have it
+            _door = _doorObject.GetComponentInChildren<Door>();
         }
     }
 
@@ -96,5 +115,12 @@ public class Fire : MonoBehaviour
     {
         isLit = false;
         enabled = false;
+        
+        // unlock the door (so it can be opened, doesn't automatically open the door)
+        // null check for testing...some fires may not have a corresponding door
+        if (_door != null)
+        {
+            _door.UnlockDoor();
+        }
     }
 }

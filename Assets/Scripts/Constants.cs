@@ -12,5 +12,8 @@
     // Door triggers
     public static string OpenDoorTrigger = "OpenDoorTrigger";
     public static string CloseDoorTrigger = "CloseDoorTrigger";
+    
+    // Door bools
+    public static string UnlockDoorBool = "UnlockDoorBool";
 }
 
