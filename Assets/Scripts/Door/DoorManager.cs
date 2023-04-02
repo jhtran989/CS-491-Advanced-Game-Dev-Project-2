@@ -61,11 +61,11 @@ public class DoorManager : MonoBehaviour
 
         if (terminalObjectName != EmptyString)
         {
-            Debug.Log("Terminal: " + terminalObjectName);
-            if (terminalObjectName == "")
-            {
-                Debug.Log("Empty terminal, NOT NULL");
-            }
+            // Debug.Log("Terminal: " + terminalObjectName);
+            // if (terminalObjectName == "")
+            // {
+            //     Debug.Log("Empty terminal, NOT NULL");
+            // }
             
             // IMPORTANT: need to include inactive in search
             _terminalController = GameObject.Find(terminalObjectName)

@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireObjectName: TerminalFire
-  terminalObjectName: Terminal
+  terminalObjectName: TerminalObject
 --- !u!1 &714378187
 GameObject:
   m_ObjectHideFlags: 0
