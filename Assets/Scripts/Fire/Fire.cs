@@ -104,9 +104,12 @@ public class Fire : MonoBehaviour
     private void ExtinguishFire()
     {
         _isLit = false;
-        enabled = false;
         
         // unlock the door (so it can be opened, doesn't automatically open the door)
         unlockDoor = true;
+        
+        // FIXME: need to disable entire game object
+        // enabled = false;
+        gameObject.SetActive(false);
     }
 }
