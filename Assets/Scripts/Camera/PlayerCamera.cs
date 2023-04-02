@@ -7,16 +7,19 @@ public class PlayerCamera : MonoBehaviour
     public float xSensitivity, ySensitivity;
     float xRotation, yRotation;
     public Transform orientation;
+    private bool allowedToLook = true;
 
     void Start()
     {
-        Application.targetFrameRate = 60;
         Cursor.lockState = CursorLockMode.Locked;
+        Application.targetFrameRate = 60;
         Cursor.visible = false;
     }
 
     private void FixedUpdate() 
     {
+        if (!allowedToLook) return;
+
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * xSensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * ySensitivity;
 
@@ -27,5 +30,9 @@ public class PlayerCamera : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }   
+
+    public void AllowLook(bool canLook) {
+        allowedToLook = canLook;
+    }
 
 }

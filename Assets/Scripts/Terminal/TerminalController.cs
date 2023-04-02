@@ -14,32 +14,32 @@ public class TerminalController : MonoBehaviour
     void Update()
     {
         if (playerCode.Length < 4) {
-            if (Input.GetKeyDown("c")) {
-                AddToCode('C');
-            } else if (Input.GetKeyDown("o")) {
-                AddToCode('O');
-            } else if (Input.GetKeyDown("m")) {
-                AddToCode('M');
+            if (Input.GetKeyDown("d")) {
+                AddToCode('D');
             } else if (Input.GetKeyDown("r")) {
                 AddToCode('R');
-            } else if (Input.GetKeyDown("k")) {
-                AddToCode('K');
             } else if (Input.GetKeyDown("a")) {
                 AddToCode('A');
+            } else if (Input.GetKeyDown("e")) {
+                AddToCode('E');
             } else if (Input.GetKeyDown("t")) {
                 AddToCode('T');
-            } else if (Input.GetKeyDown("x")) {
-                AddToCode('X');
-            } else if (Input.GetKeyDown("d")) {
-                AddToCode('D');
+            } else if (Input.GetKeyDown("b")) {
+                AddToCode('B');
+            } else if (Input.GetKeyDown("i")) {
+                AddToCode('I');
+            } else if (Input.GetKeyDown("s")) {
+                AddToCode('S');
+            } else if (Input.GetKeyDown("k")) {
+                AddToCode('K');
             }
-        } else {
-            if (Input.GetKeyDown("return")) {
+        } 
+
+        if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
                 
                 // need to unlock the constraints on Player position
                 TerminalControllerPlayerLeave?.Invoke();
-            }
         }
         
         if (Input.GetKeyDown("backspace")) {
@@ -67,23 +67,23 @@ public class TerminalController : MonoBehaviour
 
     private int GetIndex(char letter) {
         switch (letter) {
-            case 'c':
-                return 0;
-            case 'o':
-                return 1;
-            case 'm':
-                return 2;
-            case 'r':
-                return 3;
-            case 'k':
-                return 4;
-            case 'a':
-                return 5;
-            case 't':
-                return 6;
-            case  'x':
-                return 7;
             case 'd':
+                return 0;
+            case 'r':
+                return 1;
+            case 'a':
+                return 2;
+            case 'e':
+                return 3;
+            case 't':
+                return 4;
+            case 'b':
+                return 5;
+            case 'i':
+                return 6;
+            case  's':
+                return 7;
+            case 'k':
                 return 8;
             default:
                 return 9;

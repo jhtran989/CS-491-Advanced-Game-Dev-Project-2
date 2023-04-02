@@ -2557,7 +2557,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  playerMovement: {fileID: 907896022}
   doShake: 1
   duration: 2
 --- !u!114 &1924977262
