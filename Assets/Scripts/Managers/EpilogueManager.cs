@@ -65,7 +65,7 @@ public class EpilogueManager : MonoBehaviour
                                 + "[   ] Success<br>[ x ] Failure";
                     break;
             }
-        epilogueTxt += "<br><br> Press 'Enter' to restart<br>> Press 'Esc'";
+        epilogueTxt += "<br><br>> 'Enter' to restart<br>> 'Esc' to quit";
         epilogueTMP.SetText(epilogueTxt);
     }
 }
