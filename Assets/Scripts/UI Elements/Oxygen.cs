@@ -69,16 +69,24 @@ public class Oxygen : MonoBehaviour
 
     private void OnEnable()
     {
+        // player movement
         _playerMovement.UpdateOxygenRateFire += UpdateOxygenRateFire;
         _playerMovement.UpdateOxygenRateNormal += UpdateOxygenRateNormal;
         _playerMovement.UpdateOxygenRateIdle += UpdateOxygenRateIdle;
+        
+        // fire
+        Fire.FirePutOut += UpdateOxygenRateNormal;
     }
 
     private void OnDisable()
     {
+        // player movement
         _playerMovement.UpdateOxygenRateFire -= UpdateOxygenRateFire;
         _playerMovement.UpdateOxygenRateNormal -= UpdateOxygenRateNormal;
         _playerMovement.UpdateOxygenRateIdle -= UpdateOxygenRateIdle;
+        
+        // fire
+        Fire.FirePutOut -= UpdateOxygenRateNormal;
     }
 
     // Update is called once per frame

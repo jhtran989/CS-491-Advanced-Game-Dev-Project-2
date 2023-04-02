@@ -33,6 +33,10 @@ public class Fire : MonoBehaviour
     
     // need bool for unlocking door
     public bool unlockDoor = false;
+    
+    // need delegate to stop the increased oxygen drain when fire is put out (when still within range when put out)
+    public delegate void FirePutOutDelegate();
+    public static FirePutOutDelegate FirePutOut;
 
     private void Awake()
     {
@@ -107,6 +111,9 @@ public class Fire : MonoBehaviour
         
         // unlock the door (so it can be opened, doesn't automatically open the door)
         unlockDoor = true;
+        
+        // run events when fire is put out
+        FirePutOut?.Invoke();
         
         // FIXME: need to disable entire game object
         // enabled = false;

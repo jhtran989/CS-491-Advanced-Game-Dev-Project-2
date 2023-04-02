@@ -6,6 +6,10 @@
 
 ## Important Notes
 
+### Delegates
+
+- delegates are scattered all over the place, need to consolidate them (or come up with better design)
+
 ### Multiple Scenes
 
 - can't directly add `GameObject` from another `Scene` in the `Inspector`...use `GameObject.Find()` instead for hard string search (need to use **unique** names)
