@@ -7,7 +7,7 @@ public class TerminalController : MonoBehaviour
     public TextMeshProUGUI codeText;
     private string playerCode = "";
     private bool[] letterIsUsed = new bool[10];
-    
+    public GameManager gameManager;
     public delegate void TerminalControllerDelegate();
     public static TerminalControllerDelegate TerminalControllerPlayerLeave;
 
@@ -37,7 +37,7 @@ public class TerminalController : MonoBehaviour
 
         if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
-                
+                GameObject.Find("GameManager").GetComponent<GameManager>().SaveTerminalCode(playerCode);
                 // need to unlock the constraints on Player position
                 TerminalControllerPlayerLeave?.Invoke();
         }

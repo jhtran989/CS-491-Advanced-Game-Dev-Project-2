@@ -5,20 +5,20 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private static string[] terminalCodes = new string[1];
+    private static string terminalCode = "";
 
     private void Awake() {
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
 
-    public void SaveTerminalCode(int terminal, string code) 
+    public void SaveTerminalCode(string code) 
     {
-        terminalCodes[terminal] = code;
+        terminalCode = code;
     }
 
-    public string[] GetCodes() {
-        return terminalCodes;
+    public string GetCode() {
+        return terminalCode;
     }
 
 }

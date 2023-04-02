@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04028033, g: 0.018327361, b: 0.011104246, a: 1}
+  m_IndirectSpecularColor: {r: 0.04027691, g: 0.018328764, b: 0.01110571, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1890,6 +1890,7 @@ GameObject:
   - component: {fileID: 1572369262}
   - component: {fileID: 1572369261}
   - component: {fileID: 1572369260}
+  - component: {fileID: 1572369263}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Player
@@ -1976,6 +1977,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572369258}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1572369263
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572369258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1581219086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,7 +2293,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -101.93108, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2543,6 +2557,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  playerMovement: {fileID: 907896022}
   doShake: 1
   duration: 2
 --- !u!114 &1924977262
@@ -2767,7 +2782,7 @@ MonoBehaviour:
   oxygenText: {fileID: 590374501}
   oxygenMeter: {fileID: 1955674701}
   oxygenIndicatorText: {fileID: 1790299486}
-  PlayerObject: {fileID: 0}
+  PlayerObject: {fileID: 907896019}
   speedStationaryThreshold: 0.5
   maxOxygenLevel: 100
   oxygenDrainPerSecond: 1
@@ -2778,6 +2793,11 @@ MonoBehaviour:
   - {r: 0.5641521, g: 0.43137252, b: 0.9607843, a: 0}
   currentTime: 0
   currentOxygenLevel: 0
+  oxygenRateNormal: 0
+  oxygenRateIdleMultiplier: 0.1
+  oxygenRateIdle: 0
+  oxygenRateFireMultiplier: 4
+  currentOxygenRate: 0
 --- !u!1001 &1040841389236691501
 PrefabInstance:
   m_ObjectHideFlags: 0

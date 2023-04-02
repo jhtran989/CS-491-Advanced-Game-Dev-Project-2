@@ -366,13 +366,15 @@ GameObject:
   - component: {fileID: 112468993}
   - component: {fileID: 112468992}
   - component: {fileID: 112468991}
+  - component: {fileID: 112468997}
+  - component: {fileID: 112468996}
   m_Layer: 0
   m_Name: Enter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &112468991
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -2166,6 +2168,31 @@ Transform:
   m_Father: {fileID: 1360014914}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112468996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112468989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c414622ba536049b39ef6fa64bad1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &112468997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112468989}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9699244, y: 0.1290875, z: 4.225118}
+  m_Center: {x: -0.00000023841858, y: 0, z: 0}
 --- !u!1 &118020331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6173,7 +6200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b63ea345a4ad0d44893cac695649a72, type: 2}
+  - {fileID: 2100000, guid: 9d23184268c461e409067bc4fffc59d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9121,7 +9148,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465685345}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.0781405}
+  m_LocalPosition: {x: 0, y: 0, z: 1.119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9130,7 +9157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.38, y: 1.4734607}
+  m_AnchoredPosition: {x: -0.38, y: 1.482}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0, y: 0.8}
 --- !u!114 &465685347
@@ -9162,8 +9189,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3154116608
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0.7372549}
+    rgba: 4279839823
+  m_fontColor: {r: 0.31132078, g: 0.17139424, b: 0.09838911, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16736,7 +16763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3cc5ee0a059af714d9adef1468178e6a, type: 2}
+  - {fileID: 2100000, guid: 39e242f9f2f0bb04883802595f9fb6de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48520,6 +48547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapePodDoor: {fileID: 316427931}
+  escapePodTrigger: {fileID: 112468989}
   duration: 1
 --- !u!95 &1500028487
 Animator:
