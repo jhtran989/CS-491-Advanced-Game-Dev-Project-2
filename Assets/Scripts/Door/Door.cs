@@ -27,4 +27,9 @@ public class Door : MonoBehaviour
             doorAnimator.SetTrigger(Constants.CloseDoorTrigger);
         }
     }
+
+    public void UnlockDoor()
+    {
+        doorAnimator.SetBool(Constants.UnlockDoorBool, true);
+    }
 }

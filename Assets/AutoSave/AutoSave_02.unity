@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 78068356}
   - component: {fileID: 78068355}
   m_Layer: 5
-  m_Name: OxygenText (1)
+  m_Name: OxygenLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,8 +290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.3, y: 35.8}
-  m_SizeDelta: {x: 77.0464, y: 40.6313}
+  m_AnchoredPosition: {x: -260, y: 0}
+  m_SizeDelta: {x: 26.8244, y: 28.509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &78068355
 MonoBehaviour:
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 56.383366, y: 0, z: 2.336731, w: 28.157656}
+  m_margin: {x: 0.023168543, y: 0, z: 0.10467539, w: 0.25660995}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1177,7 +1177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchoredPosition: {x: 50, y: -30}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &590374499
@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 590374502}
   - component: {fileID: 590374501}
   m_Layer: 5
-  m_Name: OxygenText
+  m_Name: OxygenPercentText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,8 +1215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.2, y: 0}
-  m_SizeDelta: {x: 77.0464, y: 40.6313}
+  m_AnchoredPosition: {x: 75, y: 0}
+  m_SizeDelta: {x: 32.9627, y: 23.9321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590374501
 MonoBehaviour:
@@ -1272,8 +1272,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 56.383366, y: 2.1000118, z: -22.641018, w: 28.157656}
+  m_margin: {x: 0.023002664, y: -0.1320934, z: 0.23796652, w: 0.25659564}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1436,7 +1436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &937834960
 Transform:
   m_ObjectHideFlags: 0
@@ -2123,7 +2123,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572369258}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2396,7 +2396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216.6, y: 33}
+  m_AnchoredPosition: {x: -216.6, y: -15}
   m_SizeDelta: {x: 45.7079, y: 13.6131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790299486
@@ -3104,7 +3104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.00003, y: -97.759995}
+  m_AnchoredPosition: {x: -100, y: -25}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032630407
