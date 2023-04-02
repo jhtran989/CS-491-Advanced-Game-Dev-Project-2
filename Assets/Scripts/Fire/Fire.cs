@@ -29,13 +29,10 @@ public class Fire : MonoBehaviour
     [FormerlySerializedAs("fireRegenRate")] [SerializeField]
     private float fireRegenRatePerSecond = 0.1f;
 
-    private bool isLit = true;
+    private bool _isLit = true;
     
-    // link each fire to a corresponding door (instead of doing spatial checks...)
-    [Space, Header("Door")] 
-    public string doorObjectName;
-    private GameObject _doorObject;
-    private Door _door;
+    // need bool for unlocking door
+    public bool unlockDoor = false;
 
     private void Awake()
     {
@@ -50,14 +47,7 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // last fire won't have a name...
-        if (doorObjectName != null)
-        {
-            _doorObject = GameObject.Find(doorObjectName);
-            
-            // returns only the first component found - only the DoorCenterFrame should have it
-            _door = _doorObject.GetComponentInChildren<Door>();
-        }
+        
     }
 
     // Update is called once per frame
@@ -104,7 +94,7 @@ public class Fire : MonoBehaviour
         var timeNotWatered = Time.time - timeLastWatered;
         
         // only regen fire if it is still lit (not already put out)
-        if (isLit && currentIntensity < 1.0f && timeNotWatered >= fireRegenDelay)
+        if (_isLit && currentIntensity < 1.0f && timeNotWatered >= fireRegenDelay)
         {
             currentIntensity += fireRegenRatePerSecond * Time.deltaTime;
             ChangeIntensity();
@@ -113,14 +103,10 @@ public class Fire : MonoBehaviour
 
     private void ExtinguishFire()
     {
-        isLit = false;
+        _isLit = false;
         enabled = false;
         
         // unlock the door (so it can be opened, doesn't automatically open the door)
-        // null check for testing...some fires may not have a corresponding door
-        if (_door != null)
-        {
-            _door.UnlockDoor();
-        }
+        unlockDoor = true;
     }
 }

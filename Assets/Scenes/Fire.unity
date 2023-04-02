@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8087378
+      value: 7.22
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4612715
+      value: -3.83
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -182,6 +182,10 @@ PrefabInstance:
     - target: {fileID: 62359613458372783, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_Name
       value: TerminalFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 151037684904196026, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 151037684904196027, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: doorObjectName
@@ -243,6 +247,10 @@ PrefabInstance:
     - target: {fileID: 62359613458372783, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_Name
       value: TutorialFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 151037684904196026, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 151037684904196027, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: doorObjectName
@@ -441,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.78
+      value: -6.383
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -449,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.44
+      value: -0.132
       objectReference: {fileID: 0}
     - target: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -482,6 +490,10 @@ PrefabInstance:
     - target: {fileID: 62359613458372783, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
       propertyPath: m_Name
       value: EscapePodFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 151037684904196026, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}

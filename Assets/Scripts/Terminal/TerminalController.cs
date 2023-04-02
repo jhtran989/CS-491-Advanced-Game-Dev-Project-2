@@ -11,6 +11,8 @@ public class TerminalController : MonoBehaviour
     public delegate void TerminalControllerDelegate();
     public static TerminalControllerDelegate TerminalControllerPlayerLeave;
 
+    public bool unlockDoor = false;
+
     void Update()
     {
         if (playerCode.Length < 4) {
@@ -38,8 +40,12 @@ public class TerminalController : MonoBehaviour
         if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
                 GameObject.Find("GameManager").GetComponent<GameManager>().SaveTerminalCode(playerCode);
+                
                 // need to unlock the constraints on Player position
                 TerminalControllerPlayerLeave?.Invoke();
+                
+                // TODO: unlock the door for now (maybe add other constraints later depending on code entered)
+                unlockDoor = true;
         }
         
         if (Input.GetKeyDown("backspace")) {
