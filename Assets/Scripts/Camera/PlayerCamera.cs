@@ -10,7 +10,7 @@ public class PlayerCamera : MonoBehaviour
     private bool allowedToLook = true;
 
     void Start()
-    {
+    {       
         Cursor.lockState = CursorLockMode.Locked;
         Application.targetFrameRate = 60;
         Cursor.visible = false;

@@ -126,7 +126,7 @@ public class Oxygen : MonoBehaviour
         Color oxygenColor = Color.Lerp(Color.red, Color.blue, currentOxygenLevel / maxOxygenLevel);
 
         oxygenMeter.color = oxygenColor;
-        oxygenText.color = oxygenColor;
+        //oxygenText.color = oxygenColor;
     }
 
     private float FindFractionTimeElapsed()
