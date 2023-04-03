@@ -346,12 +346,12 @@ GameObject:
   - component: {fileID: 1075040523}
   - component: {fileID: 1075040524}
   m_Layer: 0
-  m_Name: TerminalObject
+  m_Name: TerminalTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1075040519
 RectTransform:
   m_ObjectHideFlags: 0

@@ -95,4 +95,16 @@ public class TerminalController : MonoBehaviour
                 return 9;
         }
     }
+    
+    public void EnableTerminalController()
+    {
+        // easiest way is to enable script
+        enabled = true;
+    }
+
+    private void DisableTerminalController()
+    {
+        // easiest way is to disable script
+        enabled = false;
+    }
 }

@@ -17,6 +17,8 @@ public class DoorManager : MonoBehaviour
     
     [Space, Header("Terminal")] 
     public string terminalObjectName;
+    private GameObject _terminalGameObject;
+    private TerminalTrigger _terminalTrigger;
     private TerminalController _terminalController;
     private bool _terminalCheck = false;
     
@@ -68,7 +70,10 @@ public class DoorManager : MonoBehaviour
             // }
             
             // IMPORTANT: need to include inactive in search
-            _terminalController = GameObject.Find(terminalObjectName)
+            _terminalGameObject = GameObject.Find(terminalObjectName);
+            _terminalTrigger = _terminalGameObject
+                .GetComponentInChildren<TerminalTrigger>(true);
+            _terminalController = _terminalGameObject
                 .GetComponentInChildren<TerminalController>(true);
             _terminalCheck = true;
         }
@@ -84,6 +89,17 @@ public class DoorManager : MonoBehaviour
             foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
             {
                 unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
+            }
+            
+            // FIXME: need to abstract this into rooms...
+            if (_terminalCheck)
+            {
+                // make terminal interactable if fire was put out
+                if (CheckDoorOptions(DoorOptionsEnum.Fire))
+                {
+                    // _terminalController.EnableTerminalController();
+                    _terminalTrigger.gameObject.SetActive(true);
+                }
             }
 
             if (unlockCondition)

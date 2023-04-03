@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 937834960}
   - component: {fileID: 937834961}
   - component: {fileID: 937834962}
+  - component: {fileID: 937834963}
   m_Layer: 0
   m_Name: InteractionPoint
   m_TagString: Untagged
@@ -1494,6 +1495,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &937834963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937834959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e41c8beb01cf044a4451789cf7b313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1010213235
 LightingSettings:
   m_ObjectHideFlags: 0
