@@ -88,15 +88,18 @@ public class FireExtinguisher : MonoBehaviour
         //     fire.TryExtinguish(extinguishedPerSecond * Time.fixedTime);
         // }
 
+        // FIXME: move to mouse hold instead of Raycast...
         // abstracted logic
-        if (IsRaycastingFire(out Fire fire))
-        {
-            EnableWater(fire);
-        }
-        else
-        {
-            DisableWater();
-        }
+        // if (IsRaycastingFire(out Fire fire))
+        // {
+        //     EnableWater(fire);
+        // }
+        // else
+        // {
+        //     DisableWater();
+        // }
+        
+        SetWaterOnInput();
     }
 
     // Update is called once per frame
@@ -115,10 +118,16 @@ public class FireExtinguisher : MonoBehaviour
         steamObject.SetActive(fire.CurrentIntensity > 0.0f);
     }
 
-    private void EnableWater(Fire fire)
+    private void EnableWaterFireCondition(Fire fire)
     {
         // activate the water hose
         waterHoseObject.SetActive(fire.CurrentIntensity > 0.0f);
+    }
+    
+    private void EnableWater()
+    {
+        // activate the water hose
+        waterHoseObject.SetActive(true);
     }
 
     private void DisableWater()
@@ -126,6 +135,19 @@ public class FireExtinguisher : MonoBehaviour
         if (waterHoseObject.activeSelf)
         {
             waterHoseObject.SetActive(false);
+        }
+    }
+
+    private void SetWaterOnInput()
+    {
+        // for Right mouse button (pressed down)
+        if (Input.GetMouseButton(1))
+        {
+            EnableWater();
+        }
+        else
+        {
+            DisableWater();
         }
     }
 

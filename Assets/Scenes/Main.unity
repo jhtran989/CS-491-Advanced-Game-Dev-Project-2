@@ -3208,7 +3208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1040841390241436125, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1040841390241436126, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
       propertyPath: ShapeModule.type
