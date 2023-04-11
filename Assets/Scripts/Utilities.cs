@@ -12,3 +12,4 @@ public class Utilities : MonoBehaviour
         return (T[]) Enum.GetValues(typeof(T));
     }
 }
+ 

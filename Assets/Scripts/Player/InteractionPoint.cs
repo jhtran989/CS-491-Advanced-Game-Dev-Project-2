@@ -8,10 +8,6 @@ public class InteractionPoint : MonoBehaviour
     // FIXME: editing interaction point is too much work...
     // FIXME: SCRATCH THIS
     // TODO: get sense of separate rooms and get list of objects in room to enable/disable interactions...
-    private void Awake()
-    {
-        throw new NotImplementedException();
-    }
 
     private void OnEnable()
     {

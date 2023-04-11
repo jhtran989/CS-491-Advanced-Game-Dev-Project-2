@@ -19,12 +19,29 @@ public class WaterParticle : MonoBehaviour
     private FireExtinguisher _fireExtinguisher;
     
     // FIXME: same logic as in Fire script...abstract?
-    public float timeLastWatered = 0;
+    private float _timeLastWatered;
+    private float _steamStopDelay;
+
+    public float TimeLastWatered
+    {
+        get => _timeLastWatered;
+        set => _timeLastWatered = value;
+    }
+
+    private void Awake()
+    {
+        _timeLastWatered = 0;
+        _steamStopDelay = 1.0f;
+        fireExtinguisherObject = gameObject.transform.parent.gameObject;
+    }
 
     private void Start()
     {
         _fireExtinguisher = fireExtinguisherObject.GetComponent<FireExtinguisher>();
         _collisionEvents = new List<ParticleCollisionEvent>();
+        
+        // periodically check if steam should be turned off
+        InvokeRepeating("SteamStop", 0f, 1.0f); 
     }
 
     // private void OnParticleTrigger()
@@ -57,8 +74,25 @@ public class WaterParticle : MonoBehaviour
 
         Debug.Log("Water collided with fire...");
 
-        timeLastWatered = Time.time;
-        
         WaterFireInteract?.Invoke(fire);
+        
+        _timeLastWatered = Time.time;
+    }
+    
+    private bool CheckSteamStopDelay()
+    {
+        // Debug.Log("current time: " + Time.time);
+        
+        var timeNotWatered = Time.time - _timeLastWatered;
+    
+        return timeNotWatered >= _steamStopDelay;
+    }
+    
+    private void SteamStop()
+    {
+        if (CheckSteamStopDelay())
+        {
+            _fireExtinguisher.DisableSteam();
+        }
     }
 }

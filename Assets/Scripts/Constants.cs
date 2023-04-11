@@ -1,19 +1,22 @@
 ﻿public class Constants
 {
-    public static string PlayerObject = "Player";
+    public const string PlayerObject = "Player";
     
     // Tags
-    public static string PlayerTag = "Player";
-    public static string FireTag = "Fire";
+    public const string PlayerTag = "Player";
+    public const string FireTag = "Fire";
     
     // Layers
-    public static string FireLayer = "Fire";
+    public const string FireLayer = "Fire";
     
     // Door triggers
-    public static string OpenDoorTrigger = "OpenDoorTrigger";
-    public static string CloseDoorTrigger = "CloseDoorTrigger";
+    public const string OpenDoorTrigger = "OpenDoorTrigger";
+    public const string CloseDoorTrigger = "CloseDoorTrigger";
     
     // Door bools
-    public static string UnlockDoorBool = "UnlockDoorBool";
+    public const string UnlockDoorBool = "UnlockDoorBool";
+
+    // Fire children
+    public const string SteamGameObject = "RisingSteam";
 }
 

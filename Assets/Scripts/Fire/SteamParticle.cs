@@ -9,31 +9,47 @@ public class SteamParticle : MonoBehaviour
     public static SteamDelegateNone SteamFireNone;
     
     // FIXME: same logic as in Fire script...abstract?
-    private float steamStopDelay = 0;
+    private float _steamStopDelay;
     
     private WaterParticle _waterParticle;
 
+    private void Awake()
+    {
+        _steamStopDelay = 2.0f;
+    }
+
     private void Start()
     {
-        _waterParticle = gameObject.GetComponentInParent<WaterParticle>();
+        // FIXME: should be placed in the fire (parent) now
+        _waterParticle = gameObject.GetComponentInChildren<WaterParticle>();
+        
+        InvokeRepeating("SteamStop", 0, 1);
     }
     
-    private void FixedUpdate()
+    // private void FixedUpdate()
+    // {
+    //     // FIXME: does not update if disabled...
+    //     
+    //     if (CheckSteamStopDelay())
+    //     {
+    //         SteamFireNone?.Invoke();
+    //     }
+    // }
+    //
+    private bool CheckSteamStopDelay()
     {
-        // FIXME: does not update if disabled...
+        // Debug.Log("current time: " + Time.time);
         
+        var timeNotWatered = Time.time - _waterParticle.TimeLastWatered;
+    
+        return timeNotWatered >= _steamStopDelay;
+    }
+
+    private void SteamStop()
+    {
         if (CheckSteamStopDelay())
         {
             SteamFireNone?.Invoke();
         }
-    }
-
-    private bool CheckSteamStopDelay()
-    {
-        Debug.Log("current time: " + Time.time);
-        
-        var timeNotWatered = Time.time - _waterParticle.timeLastWatered;
-
-        return timeNotWatered >= steamStopDelay;
     }
 }

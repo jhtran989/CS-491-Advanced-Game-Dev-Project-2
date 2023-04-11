@@ -248,14 +248,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialFire
       objectReference: {fileID: 0}
-    - target: {fileID: 151037684904196026, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 151037684904196027, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
-      propertyPath: doorObjectName
-      value: DoorTutorialTerminal
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
 --- !u!1001 &869245534
@@ -431,79 +423,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3143cbb60efb96b40b0a991f45f2a13f, type: 3}
---- !u!1001 &1985641493
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.06
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.47
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5866837
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.80981624
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 108.156
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
-      propertyPath: m_Name
-      value: Fire Extinguisher
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 174399f8653610340a0f1cd26bbc902a, type: 3}
 --- !u!4 &4288416525781454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}

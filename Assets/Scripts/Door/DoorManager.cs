@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DoorManager : MonoBehaviour
 {
     [Space, Header("Door")]
-    private Door _door;
+    public Door door;
     
     // get objects that influence when a door is unlocked
     // without need of doing spatial checks...
@@ -22,9 +23,12 @@ public class DoorManager : MonoBehaviour
     private TerminalController _terminalController;
     private bool _terminalCheck = false;
     
-    private bool _doorOptionCheck = true;
+    public bool doorOptionCheck;
 
     private static readonly string EmptyString = Utilities.EmptyString;
+
+    public delegate void UnlockDoorDelegate();
+    public static UnlockDoorDelegate unlockDoor;
 
     /******************************************************************/
     
@@ -47,7 +51,19 @@ public class DoorManager : MonoBehaviour
     private void Awake()
     {
         // returns only the first component found - only the DoorCenterFrame should have it
-        _door = gameObject.GetComponentInChildren<Door>();
+        door = gameObject.GetComponentInChildren<Door>();
+        
+        doorOptionCheck = true;
+    }
+
+    private void OnEnable()
+    {
+        unlockDoor += CheckUnlockDoor;
+    }
+
+    private void OnDisable()
+    {
+        unlockDoor -= CheckUnlockDoor;
     }
 
     // Start is called before the first frame update
@@ -82,32 +98,7 @@ public class DoorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_doorOptionCheck)
-        {
-            var unlockCondition = true;
-            
-            foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
-            {
-                unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
-            }
-            
-            // FIXME: need to abstract this into rooms...
-            if (_terminalCheck)
-            {
-                // make terminal interactable if fire was put out
-                if (CheckDoorOptions(DoorOptionsEnum.Fire))
-                {
-                    // _terminalController.EnableTerminalController();
-                    _terminalTrigger.gameObject.SetActive(true);
-                }
-            }
-
-            if (unlockCondition)
-            {
-                _door.UnlockDoor();
-                _doorOptionCheck = false;
-            }
-        }
+        
     }
 
     /// <summary>
@@ -130,5 +121,41 @@ public class DoorManager : MonoBehaviour
 
         // default to false for testing
         return false;
+    }
+
+    /// <summary>
+    /// Should be moved to each instance where one portion of unlocking the door could occur
+    /// </summary>
+    public void CheckUnlockDoor()
+    {
+        Debug.Log("Door manager, check unlock door");
+        
+        if (doorOptionCheck)
+        {
+            var unlockCondition = true;
+            
+            foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
+            {
+                unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
+            }
+            
+            // FIXME: need to abstract this into rooms...
+            if (_terminalCheck)
+            {
+                // make terminal interactable if fire was put out
+                if (CheckDoorOptions(DoorOptionsEnum.Fire))
+                {
+                    // _terminalController.EnableTerminalController();
+                    _terminalTrigger.gameObject.SetActive(true);
+                }
+            }
+
+            // FIXME: move to animation logic...
+            if (unlockCondition)
+            {
+                door.UnlockDoor();
+                doorOptionCheck = false;
+            }
+        }
     }
 }

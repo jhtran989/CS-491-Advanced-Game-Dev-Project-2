@@ -111,6 +111,7 @@ public class Fire : MonoBehaviour
         
         // unlock the door (so it can be opened, doesn't automatically open the door)
         unlockDoor = true;
+        DoorManager.unlockDoor?.Invoke();
         
         // run events when fire is put out
         FirePutOut?.Invoke();
