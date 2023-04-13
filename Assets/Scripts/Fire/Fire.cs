@@ -25,9 +25,9 @@ public class Fire : MonoBehaviour
 
     [SerializeField]
     private float fireRegenDelay = 2.5f;
-    
-    [FormerlySerializedAs("fireRegenRate")] [SerializeField]
-    private float fireRegenRatePerSecond = 0.1f;
+
+    [SerializeField] 
+    private float fireRegenRatePerSecond;
 
     private bool _isLit = true;
     
@@ -40,6 +40,7 @@ public class Fire : MonoBehaviour
 
     private void Awake()
     {
+        fireRegenRatePerSecond = 0.5f;
         _startIntensityArray = new float[firePSArray.Length];
 
         for (int i = 0; i < firePSArray.Length; i++)

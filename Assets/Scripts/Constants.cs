@@ -17,6 +17,18 @@
     public const string UnlockDoorBool = "UnlockDoorBool";
 
     // Fire children
-    public const string SteamGameObject = "RisingSteam";
+    public const string SteamGameObjectName = "RisingSteam";
+    
+    // Keypresses (controls)
+    public const string FireKey = "f";
+    
+    /*
+     * Game Objects
+     */
+    // HUD objects
+    public const string MainCanvasObjectName = "MainCanvas";
+    public const string HUDObjectName = "HUD";
+    public const string DoorPowerBarObjectName = "DoorPowerBar";
+    public const string OxygenObjectName = "Oxygen";
 }
 

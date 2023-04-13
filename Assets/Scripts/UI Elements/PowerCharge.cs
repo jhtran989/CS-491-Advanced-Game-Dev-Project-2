@@ -12,16 +12,22 @@ namespace UI_Elements
         [SerializeField]
         private int currentNumPowerCharges;
 
+        public int CurrentNumPowerCharges
+        {
+            get => currentNumPowerCharges;
+            private set => currentNumPowerCharges = value;
+        }
+
         private void OnEnable()
         {
-            Door.DoorOpen += ConsumePowerCharge;
-            Door.DoorOpen += PowerChargeFiller;
+            Door.doorOpenPowerCharge += ConsumePowerCharge;
+            Door.doorOpenPowerCharge += PowerChargeFiller;
         }
 
         private void OnDisable()
         {
-            Door.DoorOpen -= ConsumePowerCharge;
-            Door.DoorOpen -= PowerChargeFiller;
+            Door.doorOpenPowerCharge -= ConsumePowerCharge;
+            Door.doorOpenPowerCharge -= PowerChargeFiller;
         }
 
         // Start is called before the first frame update

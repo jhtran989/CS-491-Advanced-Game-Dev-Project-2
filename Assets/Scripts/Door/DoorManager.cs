@@ -137,6 +137,7 @@ public class DoorManager : MonoBehaviour
             foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
             {
                 unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
+                door.UnlockCondition = unlockCondition;
             }
             
             // FIXME: need to abstract this into rooms...

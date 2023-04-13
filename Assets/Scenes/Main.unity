@@ -1337,6 +1337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778401032}
+  - component: {fileID: 778401033}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1366,6 +1367,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 10}
   m_SizeDelta: {x: 769.4879, y: 168.95941}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &778401033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778401031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babe6d5a79ec9a746b473f3b896e6cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoorPowerBarObject: {fileID: 0}
+  OxygenObject: {fileID: 0}
 --- !u!1 &907896019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1797,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steamParticleSystem: {fileID: 1277654003}
   fireExtinguisherObject: {fileID: 1924977256}
-  timeLastWatered: 0
 --- !u!1 &1281255574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1848,7 @@ GameObject:
   - component: {fileID: 1297856714}
   - component: {fileID: 1297856713}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

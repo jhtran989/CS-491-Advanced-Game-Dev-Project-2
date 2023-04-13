@@ -9,8 +9,8 @@ public class FireExtinguisher : MonoBehaviour
     public Camera playerCamera;
 
     // should be some value less than 1 (since intensity is a proportion of total intensity)
-    [FormerlySerializedAs("amountExtinguishedPerSecond")] [SerializeField]
-    private float extinguishedPerSecond = 0.5f;
+    [SerializeField]
+    private float extinguishedPerSecond;
 
     [SerializeField] private int fireLayerMask;
 
@@ -43,6 +43,8 @@ public class FireExtinguisher : MonoBehaviour
     private void Awake()
     {
         fireLayerMask = LayerMask.GetMask(Constants.FireLayer);
+
+        extinguishedPerSecond = 0.8f;
     }
 
     private void OnEnable()
@@ -81,9 +83,8 @@ public class FireExtinguisher : MonoBehaviour
 
     private void ExtinguishFire(Fire fire)
     {
-        // need to use Time.fixedDeltaTime instead of Time.deltaTime for FixedUpdate
-        // FIXME: particle system actually uses the normal frame instead of the fixed (physics) frame...
-        fire.TryExtinguish(extinguishedPerSecond * Time.deltaTime);
+        // need to use Time.fixedDeltaTime instead of Time.deltaTime for physics
+        fire.TryExtinguish(extinguishedPerSecond * Time.fixedDeltaTime);
         
         // link it to the fire object instead (so intensity also changes proportional to how much fire is put out)
         InitialSetSteam(fire);
@@ -96,7 +97,7 @@ public class FireExtinguisher : MonoBehaviour
         if (_currentFire == null || _currentFire != fire)
         {
             _currentFire = fire;
-            steamObject = fire.gameObject.transform.Find(Constants.SteamGameObject).gameObject;
+            steamObject = fire.gameObject.transform.Find(Constants.SteamGameObjectName).gameObject;
         }
     }
 
