@@ -27,6 +27,10 @@ public class FireExtinguisher : MonoBehaviour
     [SerializeField]
     private float fireRaycastDistance = 5.0f;
     
+    /****************************************************/
+
+    public InteractableComponents interactableComponents;
+    
     // anonymous function to check Raycast
     private bool IsRaycastingSomething(out RaycastHit hit) => Physics.Raycast(raycastOrigin.position,
         raycastOrigin.forward, out hit, fireRaycastDistance, fireLayerMask);
@@ -123,14 +127,18 @@ public class FireExtinguisher : MonoBehaviour
 
     private void SetWaterOnInput()
     {
-        // for Right mouse button (pressed down)
-        if (Input.GetMouseButton(1))
+        // TODO: only activate when holding fire extinguisher
+        if (interactableComponents.isHoldingFireExtinguisher)
         {
-            EnableWater();
-        }
-        else
-        {
-            DisableWater();
+            // for Right mouse button (pressed down)
+            if (Input.GetMouseButton(1))
+            {
+                EnableWater();
+            }
+            else
+            {
+                DisableWater();
+            }
         }
     }
 

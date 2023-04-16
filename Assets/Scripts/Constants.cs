@@ -21,6 +21,8 @@
     
     // Keypresses (controls)
     public const string FireKey = "f";
+    public const string InteractableKey = "e";
+    public const string DropInteractableKey = "r";
     
     /*
      * Game Objects

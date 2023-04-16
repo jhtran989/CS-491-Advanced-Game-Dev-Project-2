@@ -6,12 +6,8 @@ public class NPCInteractable : MonoBehaviour, IInteractable {
 
     [SerializeField] private string interactText;
 
-    private Animator animator;
-    private NPCHeadLookAt npcHeadLookAt;
-
     private void Awake() {
-        // animator = GetComponent<Animator>();
-        // npcHeadLookAt = GetComponent<NPCHeadLookAt>();
+        
     }
 
     public void Interact(Transform interactorTransform) {

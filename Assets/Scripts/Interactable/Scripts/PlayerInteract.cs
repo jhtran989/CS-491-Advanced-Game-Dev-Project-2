@@ -1,9 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour {
+public class PlayerInteract : MonoBehaviour
+{
+    private InteractableComponents _interactableComponents;
 
+    private void Awake()
+    {
+        _interactableComponents = GetComponent<InteractableComponents>();
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
