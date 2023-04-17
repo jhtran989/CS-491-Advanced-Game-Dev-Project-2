@@ -22,6 +22,8 @@ public class Oxygen : MonoBehaviour
     public CameraShake cameraShake;
     private float _oxygenDrainTimeDelay;
 
+    public FireManager fireManager;
+
     [SerializeField]
     private float speedStationaryThreshold = 0.5f;
 
@@ -211,6 +213,16 @@ public class Oxygen : MonoBehaviour
         {
             currentOxygenRate = oxygenRateNormal * oxygenRateIdleMultiplier;
             _isIdle = true;
+        }
+        
+        // set fire present depending on how many fires are present (greater than 0)
+        if (fireManager.GetNumActiveFires() > 0)
+        {
+            firePresent = true;
+        }
+        else
+        {
+            firePresent = false;
         }
         
         // the fire will overwrite the oxygen rate, even if idle

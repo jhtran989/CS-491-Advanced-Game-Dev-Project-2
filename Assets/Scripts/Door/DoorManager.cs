@@ -166,9 +166,6 @@ public class DoorManager : MonoBehaviour
             {
                 door.UnlockDoor();
                 doorOptionCheck = false;
-                
-                // TODO: need to make corresponding fire visible and set fire to present
-                nextDoorFire.gameObject.SetActive(true);
             }
         }
     }

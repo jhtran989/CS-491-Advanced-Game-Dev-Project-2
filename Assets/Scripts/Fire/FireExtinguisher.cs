@@ -97,8 +97,8 @@ public class FireExtinguisher : MonoBehaviour
         // get the updated fire and steam
         InitialSetSteam(fire);
         
-        Debug.Log("Current Fire: " + _currentFire);
-        Debug.Log("Input fire: " + fire);
+        // Debug.Log("Current Fire: " + _currentFire);
+        // Debug.Log("Input fire: " + fire);
         
         if (!fireExtinguished)
         {

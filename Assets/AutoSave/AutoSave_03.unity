@@ -1178,7 +1178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   fireObjectName: TerminalFire
-  fire: {fileID: 1576405910}
+  currentDoorFire: {fileID: 1576405910}
+  nextDoorFire: {fileID: 4288416525781456}
   terminalObjectName: TerminalObject
   doorOptionCheck: 0
 --- !u!1 &244224463
@@ -1734,6 +1735,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435499508}
   m_CullTransparentMesh: 1
+--- !u!1 &468257719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468257720}
+  - component: {fileID: 468257721}
+  m_Layer: 0
+  m_Name: Rooms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468257720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468257719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1940617451}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468257721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468257719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34edc83e8f4939e4bbd6aca17d29ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePrefab: {fileID: 62359613458372783, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+  fireParent: {fileID: 1063196937}
+  currentRoom: {fileID: 1940617450}
 --- !u!1001 &477898052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3274,7 +3323,7 @@ Transform:
   - {fileID: 2000203162}
   - {fileID: 243753748}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1268137950
 MonoBehaviour:
@@ -3288,6 +3337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c37b013ef408ed40bfec9cd4c13ed71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hudManager: {fileID: 778401033}
+  oxygen: {fileID: 0}
 --- !u!4 &1277654001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1040841390241436124, guid: 8f4d792045830ad408086ee9b1ac244e, type: 3}
@@ -4241,6 +4292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665087344}
+  - component: {fileID: 1665087345}
   m_Layer: 0
   m_Name: Fires
   m_TagString: Untagged
@@ -4262,8 +4314,21 @@ Transform:
   m_Children:
   - {fileID: 1063196938}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665087345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665087343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e462adb4e8bde7249a46b9c4eec61db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParent: {fileID: 1063196937}
 --- !u!1 &1678494512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,7 +4799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
       propertyPath: m_LocalScale.x
@@ -5193,8 +5258,40 @@ MonoBehaviour:
   steamObject: {fileID: 38650288}
   waterHoseObject: {fileID: 62106838}
   fireRaycastDistance: 5
+  fireExtinguished: 0
   interactableComponents: {fileID: 907896027}
   steamFireCheck: 0
+--- !u!1 &1940617450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1940617451}
+  m_Layer: 0
+  m_Name: TutorialRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1940617451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940617450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 468257720}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1955674699
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,7 +5735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   fireObjectName: TutorialFire
-  fire: {fileID: 1818804986}
+  currentDoorFire: {fileID: 1818804986}
+  nextDoorFire: {fileID: 1576405910}
   terminalObjectName: 
   doorOptionCheck: 0
 --- !u!1 &2017658339
@@ -5798,6 +5896,7 @@ MonoBehaviour:
   oxygenIndicatorText: {fileID: 1790299486}
   playerObject: {fileID: 907896019}
   cameraShake: {fileID: 1924977261}
+  fireManager: {fileID: 1665087345}
   speedStationaryThreshold: 0.5
   colors:
   - {r: 0.43120328, g: 0.68594944, b: 0.9622642, a: 0}
@@ -5809,6 +5908,7 @@ MonoBehaviour:
   oxygenRateFireMultiplier: 4
   oxygenRateTooCloseFireMultiplier: 0
   currentOxygenRate: 0
+  firePresent: 0
 --- !u!1 &2064099933
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,6 +6146,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
   m_PrefabInstance: {fileID: 61775623753613137}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4288416525781456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 151037684904196027, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+  m_PrefabInstance: {fileID: 61775623753613137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab230db56d990a419a18ff93b0eb721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &61775623753613137
 PrefabInstance:
   m_ObjectHideFlags: 0

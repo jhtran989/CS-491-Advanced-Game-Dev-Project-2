@@ -72,8 +72,8 @@ public class WaterParticle : MonoBehaviour
         // layer already specified in Inspector
         var fire = other.GetComponent<Fire>();
 
-        Debug.Log("Water collided with fire...");
-        Debug.Log("Current fire: " + fire);
+        // Debug.Log("Water collided with fire...");
+        // Debug.Log("Current fire: " + fire);
 
         WaterFireInteract?.Invoke(fire);
         

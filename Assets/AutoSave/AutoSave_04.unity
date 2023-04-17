@@ -1178,7 +1178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   fireObjectName: TerminalFire
-  fire: {fileID: 1576405910}
+  currentDoorFire: {fileID: 1576405910}
+  nextDoorFire: {fileID: 4288416525781456}
   terminalObjectName: TerminalObject
   doorOptionCheck: 0
 --- !u!1 &244224463
@@ -5195,6 +5196,7 @@ MonoBehaviour:
   steamObject: {fileID: 38650288}
   waterHoseObject: {fileID: 62106838}
   fireRaycastDistance: 5
+  fireExtinguished: 0
   interactableComponents: {fileID: 907896027}
   steamFireCheck: 0
 --- !u!1 &1955674699
@@ -5640,7 +5642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   fireObjectName: TutorialFire
-  fire: {fileID: 1818804986}
+  currentDoorFire: {fileID: 1818804986}
+  nextDoorFire: {fileID: 1576405910}
   terminalObjectName: 
   doorOptionCheck: 0
 --- !u!1 &2017658339
@@ -5811,6 +5814,7 @@ MonoBehaviour:
   oxygenRateFireMultiplier: 4
   oxygenRateTooCloseFireMultiplier: 0
   currentOxygenRate: 0
+  firePresent: 0
 --- !u!1 &2064099933
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,6 +6052,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
   m_PrefabInstance: {fileID: 61775623753613137}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4288416525781456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 151037684904196027, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+  m_PrefabInstance: {fileID: 61775623753613137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab230db56d990a419a18ff93b0eb721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &61775623753613137
 PrefabInstance:
   m_ObjectHideFlags: 0
