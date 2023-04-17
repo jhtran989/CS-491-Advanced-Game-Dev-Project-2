@@ -195,7 +195,7 @@ public class Oxygen : MonoBehaviour
         if (playerSpeed > speedStationaryThreshold)
         {
             currentOxygenRate = oxygenRateNormal;
-            _isIdle = false;
+            _isIdle = false; 
         }
         else
         {
