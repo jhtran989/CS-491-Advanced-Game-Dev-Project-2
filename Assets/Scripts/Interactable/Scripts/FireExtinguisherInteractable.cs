@@ -16,7 +16,7 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
     private void Awake()
     {
         interactableComponents.isHoldingFireExtinguisher = false;
-        _interactableSpeed = 12.0f;
+        _interactableSpeed = 17.0f;
     }
 
     // Start is called before the first frame update
@@ -58,6 +58,7 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
             
             // interactableComponents.currentInteractableRigidbody.isKinematic = true;
             interactableComponents.currentInteractableRigidbody.useGravity = false;
+            // interactableComponents.currentInteractableRigidbody.freezeRotation = true;
             interactableComponents.currentInteractableCollider.enabled = false;
         }
         else
@@ -67,6 +68,7 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
             
             // interactableComponents.currentInteractableRigidbody.isKinematic = true;
             interactableComponents.currentInteractableRigidbody.useGravity = false;
+            // interactableComponents.currentInteractableRigidbody.freezeRotation = true;
             interactableComponents.currentInteractableCollider.enabled = false;
         }
         

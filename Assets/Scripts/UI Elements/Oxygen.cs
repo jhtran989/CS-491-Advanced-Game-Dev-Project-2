@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // TODO: change Mathf.Lerp to Mathf.SmoothStep 
@@ -14,23 +15,24 @@ public class Oxygen : MonoBehaviour
     public Image oxygenMeter;
     public TextMeshProUGUI oxygenIndicatorText;
 
-    public GameObject PlayerObject;
+    public GameObject playerObject;
     private Rigidbody _playerRigidBody;
     private PlayerMovement _playerMovement;
+
+    public CameraShake cameraShake;
+    private float _oxygenDrainTimeDelay;
 
     [SerializeField]
     private float speedStationaryThreshold = 0.5f;
 
-    public float maxOxygenLevel = 100.0f;
-    public float oxygenDrainPerSecond = 1.0f;
-    public float lerpSpeed;
-    public float lerpSpeedMultiplier = 100.0f;
+    private readonly float maxOxygenLevel = 100.0f;
+    private readonly float oxygenDrainPerSecond = 1.0f;
+    private float lerpSpeed;
+    private readonly float lerpSpeedMultiplier = 100.0f;
     public Color[] colors;
 
     private float _startTime;
-    [SerializeField]
-    private float currentTime;
-
+    private float _currentTime;
     private float _totalTime;
     
     [SerializeField]
@@ -40,17 +42,23 @@ public class Oxygen : MonoBehaviour
     public float oxygenRateNormal;
 
     [SerializeField]
-    private float oxygenRateIdleMultiplier = 0.1f;
+    private float oxygenRateIdleMultiplier;
     public float oxygenRateIdle;
 
     [SerializeField]
-    private float oxygenRateFireMultiplier = 4.0f;
+    private float oxygenRateFireMultiplier;
+    
+    [SerializeField]
+    private float oxygenRateTooCloseFireMultiplier;
     
     public float currentOxygenRate;
     
+    // FIXME: change logic for if a fire is present, regardless of distance
+    // TODO: only make ONE fire present at any time
     // flag if player is near fire, or idle
-    private bool _nearFire = false;
-    private bool _isIdle = true;
+    private bool _nearFire;
+    private bool _firePresent;
+    private bool _isIdle;
 
 
     // FIXME: from Start()
@@ -59,17 +67,26 @@ public class Oxygen : MonoBehaviour
         currentOxygenLevel = maxOxygenLevel;
         _startTime = Time.time;
         _totalTime = maxOxygenLevel / oxygenDrainPerSecond;
-        
-        oxygenRateNormal = oxygenDrainPerSecond;
-        currentOxygenRate = oxygenRateNormal;
 
-        _playerRigidBody = PlayerObject.GetComponent<Rigidbody>();
-        _playerMovement = PlayerObject.GetComponent<PlayerMovement>();
+        oxygenRateIdleMultiplier = 0.1f;
+        oxygenRateFireMultiplier = 2.0f;
+        oxygenRateTooCloseFireMultiplier = 4.0f;
+
+        oxygenRateNormal = oxygenDrainPerSecond;
+        // assume fire already spawned...
+        currentOxygenRate = oxygenRateFireMultiplier;
+        
+        _nearFire = false;
+        _firePresent = true;
+        _isIdle = true;
+
+        _startTime = Time.time;
     }
 
     private void OnEnable()
     {
         // player movement
+        _playerMovement = playerObject.GetComponent<PlayerMovement>();
         _playerMovement.UpdateOxygenRateFire += UpdateOxygenRateFire;
         _playerMovement.UpdateOxygenRateNormal += UpdateOxygenRateNormal;
         _playerMovement.UpdateOxygenRateIdle += UpdateOxygenRateIdle;
@@ -89,20 +106,34 @@ public class Oxygen : MonoBehaviour
         Fire.FirePutOut -= UpdateOxygenRateNormal;
     }
 
+    private void Start()
+    {
+        // need to get components from other objects in Start
+        _playerRigidBody = playerObject.GetComponent<Rigidbody>();
+
+        _oxygenDrainTimeDelay = cameraShake.duration;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (oxygenMeter.fillAmount > 0)
+        _currentTime = Time.time;
+
+        // TODO: don't drain until AFTER the shaking (now with initial fire drain)
+        if (_currentTime - _startTime > _oxygenDrainTimeDelay)
         {
-            currentOxygenLevel -= currentOxygenRate * Time.deltaTime;
+            if (oxygenMeter.fillAmount > 0)
+            {
+                currentOxygenLevel -= currentOxygenRate * Time.deltaTime;
 
-            lerpSpeed = lerpSpeedMultiplier * Time.deltaTime;
+                lerpSpeed = lerpSpeedMultiplier * Time.deltaTime;
         
-            OxygenMeterFiller();
-            ColorChanger();
-        }
+                OxygenMeterFiller();
+                ColorChanger();
+            }
 
-        UpdateOxygenIndicator();
+            UpdateOxygenIndicator();
+        }
     }
 
     private void OxygenMeterFiller()
@@ -146,13 +177,14 @@ public class Oxygen : MonoBehaviour
 
     private void UpdateOxygenRateFire()
     {
-        currentOxygenRate = oxygenRateNormal * oxygenRateFireMultiplier;
+        currentOxygenRate = oxygenRateNormal * oxygenRateTooCloseFireMultiplier;
         _nearFire = true;
     }
     
     private void UpdateOxygenRateNormal()
     {
         currentOxygenRate = oxygenRateNormal;
+        _firePresent = false;
         _nearFire = false;
     }
 
@@ -174,6 +206,10 @@ public class Oxygen : MonoBehaviour
         // the fire will overwrite the oxygen rate, even if idle
         if (_nearFire)
         {
+            currentOxygenRate = oxygenRateNormal * oxygenRateTooCloseFireMultiplier;
+        }
+        else if (_firePresent)
+        {
             currentOxygenRate = oxygenRateNormal * oxygenRateFireMultiplier;
         }
     }
@@ -191,7 +227,12 @@ public class Oxygen : MonoBehaviour
             oxygenIndicatorText += "Moving\n";
         }
 
+        // changed from _nearFire\
         if (_nearFire)
+        {
+            oxygenIndicatorText += "Too close to fire!";
+        }
+        else if (_firePresent)
         {
             oxygenIndicatorText += "Fire!";
         }

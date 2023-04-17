@@ -2003,8 +2003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentInteractableRigidbody: {fileID: 0}
   currentInteractableCollider: {fileID: 0}
-  hand: {fileID: 1307543980}
-  isHolding: 0
+  hand: {fileID: 1678494513}
+  isHoldingFireExtinguisher: 0
 --- !u!1 &937834959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1307543980
 Transform:
   m_ObjectHideFlags: 0
@@ -2765,7 +2765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489028573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.116, y: 0.019, z: -0}
+  m_LocalPosition: {x: -0.2, y: -0.182, z: -0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3163,7 +3163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1678494513
 Transform:
   m_ObjectHideFlags: 0
@@ -3172,7 +3172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678494512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.219, y: -0.349, z: 0.652}
+  m_LocalPosition: {x: -0.219, y: -0.75, z: 0.652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3613,7 +3613,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1001 &1823557311
@@ -3889,6 +3889,7 @@ MonoBehaviour:
   steamObject: {fileID: 38650288}
   waterHoseObject: {fileID: 62106838}
   fireRaycastDistance: 5
+  interactableComponents: {fileID: 907896027}
   steamFireCheck: 0
 --- !u!1 &1955674699
 GameObject:
@@ -4203,7 +4204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1974825518
 Transform:
   m_ObjectHideFlags: 0
@@ -4355,6 +4356,7 @@ MonoBehaviour:
   oxygenRateIdleMultiplier: 0.1
   oxygenRateIdle: 0
   oxygenRateFireMultiplier: 4
+  oxygenRateTooCloseFireMultiplier: 0
   currentOxygenRate: 0
 --- !u!1 &2090488870
 GameObject:

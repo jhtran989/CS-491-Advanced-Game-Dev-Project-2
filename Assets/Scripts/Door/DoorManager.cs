@@ -13,7 +13,7 @@ public class DoorManager : MonoBehaviour
     // without need of doing spatial checks...
     [Space, Header("Fire")] 
     public string fireObjectName;
-    private Fire _fire;
+    [FormerlySerializedAs("_fire")] public Fire fire;
     private bool _fireCheck = false;
     
     [Space, Header("Terminal")] 
@@ -73,7 +73,8 @@ public class DoorManager : MonoBehaviour
         // get the corresponding fire and terminal (if applicable -- should be null otherwise)
         if (fireObjectName != EmptyString)
         {
-            _fire = GameObject.Find(fireObjectName).GetComponent<Fire>();
+            // FIXME: move to one scene to get fires that are hidden...
+            // fire = GameObject.Find(fireObjectName).GetComponent<Fire>();
             _fireCheck = true;
         }
 
@@ -112,7 +113,7 @@ public class DoorManager : MonoBehaviour
     {
         if (doorOptionsEnum == DoorOptionsEnum.Fire)
         {
-            return !_fireCheck || _fire.unlockDoor;
+            return !_fireCheck || fire.unlockDoor;
         } 
         else if (doorOptionsEnum == DoorOptionsEnum.Terminal)
         {

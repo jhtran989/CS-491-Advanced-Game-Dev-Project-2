@@ -6,6 +6,11 @@
 
 ## Important Notes
 
+### Finding Stuff that are Inactive
+
+- restricted to certain methods, like `GetComponentInChildren()`, `FindObjectsOfType()`
+- maybe avoid the `Find()` methods and its variants...
+
 ### Delegates
 
 - delegates are scattered all over the place, need to consolidate them (or come up with better design)
