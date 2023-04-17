@@ -19,7 +19,7 @@ namespace Player
         public delegate void UpdateOxygenRateDelegate();
 
         public UpdateOxygenRateDelegate UpdateOxygenRateFire;
-        public UpdateOxygenRateDelegate UpdateOxygenRateNormal;
+        public UpdateOxygenRateDelegate UpdateOxygenRateExit;
         public UpdateOxygenRateDelegate UpdateOxygenRateIdle;
 
         private void OnEnable()
@@ -63,7 +63,7 @@ namespace Player
         {
             if (other.CompareTag(Constants.FireTag))
             {
-                UpdateOxygenRateNormal?.Invoke();
+                UpdateOxygenRateExit?.Invoke();
             }
         }
 

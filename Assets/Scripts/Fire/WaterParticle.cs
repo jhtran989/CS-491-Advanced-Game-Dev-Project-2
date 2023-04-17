@@ -73,6 +73,7 @@ public class WaterParticle : MonoBehaviour
         var fire = other.GetComponent<Fire>();
 
         Debug.Log("Water collided with fire...");
+        Debug.Log("Current fire: " + fire);
 
         WaterFireInteract?.Invoke(fire);
         

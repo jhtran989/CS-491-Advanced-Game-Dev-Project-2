@@ -13,8 +13,13 @@ public class DoorManager : MonoBehaviour
     // without need of doing spatial checks...
     [Space, Header("Fire")] 
     public string fireObjectName;
-    [FormerlySerializedAs("_fire")] public Fire fire;
+    
+    [FormerlySerializedAs("fire")] [FormerlySerializedAs("_fire")] 
+    public Fire currentDoorFire;
+    
     private bool _fireCheck = false;
+
+    [FormerlySerializedAs("nextFire")] public Fire nextDoorFire;
     
     [Space, Header("Terminal")] 
     public string terminalObjectName;
@@ -22,7 +27,9 @@ public class DoorManager : MonoBehaviour
     private TerminalTrigger _terminalTrigger;
     private TerminalController _terminalController;
     private bool _terminalCheck = false;
-    
+
+    private GlobalDoorManager _globalDoorManager;
+
     public bool doorOptionCheck;
 
     private static readonly string EmptyString = Utilities.EmptyString;
@@ -94,6 +101,8 @@ public class DoorManager : MonoBehaviour
                 .GetComponentInChildren<TerminalController>(true);
             _terminalCheck = true;
         }
+
+        _globalDoorManager = transform.GetComponentInParent<GlobalDoorManager>();
     }
 
     // Update is called once per frame
@@ -113,7 +122,7 @@ public class DoorManager : MonoBehaviour
     {
         if (doorOptionsEnum == DoorOptionsEnum.Fire)
         {
-            return !_fireCheck || fire.unlockDoor;
+            return !_fireCheck || currentDoorFire.unlockDoor;
         } 
         else if (doorOptionsEnum == DoorOptionsEnum.Terminal)
         {
@@ -157,6 +166,9 @@ public class DoorManager : MonoBehaviour
             {
                 door.UnlockDoor();
                 doorOptionCheck = false;
+                
+                // TODO: need to make corresponding fire visible and set fire to present
+                nextDoorFire.gameObject.SetActive(true);
             }
         }
     }

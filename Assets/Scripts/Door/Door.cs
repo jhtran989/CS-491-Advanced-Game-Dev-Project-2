@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
 {
     public Animator doorAnimator;
     
+    private GlobalDoorManager _globalDoorManager;
+    
     public delegate void DoorDelegate();
     public static DoorDelegate doorOpenPowerCharge;
 
@@ -42,6 +44,9 @@ public class Door : MonoBehaviour
         // should search RECURSIVELY down into the children
         _powerCharge = _hudManager.DoorPowerBarObject.GetComponentInChildren<PowerCharge>();
         Assert.IsNotNull(_powerCharge);
+        
+        // should go up to the top level object
+        _globalDoorManager = transform.GetComponentInParent<GlobalDoorManager>();
     }
 
     // FIXME: move to a button press instead of entering collider...
@@ -68,6 +73,11 @@ public class Door : MonoBehaviour
                         doorAnimator.SetTrigger(Constants.OpenDoorTrigger);
                         doorOpenPowerCharge?.Invoke();
                         _unlockFinish = true;
+                        
+                        // set fire present to true for updated oxygen...
+                        _globalDoorManager.oxygen.firePresent = true;
+                        
+                        Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
                     }
                 }
             }

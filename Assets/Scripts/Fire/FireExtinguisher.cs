@@ -26,6 +26,8 @@ public class FireExtinguisher : MonoBehaviour
 
     [SerializeField]
     private float fireRaycastDistance = 5.0f;
+
+    public bool fireExtinguished;
     
     /****************************************************/
 
@@ -49,6 +51,8 @@ public class FireExtinguisher : MonoBehaviour
         fireLayerMask = LayerMask.GetMask(Constants.FireLayer);
 
         extinguishedPerSecond = 0.8f;
+
+        fireExtinguished = false;
     }
 
     private void OnEnable()
@@ -87,12 +91,23 @@ public class FireExtinguisher : MonoBehaviour
 
     private void ExtinguishFire(Fire fire)
     {
-        // need to use Time.fixedDeltaTime instead of Time.deltaTime for physics
-        fire.TryExtinguish(extinguishedPerSecond * Time.fixedDeltaTime);
+        // FIXME: stop after extinguished
+        // FIXME: need to reset fireExtinguished...
         
-        // link it to the fire object instead (so intensity also changes proportional to how much fire is put out)
+        // get the updated fire and steam
         InitialSetSteam(fire);
-        steamObject.SetActive(true);
+        
+        Debug.Log("Current Fire: " + _currentFire);
+        Debug.Log("Input fire: " + fire);
+        
+        if (!fireExtinguished)
+        {
+            // need to use Time.fixedDeltaTime instead of Time.deltaTime for physics
+            fireExtinguished = fire.TryExtinguish(extinguishedPerSecond * Time.fixedDeltaTime);
+        
+            // link it to the fire object instead (so intensity also changes proportional to how much fire is put out)
+            steamObject.SetActive(true);
+        }
     }
 
     private void InitialSetSteam(Fire fire)
@@ -102,6 +117,9 @@ public class FireExtinguisher : MonoBehaviour
         {
             _currentFire = fire;
             steamObject = fire.gameObject.transform.Find(Constants.SteamGameObjectName).gameObject;
+            
+            // reset if fire extinguished
+            fireExtinguished = false;
         }
     }
 

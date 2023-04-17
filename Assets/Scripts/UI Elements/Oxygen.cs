@@ -57,7 +57,10 @@ public class Oxygen : MonoBehaviour
     // TODO: only make ONE fire present at any time
     // flag if player is near fire, or idle
     private bool _nearFire;
-    private bool _firePresent;
+    
+    [FormerlySerializedAs("_firePresent")] 
+    public bool firePresent;
+    
     private bool _isIdle;
 
 
@@ -77,7 +80,7 @@ public class Oxygen : MonoBehaviour
         currentOxygenRate = oxygenRateFireMultiplier;
         
         _nearFire = false;
-        _firePresent = true;
+        firePresent = true;
         _isIdle = true;
 
         _startTime = Time.time;
@@ -88,7 +91,7 @@ public class Oxygen : MonoBehaviour
         // player movement
         _playerMovement = playerObject.GetComponent<PlayerMovement>();
         _playerMovement.UpdateOxygenRateFire += UpdateOxygenRateFire;
-        _playerMovement.UpdateOxygenRateNormal += UpdateOxygenRateNormal;
+        _playerMovement.UpdateOxygenRateExit += UpdateOxygenRateExit;
         _playerMovement.UpdateOxygenRateIdle += UpdateOxygenRateIdle;
         
         // fire
@@ -99,7 +102,7 @@ public class Oxygen : MonoBehaviour
     {
         // player movement
         _playerMovement.UpdateOxygenRateFire -= UpdateOxygenRateFire;
-        _playerMovement.UpdateOxygenRateNormal -= UpdateOxygenRateNormal;
+        _playerMovement.UpdateOxygenRateExit -= UpdateOxygenRateExit;
         _playerMovement.UpdateOxygenRateIdle -= UpdateOxygenRateIdle;
         
         // fire
@@ -184,7 +187,14 @@ public class Oxygen : MonoBehaviour
     private void UpdateOxygenRateNormal()
     {
         currentOxygenRate = oxygenRateNormal;
-        _firePresent = false;
+        firePresent = false;
+        _nearFire = false;
+    }
+    
+    private void UpdateOxygenRateExit()
+    {
+        // when exiting collider of fire
+        currentOxygenRate = oxygenRateNormal;
         _nearFire = false;
     }
 
@@ -208,7 +218,7 @@ public class Oxygen : MonoBehaviour
         {
             currentOxygenRate = oxygenRateNormal * oxygenRateTooCloseFireMultiplier;
         }
-        else if (_firePresent)
+        else if (firePresent)
         {
             currentOxygenRate = oxygenRateNormal * oxygenRateFireMultiplier;
         }
@@ -232,7 +242,7 @@ public class Oxygen : MonoBehaviour
         {
             oxygenIndicatorText += "Too close to fire!";
         }
-        else if (_firePresent)
+        else if (firePresent)
         {
             oxygenIndicatorText += "Fire!";
         }

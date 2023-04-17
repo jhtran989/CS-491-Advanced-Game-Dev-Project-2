@@ -87,7 +87,7 @@ public class Fire : MonoBehaviour
         // encapsulated logic and disable fire
         if (currentIntensity <= 0)
         {
-            ExtinguishFire();
+            PutOutFire();
             return true;
         }
 
@@ -106,7 +106,7 @@ public class Fire : MonoBehaviour
         }
     }
 
-    private void ExtinguishFire()
+    private void PutOutFire()
     {
         _isLit = false;
         
