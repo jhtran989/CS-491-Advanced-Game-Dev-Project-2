@@ -62,4 +62,9 @@ public class FireManager : MonoBehaviour
         
         Debug.Log("num total fires: " + GetNumActiveFires());
     }
+
+    private void UpdateCurrentRoom()
+    {
+        
+    }
 }

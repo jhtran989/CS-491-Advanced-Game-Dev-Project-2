@@ -19,7 +19,8 @@ public class DoorManager : MonoBehaviour
     
     private bool _fireCheck = false;
 
-    [FormerlySerializedAs("nextFire")] public Fire nextDoorFire;
+    [FormerlySerializedAs("nextFire")] 
+    public Fire nextDoorFire;
     
     [Space, Header("Terminal")] 
     public string terminalObjectName;

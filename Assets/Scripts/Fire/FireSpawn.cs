@@ -14,9 +14,22 @@ public class FireSpawn : MonoBehaviour
 
     private float _fireSpawnDelay;
     
+    public delegate void UpdateCurrentRoomDelegate(GameObject newRoom);
+    public static UpdateCurrentRoomDelegate updateCurrentRoom;
+    
     private void Awake()
     {
         _fireSpawnDelay = 15.0f;
+    }
+    
+    private void OnEnable()
+    {
+        updateCurrentRoom += UpdateCurrentRoom;
+    }
+
+    private void OnDisable()
+    {
+        updateCurrentRoom -= UpdateCurrentRoom;
     }
 
     // Start is called before the first frame update
@@ -66,5 +79,10 @@ public class FireSpawn : MonoBehaviour
     public int GetNumSpawnFires()
     {
         return currentRoom.transform.GetChildCountActive();
+    }
+
+    private void UpdateCurrentRoom(GameObject newRoom)
+    {
+        currentRoom = newRoom;
     }
 }

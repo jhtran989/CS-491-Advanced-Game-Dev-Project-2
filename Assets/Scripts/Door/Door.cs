@@ -82,6 +82,9 @@ public class Door : MonoBehaviour
                         // set fire present to true for updated oxygen...
                         _globalDoorManager.SetFirePresent();
                         
+                        // update next room
+                        
+                        
                         Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
                     }
                 }
