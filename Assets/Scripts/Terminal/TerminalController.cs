@@ -6,7 +6,11 @@ public class TerminalController : MonoBehaviour
 {
     public TextMeshProUGUI codeText;
     private string playerCode = "";
+    public GameObject goodLight, badLight;
+    [SerializeField] private string correctCode;
     private bool[] letterIsUsed = new bool[10];
+    private bool codeTested = false;
+    public char[] letters = new char[9];
     public GameManager gameManager;
     public delegate void TerminalControllerDelegate();
     public static TerminalControllerDelegate TerminalControllerPlayerLeave;
@@ -16,26 +20,28 @@ public class TerminalController : MonoBehaviour
     void Update()
     {
         if (playerCode.Length < 4) {
-            if (Input.GetKeyDown("d")) {
-                AddToCode('D');
-            } else if (Input.GetKeyDown("r")) {
-                AddToCode('R');
-            } else if (Input.GetKeyDown("a")) {
-                AddToCode('A');
-            } else if (Input.GetKeyDown("e")) {
-                AddToCode('E');
-            } else if (Input.GetKeyDown("t")) {
-                AddToCode('T');
-            } else if (Input.GetKeyDown("b")) {
-                AddToCode('B');
-            } else if (Input.GetKeyDown("i")) {
-                AddToCode('I');
-            } else if (Input.GetKeyDown("s")) {
-                AddToCode('S');
-            } else if (Input.GetKeyDown("k")) {
-                AddToCode('K');
+            if (Input.GetKeyDown(letters[0].ToString())) {
+                AddToCode(char.ToUpper(letters[0]), 0);
+            } else if (Input.GetKeyDown(letters[1].ToString())) {
+                AddToCode(char.ToUpper(letters[1]), 1);
+            } else if (Input.GetKeyDown(letters[2].ToString())) {
+                AddToCode(char.ToUpper(letters[2]), 2);
+            } else if (Input.GetKeyDown(letters[3].ToString())) {
+                AddToCode(char.ToUpper(letters[3]), 3);
+            } else if (Input.GetKeyDown(letters[4].ToString())) {
+                AddToCode(char.ToUpper(letters[4]), 4);
+            } else if (Input.GetKeyDown(letters[5].ToString())) {
+                AddToCode(char.ToUpper(letters[5]), 5);
+            } else if (Input.GetKeyDown(letters[6].ToString())) {
+                AddToCode(char.ToUpper(letters[6]), 6);
+            } else if (Input.GetKeyDown(letters[7].ToString())) {
+                AddToCode(char.ToUpper(letters[7]), 7);
+            } else if (Input.GetKeyDown(letters[8].ToString())) {
+                AddToCode(char.ToUpper(letters[8]), 8);
             }
-        } 
+        } else if (!codeTested) {
+            // TODO: Turn on good/bad light
+        }
 
         if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
@@ -63,38 +69,19 @@ public class TerminalController : MonoBehaviour
         }
     }
 
-    private void AddToCode(char letter) {
-        int letterIdx = GetIndex(char.ToLower(letter));
-        if (!letterIsUsed[letterIdx]) {
+    private void AddToCode(char letter, int index) {
+        if (!letterIsUsed[index]) {
             playerCode += letter;
-            letterIsUsed[letterIdx] = true;
+            letterIsUsed[index] = true;
             codeText.SetText(playerCode);
         }
     }
 
     private int GetIndex(char letter) {
-        switch (letter) {
-            case 'd':
-                return 0;
-            case 'r':
-                return 1;
-            case 'a':
-                return 2;
-            case 'e':
-                return 3;
-            case 't':
-                return 4;
-            case 'b':
-                return 5;
-            case 'i':
-                return 6;
-            case  's':
-                return 7;
-            case 'k':
-                return 8;
-            default:
-                return 9;
+        for (int i = 0; i < 9; i++) {
+            if (letters[i] == letter) return i;
         }
+        return 9;
     }
     
     public void EnableTerminalController()

@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492605714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.304, y: 0.856, z: -0.43399948}
+  m_LocalPosition: {x: -1.6049995, y: 0.85, z: -0.43399948}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -233,7 +233,6 @@ GameObject:
   - component: {fileID: 663240468}
   - component: {fileID: 663240467}
   - component: {fileID: 663240466}
-  - component: {fileID: 663240470}
   m_Layer: 0
   m_Name: TerminalObj
   m_TagString: Untagged
@@ -7121,19 +7120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &663240470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663240465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 2.0000038}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &767616825
 GameObject:
   m_ObjectHideFlags: 0
@@ -7145,7 +7131,7 @@ GameObject:
   - component: {fileID: 767616826}
   - component: {fileID: 767616827}
   m_Layer: 0
-  m_Name: BadLight
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7177,7 +7163,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9254902, g: 0.6509497, b: 0.23137255, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1.5
   m_Range: 0.2
   m_SpotAngle: 30
@@ -7301,7 +7287,7 @@ GameObject:
   - component: {fileID: 1120488005}
   - component: {fileID: 1120488006}
   m_Layer: 0
-  m_Name: GoodLight
+  m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7333,7 +7319,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9137255, g: 0.6424599, b: 0.21176472, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9568691, a: 1}
   m_Intensity: 1.5
   m_Range: 0.2
   m_SpotAngle: 30
@@ -7575,7 +7561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507041433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2979, y: 0.669, z: -0.0818}
+  m_LocalPosition: {x: -1.386, y: 0.85, z: -0.434}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7681,7 +7667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.001, y: 0.002}
+  m_AnchoredPosition: {x: -0.015000105, y: 0.002}
   m_SizeDelta: {x: 2, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687425601
@@ -7833,15 +7819,15 @@ GameObject:
   - component: {fileID: 1878626589}
   - component: {fileID: 1878626593}
   - component: {fileID: 1878626592}
+  - component: {fileID: 1878626591}
   - component: {fileID: 1878626590}
-  - component: {fileID: 1878626594}
   m_Layer: 0
   m_Name: TerminalTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1878626589
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7874,7 +7860,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f285460207df400f9ce0cd85fbc6838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terminalCamera: {fileID: 2053230314}
+  terminalCamera: {fileID: 0}
+--- !u!65 &1878626591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878626588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3560476, y: 0.82096624, z: 0.53060746}
+  m_Center: {x: 0.056932926, y: -0.12081003, z: 0.23469627}
 --- !u!114 &1878626592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7905,7 +7904,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286761124
-  m_fontColor: {r: 0.27058825, g: 0.54509807, b: 0.47843137, a: 1}
+  m_fontColor: {r: 0.6431373, g: 0.78431374, b: 0.50980395, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7958,7 +7957,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.44030857, y: -0.23046398, z: -0.5782819, w: 0.16926235}
+  m_margin: {x: -0.44030857, y: -0.032789707, z: -0.5372567, w: 0.04228151}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7972,19 +7971,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878626588}
   m_CullTransparentMesh: 1
---- !u!135 &1878626594
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878626588}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6607497
-  m_Center: {x: 0, y: -0.23866116, z: -0.13454483}
 --- !u!1 &2050481245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,17 +7996,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050481245}
-  m_LocalRotation: {x: -0.021931589, y: 0.009652557, z: -0.058928683, w: 0.9979746}
-  m_LocalPosition: {x: 0, y: 0, z: -0.041}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalRotation: {x: -0.026030984, y: 0.0031583174, z: 0.17826346, w: 0.9836334}
+  m_LocalPosition: {x: 0, y: 0, z: -0.04399956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1828081412}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -2.444, y: 1.253, z: -6.785}
+  m_LocalEulerAnglesHint: {x: -3, y: -0.176, z: 20.549}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.307, y: -0.15}
+  m_AnchoredPosition: {x: -1.4829998, y: 0.026000684}
   m_SizeDelta: {x: 0.75, y: 0.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050481247
@@ -8076,7 +8062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2053230315
 Transform:
   m_ObjectHideFlags: 0
@@ -8104,11 +8090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67983b4e0be62445f82c5c15e61597bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeText: {fileID: 1878626592}
-  goodLight: {fileID: 0}
-  badLight: {fileID: 0}
-  correctCode: 3084
-  letters: 310032003300340035003600370038003900
+  codeText: {fileID: 0}
   gameManager: {fileID: 0}
   unlockDoor: 0
 --- !u!81 &2053230317
