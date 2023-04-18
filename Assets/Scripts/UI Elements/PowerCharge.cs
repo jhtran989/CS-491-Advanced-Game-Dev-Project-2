@@ -20,14 +20,14 @@ namespace UI_Elements
 
         private void OnEnable()
         {
-            Door.doorOpenPowerCharge += ConsumePowerCharge;
-            Door.doorOpenPowerCharge += PowerChargeFiller;
+            DoorTrigger.doorOpenPowerCharge += ConsumePowerCharge;
+            DoorTrigger.doorOpenPowerCharge += PowerChargeFiller;
         }
 
         private void OnDisable()
         {
-            Door.doorOpenPowerCharge -= ConsumePowerCharge;
-            Door.doorOpenPowerCharge -= PowerChargeFiller;
+            DoorTrigger.doorOpenPowerCharge -= ConsumePowerCharge;
+            DoorTrigger.doorOpenPowerCharge -= PowerChargeFiller;
         }
 
         // Start is called before the first frame update

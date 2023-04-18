@@ -27,12 +27,16 @@ namespace Player
             // TODO: maybe create a file with all delegates and move the declarations there (instead of having a delegate in different scripts)
             TerminalTrigger.TerminalTriggerPlayerEnter += StopPlayerMovement;
             TerminalController.TerminalControllerPlayerLeave += ResumePlayerMovement;
+            
+            TerminalInteractable.TerminalTriggerPlayerEnter += StopPlayerMovement;
         }
         
         private void OnDisable()
         {
             TerminalTrigger.TerminalTriggerPlayerEnter -= StopPlayerMovement;
             TerminalController.TerminalControllerPlayerLeave -= ResumePlayerMovement;
+            
+            TerminalInteractable.TerminalTriggerPlayerEnter -= StopPlayerMovement;
         }
 
         private void Start() 

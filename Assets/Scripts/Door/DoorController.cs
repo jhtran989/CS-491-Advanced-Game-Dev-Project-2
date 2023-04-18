@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DoorEvent : MonoBehaviour
+public class DoorController : MonoBehaviour
 {
-    [Space, Header("Door")]
-    public Door door;
+    [FormerlySerializedAs("door")] [Space, Header("Door")]
+    public DoorTrigger doorTrigger;
     
     // get objects that influence when a door is unlocked
     // without need of doing spatial checks...
@@ -61,7 +61,7 @@ public class DoorEvent : MonoBehaviour
     private void Awake()
     {
         // returns only the first component found - only the DoorCenterFrame should have it
-        door = gameObject.GetComponentInChildren<Door>();
+        doorTrigger = gameObject.GetComponentInChildren<DoorTrigger>();
         
         doorOptionCheck = true;
 
@@ -152,24 +152,24 @@ public class DoorEvent : MonoBehaviour
             foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
             {
                 unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
-                door.UnlockCondition = unlockCondition;
+                doorTrigger.UnlockCondition = unlockCondition;
             }
             
             // FIXME: need to abstract this into rooms...
-            if (_terminalCheck)
-            {
-                // make terminal interactable if fire was put out
-                if (CheckDoorOptions(DoorOptionsEnum.Fire))
-                {
-                    // _terminalController.EnableTerminalController();
-                    _terminalTrigger.gameObject.SetActive(true);
-                }
-            }
+            // if (_terminalCheck)
+            // {
+            //     // make terminal interactable if fire was put out
+            //     if (CheckDoorOptions(DoorOptionsEnum.Fire))
+            //     {
+            //         // _terminalController.EnableTerminalController();
+            //         _terminalTrigger.gameObject.SetActive(true);
+            //     }
+            // }
 
             // FIXME: move to animation logic...
             if (unlockCondition)
             {
-                door.UnlockDoor();
+                doorTrigger.UnlockDoor();
                 doorOptionCheck = false;
             }
         }

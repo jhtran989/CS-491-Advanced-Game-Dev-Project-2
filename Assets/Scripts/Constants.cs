@@ -15,14 +15,25 @@
     
     // Door bools
     public const string UnlockDoorBool = "UnlockDoorBool";
-
+    
+    /*************************************************/
+    /*
+     * Fire Objects
+     */
+    // Fire objects
+    public const string SpawnedFireObjectName = "SpawnedFire";
+    
     // Fire children
     public const string SteamGameObjectName = "RisingSteam";
+    
+    /*************************************************/
     
     // Keypresses (controls)
     public const string FireKey = "f";
     public const string InteractableKey = "e";
     public const string DropInteractableKey = "r";
+    
+    /*************************************************/
     
     /*
      * Game Objects

@@ -1208,10 +1208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14718a2e8b0b4e2eb815d362c386fb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  doorTrigger: {fileID: 0}
   fireObjectName: TerminalFire
   currentDoorFire: {fileID: 1576405910}
   nextDoorFire: {fileID: 4288416525781456}
+  nextDoorObject: {fileID: 0}
   terminalObjectName: TerminalObject
   doorOptionCheck: 0
 --- !u!1 &244224463
@@ -2877,7 +2878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1924977258}
-  interactableComponents: {fileID: 907896027}
+  fireExtinguisherInteractableComponents: {fileID: 907896027}
 --- !u!114 &907896027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5207,7 +5208,7 @@ MonoBehaviour:
   waterHoseObject: {fileID: 62106838}
   fireRaycastDistance: 5
   fireExtinguished: 0
-  interactableComponents: {fileID: 907896027}
+  fireExtinguisherInteractableComponents: {fileID: 907896027}
   steamFireCheck: 0
 --- !u!1 &1940617450
 GameObject:
@@ -5682,10 +5683,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14718a2e8b0b4e2eb815d362c386fb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  doorTrigger: {fileID: 0}
   fireObjectName: TutorialFire
   currentDoorFire: {fileID: 1818804986}
   nextDoorFire: {fileID: 1576405910}
+  nextDoorObject: {fileID: 0}
   terminalObjectName: 
   doorOptionCheck: 0
 --- !u!1 &2017658339
@@ -6184,6 +6186,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 641204808674213796, guid: 948e4948bce297145847e59e9be730de, type: 3}
       propertyPath: interactableComponents
+      value: 
+      objectReference: {fileID: 907896027}
+    - target: {fileID: 641204808674213796, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: fireExtinguisherInteractableComponents
       value: 
       objectReference: {fileID: 907896027}
     - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}

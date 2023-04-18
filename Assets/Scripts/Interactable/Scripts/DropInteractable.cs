@@ -9,8 +9,8 @@ public class DropInteractable : MonoBehaviour
     private Camera playerCamera;
     // private Transform hand;
     
-    [SerializeField]
-    private InteractableComponents interactableComponents;
+    [FormerlySerializedAs("interactableComponents")] [SerializeField]
+    private FireExtinguisherInteractableComponents fireExtinguisherInteractableComponents;
     
     // Start is called before the first frame update
     void Start()
@@ -24,20 +24,20 @@ public class DropInteractable : MonoBehaviour
         // FIXME: race condition when both checking for interaction and drop...easiest way is to bind to different keys
         if (Input.GetKeyDown(Constants.DropInteractableKey))
         {
-            if (interactableComponents.currentInteractableRigidbody != null)
+            if (fireExtinguisherInteractableComponents.currentInteractableRigidbody != null)
             {
                 // interactableComponents.currentInteractableRigidbody.isKinematic = false;
-                interactableComponents.currentInteractableRigidbody.useGravity = true;
-                interactableComponents.currentInteractableCollider.enabled = true;
+                fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = true;
+                fireExtinguisherInteractableComponents.currentInteractableCollider.enabled = true;
                 
-                interactableComponents.currentInteractableRigidbody.AddForce(playerCamera.transform.forward, ForceMode.Impulse);
+                fireExtinguisherInteractableComponents.currentInteractableRigidbody.AddForce(playerCamera.transform.forward, ForceMode.Impulse);
                 
-                interactableComponents.currentInteractableRigidbody.useGravity = false;
-                interactableComponents.currentInteractableRigidbody = null;
-                interactableComponents.currentInteractableCollider = null;
+                fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = false;
+                fireExtinguisherInteractableComponents.currentInteractableRigidbody = null;
+                fireExtinguisherInteractableComponents.currentInteractableCollider = null;
             }
             
-            interactableComponents.isHoldingFireExtinguisher = false;
+            fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
         }
 
         // if (interactableComponents.currentInteractableRigidbody)

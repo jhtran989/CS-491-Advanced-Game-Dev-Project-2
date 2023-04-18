@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class InteractableComponents : MonoBehaviour
+public class FireExtinguisherInteractableComponents : MonoBehaviour
 {
     public Rigidbody currentInteractableRigidbody;
     public Collider currentInteractableCollider;
@@ -14,12 +14,6 @@ public class InteractableComponents : MonoBehaviour
     
     // FIXME: only for fire extinguisher...
     public bool isHoldingFireExtinguisher;
-
-    // private void Awake()
-    // {
-    //     currentInteractableRigidbody = null;
-    //     currentInteractableCollider = null;
-    // }
 
     // Start is called before the first frame update
     void Start()

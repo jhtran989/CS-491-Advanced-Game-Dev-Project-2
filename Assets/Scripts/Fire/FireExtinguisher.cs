@@ -31,7 +31,7 @@ public class FireExtinguisher : MonoBehaviour
     
     /****************************************************/
 
-    public InteractableComponents interactableComponents;
+    [FormerlySerializedAs("interactableComponents")] public FireExtinguisherInteractableComponents fireExtinguisherInteractableComponents;
     
     // anonymous function to check Raycast
     private bool IsRaycastingSomething(out RaycastHit hit) => Physics.Raycast(raycastOrigin.position,
@@ -146,7 +146,7 @@ public class FireExtinguisher : MonoBehaviour
     private void SetWaterOnInput()
     {
         // TODO: only activate when holding fire extinguisher
-        if (interactableComponents.isHoldingFireExtinguisher)
+        if (fireExtinguisherInteractableComponents.isHoldingFireExtinguisher)
         {
             // for Right mouse button (pressed down)
             if (Input.GetMouseButton(1))

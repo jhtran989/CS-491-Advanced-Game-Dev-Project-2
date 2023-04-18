@@ -46,7 +46,7 @@ public class TerminalController : MonoBehaviour
                 
                 // TODO: unlock the door for now (maybe add other constraints later depending on code entered)
                 unlockDoor = true;
-                DoorEvent.unlockDoor?.Invoke();
+                DoorController.unlockDoor?.Invoke();
         }
         
         if (Input.GetKeyDown("backspace")) {
