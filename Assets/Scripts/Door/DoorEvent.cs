@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DoorManager : MonoBehaviour
+public class DoorEvent : MonoBehaviour
 {
     [Space, Header("Door")]
     public Door door;
@@ -21,6 +21,8 @@ public class DoorManager : MonoBehaviour
 
     [FormerlySerializedAs("nextFire")] 
     public Fire nextDoorFire;
+
+    public GameObject nextDoorObject;
     
     [Space, Header("Terminal")] 
     public string terminalObjectName;
@@ -62,6 +64,8 @@ public class DoorManager : MonoBehaviour
         door = gameObject.GetComponentInChildren<Door>();
         
         doorOptionCheck = true;
+
+        nextDoorObject = nextDoorFire.transform.parent.gameObject;
     }
 
     private void OnEnable()

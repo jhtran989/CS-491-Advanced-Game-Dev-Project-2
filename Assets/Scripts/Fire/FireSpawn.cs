@@ -12,6 +12,8 @@ public class FireSpawn : MonoBehaviour
 
     public FireManager fireManager;
 
+    private float _startTime;
+    private float _initialFireSpawnDelay;
     private float _fireSpawnDelay;
     
     public delegate void UpdateCurrentRoomDelegate(GameObject newRoom);
@@ -20,6 +22,7 @@ public class FireSpawn : MonoBehaviour
     private void Awake()
     {
         _fireSpawnDelay = 15.0f;
+        _initialFireSpawnDelay = 5.0f;
     }
     
     private void OnEnable()
@@ -34,6 +37,18 @@ public class FireSpawn : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    {
+        // start the coroutine to spawn fires in current room every few seconds
+        InvokeRepeating("TrySpawnFire", _initialFireSpawnDelay, _fireSpawnDelay);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void SpawnFire()
     {
         // test spawn fire
         Vector3 position = new Vector3(0, 0, 0);
@@ -55,25 +70,23 @@ public class FireSpawn : MonoBehaviour
 
         fire.name = currentRoom.name + "SpawnedFire";
         currentSpawnedFire = fire;
-
-        // start the coroutine to spawn fires in current room every few seconds
-
+        
         fireManager.RecalculateNumActiveFires();
         Debug.Log("Num fires after spawn: " + fireManager.GetNumActiveFires());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void SpawnFire()
+    private void TrySpawnFire()
     {
         if (fireManager.GetNumActiveFires() == 0)
         {
-            fireManager.RecalculateNumActiveFires();
+            SpawnFire();
         }
+    }
+
+    private void TrySpawnFireWrapper()
+    {
+        // wait for initial delay
+        // yield return new WaitForSeconds(_initialFireSpawnDelay);
     }
 
     public int GetNumSpawnFires()

@@ -8,9 +8,9 @@ public class OpenDoorLogic : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // FIXME: can't check when the door hasn't opened yet...
-        DoorManager doorManager = animator.gameObject.GetComponentInParent<DoorManager>();
-        doorManager.door.UnlockDoor();
-        doorManager.doorOptionCheck = false;
+        DoorEvent doorEvent = animator.gameObject.GetComponentInParent<DoorEvent>();
+        doorEvent.door.UnlockDoor();
+        doorEvent.doorOptionCheck = false;
         
         Debug.Log("Door unlocked");
     }
