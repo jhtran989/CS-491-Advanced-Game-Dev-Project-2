@@ -4790,124 +4790,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790299484}
   m_CullTransparentMesh: 1
---- !u!1001 &1811640292
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.0759
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4.0759
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.0759
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-      propertyPath: m_Name
-      value: Fire Extinguisher
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
---- !u!1 &1811640293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d7c9fb89d18f5448190bd9f01859ddcc, type: 3}
-  m_PrefabInstance: {fileID: 1811640292}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1811640295
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811640293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &1811640296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811640293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7bbeaa0eaf42b44bbe678752675a4a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactText: Fire Extinguisher
-  interactableComponents: {fileID: 907896027}
---- !u!54 &1811640298
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811640293}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &1818804984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 59748359404500639, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
@@ -6222,6 +6104,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf1ee1091219384bb3e8603a89662ff, type: 3}
+--- !u!1001 &641204808295321676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 299328510261019385, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_Name
+      value: Fire Extinguisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 641204808674213796, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: interactableComponents
+      value: 
+      objectReference: {fileID: 907896027}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111471141109700675, guid: 948e4948bce297145847e59e9be730de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 948e4948bce297145847e59e9be730de, type: 3}
 --- !u!1001 &1040841389236691501
 PrefabInstance:
   m_ObjectHideFlags: 0

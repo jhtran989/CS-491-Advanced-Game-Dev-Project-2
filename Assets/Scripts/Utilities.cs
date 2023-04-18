@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Utilities
@@ -14,13 +15,7 @@ public static class Utilities
     
     public static int GetChildCountActive( this Transform t )
     {
-        int k = 0;
-        foreach(Transform c in t)
-        {
-            if(c.gameObject.activeSelf)
-                k++;
-        }
-        return k;
+        return t.Cast<Transform>().Count(c => c.gameObject.activeSelf);
     }
 }
  

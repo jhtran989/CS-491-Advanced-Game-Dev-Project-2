@@ -15,6 +15,8 @@
 
 - delegates are scattered all over the place, need to consolidate them (or come up with better design)
 - `static` delegate instances will have **all** instances call the functions stored in the delegate (e.g., `DoorManager` will check the condition to unlock the door on all doors, not just the current door)
+- should avoid using `static` delegates, especially when there is a possibility for a lot of instances (e.g., fires) &mdash; fine if there's one or just a few controlled instances (like managers)
+- also should avoid invoking delegates outside of class that declared it...
 
 ### Multiple Scenes
 

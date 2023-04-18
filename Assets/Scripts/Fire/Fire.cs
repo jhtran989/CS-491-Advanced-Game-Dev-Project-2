@@ -37,6 +37,11 @@ public class Fire : MonoBehaviour
     // need delegate to stop the increased oxygen drain when fire is put out (when still within range when put out)
     public delegate void FirePutOutDelegate();
     public static FirePutOutDelegate FirePutOut;
+    
+    /***********************************/
+
+    // FIXME: hard to put stuff in Inspector from a prefab...
+    // public FireManager fireManager;
 
     private void Awake()
     {
@@ -120,5 +125,8 @@ public class Fire : MonoBehaviour
         // FIXME: need to disable entire game object
         // enabled = false;
         gameObject.SetActive(false);
+        
+        // update num fires
+        FireManager.updateNumFires?.Invoke();
     }
 }

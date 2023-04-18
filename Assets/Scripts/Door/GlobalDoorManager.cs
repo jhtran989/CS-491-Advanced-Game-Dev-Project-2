@@ -6,6 +6,9 @@ public class GlobalDoorManager : MonoBehaviour
 {
     [Space, Header("HUD")] 
     public HUDManager hudManager;
+    
+    [Space, Header("Fire")] 
+    public FireManager fireManager;
 
     public Oxygen oxygen;
     
@@ -19,5 +22,14 @@ public class GlobalDoorManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetFirePresent()
+    {
+        // set fire present to true for updated oxygen...
+        oxygen.firePresent = true;
+        
+        // update number of fires
+        fireManager.RecalculateNumActiveFires();
     }
 }
