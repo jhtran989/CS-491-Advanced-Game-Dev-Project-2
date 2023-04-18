@@ -1931,7 +1931,6 @@ GameObject:
   - component: {fileID: 471403860}
   - component: {fileID: 471403859}
   - component: {fileID: 471403858}
-  - component: {fileID: 471403857}
   - component: {fileID: 471403856}
   m_Layer: 0
   m_Name: TerminalTrigger
@@ -1939,7 +1938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &471403855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1975,19 +1974,6 @@ MonoBehaviour:
   interactText: Terminal
   terminalCamera: {fileID: 141699276}
   fireExtinguisherInteractableComponents: {fileID: 907896027}
---- !u!114 &471403857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 471403854}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f285460207df400f9ce0cd85fbc6838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terminalCamera: {fileID: 141699276}
 --- !u!65 &471403858
 BoxCollider:
   m_ObjectHideFlags: 0

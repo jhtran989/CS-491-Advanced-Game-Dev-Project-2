@@ -155,6 +155,7 @@ public class DoorController : MonoBehaviour
                 doorTrigger.UnlockCondition = unlockCondition;
             }
             
+            // FIXME: removed constraint that fire needs to be put out to interact with terminal
             // FIXME: need to abstract this into rooms...
             // if (_terminalCheck)
             // {
