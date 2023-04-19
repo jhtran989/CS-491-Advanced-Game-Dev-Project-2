@@ -33,7 +33,7 @@ public class FireSpawn : MonoBehaviour
     } 
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         // test spawn fire
         Vector3 position = new Vector3(0, 0, 0);
