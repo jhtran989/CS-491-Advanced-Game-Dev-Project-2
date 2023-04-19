@@ -87,7 +87,7 @@ namespace Player
         {
             _player_rb.velocity = Vector3.zero;
             
-            // also freeze player position
+            // also freeze player position 
             // constraints is just a bit mask -- to freeze, BITWISE AND with the Freeze Position constraint
             _player_rb.constraints |= RigidbodyConstraints.FreezePosition;
         } 

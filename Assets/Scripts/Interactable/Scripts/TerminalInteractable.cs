@@ -31,6 +31,7 @@ public class TerminalInteractable : AbstractInteractable, IInteractable
             terminalCamera.SetActive(true);
             
             // TODO: need to disable player movement
+            // TODO: need to lock the player camera (or disable camera)
             TerminalTriggerPlayerEnter?.Invoke();
         }
     }

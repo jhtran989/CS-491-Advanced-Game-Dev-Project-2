@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class TerminalController : MonoBehaviour
     public static TerminalControllerDelegate TerminalControllerPlayerLeave;
 
     public bool unlockDoor = false;
+    
+    // need player camera to re-enable
+    public GameObject playerCamera;
 
     void Update()
     {
@@ -48,8 +52,10 @@ public class TerminalController : MonoBehaviour
                 GameObject.Find("GameManager").GetComponent<GameManager>().SaveTerminalCode(playerCode);
                 
                 // need to unlock the constraints on Player position
+                // need to enable the player camera again
                 TerminalControllerPlayerLeave?.Invoke();
-                
+                // playerCamera.GetComponent<PlayerCamera>().EnableCamera();
+
                 // TODO: unlock the door for now (maybe add other constraints later depending on code entered)
                 unlockDoor = true;
                 DoorController.unlockDoor?.Invoke();
