@@ -36,7 +36,7 @@ public class FireSpawn : MonoBehaviour
     } 
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         // start the coroutine to spawn fires in current room every few seconds
         InvokeRepeating("TrySpawnFire", _initialFireSpawnDelay, _fireSpawnDelay);
