@@ -6,6 +6,10 @@
 
 ## Important Notes
 
+### Managers
+
+- `DoorManager` is not really a manager (each door has one and does not manages multiple doors...) &mdash; updated to `DoorEvent`
+
 ### Finding Stuff that are Inactive
 
 - restricted to certain methods, like `GetComponentInChildren()`, `FindObjectsOfType()`

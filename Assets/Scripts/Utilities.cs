@@ -13,9 +13,19 @@ public static class Utilities
         return (T[]) Enum.GetValues(typeof(T));
     }
     
-    public static int GetChildCountActive( this Transform t )
+    public static int GetChildCountActive(this Transform t)
     {
         return t.Cast<Transform>().Count(c => c.gameObject.activeSelf);
+    }
+    
+    public static int GetTransformCountCondition(this Transform t, bool condition)
+    {
+        return t.Cast<Transform>().Count(c => condition);
+    }
+    
+    public static int GetTransformCountPredicate(this Transform t, Func<Transform,bool> predicate)
+    {
+        return t.Cast<Transform>().Count(predicate);
     }
 }
  

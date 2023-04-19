@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private InteractableComponents _interactableComponents;
+    private FireExtinguisherInteractableComponents _fireExtinguisherInteractableComponents;
 
     private void Awake()
     {
-        _interactableComponents = GetComponent<InteractableComponents>();
+        _fireExtinguisherInteractableComponents = GetComponent<FireExtinguisherInteractableComponents>();
     }
 
     private void Update() {
@@ -29,6 +29,11 @@ public class PlayerInteract : MonoBehaviour
         foreach (Collider collider in colliderArray) {
             if (collider.TryGetComponent(out IInteractable interactable)) {
                 interactableList.Add(interactable);
+
+                if (collider.TryGetComponent(out TerminalInteractable terminalInteractable))
+                {
+                    Debug.Log("TERMINAL");
+                }
             }
         }
 

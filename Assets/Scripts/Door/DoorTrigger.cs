@@ -5,12 +5,12 @@ using UI_Elements;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Door : MonoBehaviour
+public class DoorTrigger : MonoBehaviour
 {
     public Animator doorAnimator;
     
     private GlobalDoorManager _globalDoorManager;
-    private DoorManager _doorManager;
+    private DoorController _doorController;
     
     public delegate void DoorDelegate();
     public static DoorDelegate doorOpenPowerCharge;
@@ -48,7 +48,7 @@ public class Door : MonoBehaviour
         
         // should go up to the top level object
         _globalDoorManager = transform.GetComponentInParent<GlobalDoorManager>();
-        _doorManager = transform.GetComponentInParent<DoorManager>();
+        _doorController = transform.GetComponentInParent<DoorController>();
     }
 
     // FIXME: move to a button press instead of entering collider...
@@ -77,13 +77,13 @@ public class Door : MonoBehaviour
                         _unlockFinish = true;
                         
                         // TODO: need to make corresponding fire visible and set fire to present
-                        _doorManager.nextDoorFire.gameObject.SetActive(true);
+                        _doorController.nextDoorFire.gameObject.SetActive(true);
                         
                         // set fire present to true for updated oxygen...
                         _globalDoorManager.SetFirePresent();
                         
                         // update next room
-                        
+                        FireSpawn.updateCurrentRoom?.Invoke(_doorController.nextDoorObject);
                         
                         Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
                     }

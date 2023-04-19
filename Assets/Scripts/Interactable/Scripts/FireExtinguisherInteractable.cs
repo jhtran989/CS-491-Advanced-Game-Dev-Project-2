@@ -2,20 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] 
     private string interactText;
     
-    [SerializeField]
-    private InteractableComponents interactableComponents;
+    [FormerlySerializedAs("interactableComponents")] [SerializeField]
+    private FireExtinguisherInteractableComponents fireExtinguisherInteractableComponents;
     
     private float _interactableSpeed;
 
     private void Awake()
     {
-        interactableComponents.isHoldingFireExtinguisher = false;
+        fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
         _interactableSpeed = 17.0f;
     }
 
@@ -33,7 +34,7 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
-        if (interactableComponents.isHoldingFireExtinguisher)
+        if (fireExtinguisherInteractableComponents.isHoldingFireExtinguisher)
         {
             // interactableComponents.currentInteractableRigidbody.position = interactableComponents.hand.position;
             // interactableComponents.currentInteractableRigidbody.rotation = interactableComponents.hand.rotation;
@@ -44,50 +45,50 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        if (interactableComponents.currentInteractableRigidbody != null)
+        if (fireExtinguisherInteractableComponents.currentInteractableRigidbody != null)
         {
             // interactableComponents.currentInteractableRigidbody.isKinematic = false;
-            interactableComponents.currentInteractableRigidbody.useGravity = true;
-            interactableComponents.currentInteractableCollider.enabled = true;
+            fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = true;
+            fireExtinguisherInteractableComponents.currentInteractableCollider.enabled = true;
             
             // var interactableGameObject = interactorTransform.gameObject;
             // interactableComponents.currentInteractableRigidbody = interactorTransform.GetComponent<Rigidbody>();
             // interactableComponents.currentInteractableCollider = interactorTransform.GetComponent<Collider>();
-            interactableComponents.currentInteractableRigidbody = transform.GetComponent<Rigidbody>();
-            interactableComponents.currentInteractableCollider = transform.GetComponent<Collider>();
+            fireExtinguisherInteractableComponents.currentInteractableRigidbody = transform.GetComponent<Rigidbody>();
+            fireExtinguisherInteractableComponents.currentInteractableCollider = transform.GetComponent<Collider>();
             
             // interactableComponents.currentInteractableRigidbody.isKinematic = true;
-            interactableComponents.currentInteractableRigidbody.useGravity = false;
+            fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = false;
             // interactableComponents.currentInteractableRigidbody.freezeRotation = true;
-            interactableComponents.currentInteractableCollider.enabled = false;
+            fireExtinguisherInteractableComponents.currentInteractableCollider.enabled = false;
         }
         else
         {
-            interactableComponents.currentInteractableRigidbody = transform.GetComponent<Rigidbody>();
-            interactableComponents.currentInteractableCollider = transform.GetComponent<Collider>();
+            fireExtinguisherInteractableComponents.currentInteractableRigidbody = transform.GetComponent<Rigidbody>();
+            fireExtinguisherInteractableComponents.currentInteractableCollider = transform.GetComponent<Collider>();
             
             // interactableComponents.currentInteractableRigidbody.isKinematic = true;
-            interactableComponents.currentInteractableRigidbody.useGravity = false;
+            fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = false;
             // interactableComponents.currentInteractableRigidbody.freezeRotation = true;
-            interactableComponents.currentInteractableCollider.enabled = false;
+            fireExtinguisherInteractableComponents.currentInteractableCollider.enabled = false;
         }
         
         // interactableComponents.currentInteractableRigidbody.position = interactableComponents.hand.position;
         // interactableComponents.currentInteractableRigidbody.rotation = interactableComponents.hand.rotation;
         UpdateInteractableVelocity();
 
-        interactableComponents.isHoldingFireExtinguisher = true;
+        fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = true;
     }
 
     private void UpdateInteractableVelocity()
     {
         // TODO: replace setting absolute positions and rely on speed (approximate target location with smoother transitions)
         
-        Vector3 DirectionToHand = interactableComponents.hand.position -
-                                   interactableComponents.currentInteractableRigidbody.position;
+        Vector3 DirectionToHand = fireExtinguisherInteractableComponents.hand.position -
+                                   fireExtinguisherInteractableComponents.currentInteractableRigidbody.position;
         float DistanceToHand = DirectionToHand.magnitude;
 
-        interactableComponents.currentInteractableRigidbody.velocity = 
+        fireExtinguisherInteractableComponents.currentInteractableRigidbody.velocity = 
             DirectionToHand * DistanceToHand * _interactableSpeed;
     }
 

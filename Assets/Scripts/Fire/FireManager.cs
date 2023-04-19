@@ -35,7 +35,8 @@ public class FireManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // need to initially calculate num of fires
+        RecalculateNumActiveFires();
     }
 
     // Update is called once per frame
@@ -53,8 +54,10 @@ public class FireManager : MonoBehaviour
     {
         // return both initial fires and spawned fires
         // need to check if null
+        
         // numInitialFires = 0;
-        numInitialFires = _fireParentTransform.GetChildCountActive();
+        // numInitialFires = _fireParentTransform.GetChildCountActive();
+        numInitialFires = fireSpawn.GetNumInitialFires();
         Debug.Log("num initial fires: " + numInitialFires);
 
         numSpawnFires = fireSpawn.GetNumSpawnFires();
@@ -63,8 +66,5 @@ public class FireManager : MonoBehaviour
         Debug.Log("num total fires: " + GetNumActiveFires());
     }
 
-    private void UpdateCurrentRoom()
-    {
-        
-    }
+    
 }
