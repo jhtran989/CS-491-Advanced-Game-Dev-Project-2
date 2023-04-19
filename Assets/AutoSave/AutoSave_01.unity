@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1924977258}
-  interactableComponents: {fileID: 907896027}
+  interactableComponents: {fileID: 0}
 --- !u!114 &907896027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5144,7 +5144,7 @@ MonoBehaviour:
   waterHoseObject: {fileID: 62106838}
   fireRaycastDistance: 5
   fireExtinguished: 0
-  interactableComponents: {fileID: 907896027}
+  interactableComponents: {fileID: 0}
   steamFireCheck: 0
 --- !u!1 &1940617450
 GameObject:
