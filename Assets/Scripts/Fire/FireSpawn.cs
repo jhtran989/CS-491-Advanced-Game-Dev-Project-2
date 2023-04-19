@@ -30,7 +30,7 @@ public class FireSpawn : MonoBehaviour
     private void OnDisable()
     {
         updateCurrentRoom -= UpdateCurrentRoom;
-    }
+    } 
 
     // Start is called before the first frame update
     void Start()
