@@ -8,7 +8,7 @@ public class TerminalController : MonoBehaviour
     public TextMeshProUGUI codeText;
     private string playerCode = "";
     public GameObject goodLight, badLight;
-    [SerializeField] private string correctCode;
+    [SerializeField] private string[] correctCodes = new string[3];
     private bool[] letterIsUsed = new bool[10];
     private bool codeTested = false;
     public char[] letters = new char[9];
