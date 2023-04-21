@@ -27,10 +27,10 @@ public class Oxygen : MonoBehaviour
     [SerializeField]
     private float speedStationaryThreshold = 0.5f;
 
-    private readonly float maxOxygenLevel = 100.0f;
-    private readonly float oxygenDrainPerSecond = 1.0f;
+    private float maxOxygenLevel;
+    private float oxygenDrainPerSecond;
     private float lerpSpeed;
-    private readonly float lerpSpeedMultiplier = 100.0f;
+    private float lerpSpeedMultiplier;
     public Color[] colors;
 
     private float _startTime;
@@ -69,6 +69,10 @@ public class Oxygen : MonoBehaviour
     // FIXME: from Start()
     void Awake()
     {
+        maxOxygenLevel = 200.0f;
+        oxygenDrainPerSecond = 1.0f;
+        lerpSpeedMultiplier = 100.0f;
+        
         currentOxygenLevel = maxOxygenLevel;
         _startTime = Time.time;
         _totalTime = maxOxygenLevel / oxygenDrainPerSecond;

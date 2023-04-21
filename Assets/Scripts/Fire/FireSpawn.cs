@@ -8,6 +8,7 @@ public class FireSpawn : MonoBehaviour
     public GameObject firePrefab;
     public GameObject fireParent;
     public GameObject currentRoom;
+    public GameObject roomParent;
     private GameObject currentSpawnedFire;
 
     public FireManager fireManager;
@@ -63,7 +64,8 @@ public class FireSpawn : MonoBehaviour
         // Vector3 currentRoomPosition = currentRoom.transform.position;
         // Vector3 relativePositionFireParentToCurrentRoom = currentRoomPosition - fireParentPosition;
         
-        fire.transform.localPosition = new Vector3(0, 0, -1);
+        // need to add a little height for the y component (smoke doesn't rise otherwise)
+        fire.transform.localPosition = new Vector3(0, 0.25f, 0);
         // Vector3 displacementVector = new Vector3(0, 0, -1);
         // fire.transform.localPosition = relativePositionFireParentToCurrentRoom + displacementVector;
         
@@ -104,9 +106,6 @@ public class FireSpawn : MonoBehaviour
         var currentRoomTransform = currentRoom.transform;
         
         // if it is NOT a spawned fire
-        // return currentRoomTransform.GetTransformCountCondition(
-        //     !currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName));
-
         return currentRoomTransform.GetTransformCountPredicate(c => 
             !currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
@@ -118,9 +117,6 @@ public class FireSpawn : MonoBehaviour
         var currentRoomTransform = currentRoom.transform;
         
         // if it is a spawned fire
-        // return currentRoomTransform.GetTransformCountCondition(
-        //     currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName));
-        
         return currentRoomTransform.GetTransformCountPredicate(c => 
             currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
