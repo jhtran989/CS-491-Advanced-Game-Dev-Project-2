@@ -43,8 +43,16 @@ public class TerminalController : MonoBehaviour
             } else if (Input.GetKeyDown(letters[8].ToString())) {
                 AddToCode(char.ToUpper(letters[8]), 8);
             }
-        } else if (!codeTested) {
-            // TODO: Turn on good/bad light
+        } else if (Input.GetKeyDown("space") && !codeTested) {
+            bool isValid = false;
+            for (int i =  0;  i < correctCodes.Length; i++)  {
+                if (playerCode ==  correctCodes[i]) isValid = true;
+            }
+            // TODO: add sound effects
+            if (isValid) goodLight.SetActive(true);
+            else badLight.SetActive(true);
+
+            codeTested = true;
         }
 
         if (Input.GetKeyDown("return")) {
