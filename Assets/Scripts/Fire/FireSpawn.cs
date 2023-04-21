@@ -11,6 +11,8 @@ public class FireSpawn : MonoBehaviour
     public GameObject roomParent;
     private GameObject currentSpawnedFire;
 
+    private RoomController _currentRoomController;
+
     public FireManager fireManager;
 
     private float _startTime;
@@ -39,6 +41,10 @@ public class FireSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
+        // set initial room controller
+        _currentRoomController = currentRoom.GetComponent<RoomController>();
+        fireParent = _currentRoomController.fireParent;
+        
         // start the coroutine to spawn fires in current room every few seconds
         InvokeRepeating("TrySpawnFire", _initialFireSpawnDelay, _fireSpawnDelay);
     }
@@ -51,10 +57,11 @@ public class FireSpawn : MonoBehaviour
 
     private void SpawnFire()
     {
+        // spawn in the fire parent specified by the current room controller
         // test spawn fire
         Vector3 position = new Vector3(0, 0, 0);
-        GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, currentRoom.transform);
-        // GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, fireParent.transform);
+        // GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, currentRoom.transform);
+        GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, fireParent.transform);
         
         // can't put it under current room to make math easier, need to keep track of all current fires...
         // Edit: split calculation into initial fires and spawned fires
@@ -64,8 +71,9 @@ public class FireSpawn : MonoBehaviour
         // Vector3 currentRoomPosition = currentRoom.transform.position;
         // Vector3 relativePositionFireParentToCurrentRoom = currentRoomPosition - fireParentPosition;
         
+        // FIXME: already added height to each of the containers...
         // need to add a little height for the y component (smoke doesn't rise otherwise)
-        fire.transform.localPosition = new Vector3(0, 0.25f, 0);
+        fire.transform.localPosition = new Vector3(0, 0, 0);
         // Vector3 displacementVector = new Vector3(0, 0, -1);
         // fire.transform.localPosition = relativePositionFireParentToCurrentRoom + displacementVector;
         
@@ -103,26 +111,31 @@ public class FireSpawn : MonoBehaviour
     
     public int GetNumInitialFires()
     {
-        var currentRoomTransform = currentRoom.transform;
+        // var currentRoomTransform = currentRoom.transform;
+        var fireParentTransform = fireParent.transform;
         
         // if it is NOT a spawned fire
-        return currentRoomTransform.GetTransformCountPredicate(c => 
-            !currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+        return fireParentTransform.GetTransformCountPredicate(c => 
+            !fireParentTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
 
     public int GetNumSpawnFires()
     {
         // return currentRoom.transform.GetChildCountActive();
-        
-        var currentRoomTransform = currentRoom.transform;
+        // var currentRoomTransform = currentRoom.transform;
+        var fireParentTransform = fireParent.transform;
         
         // if it is a spawned fire
-        return currentRoomTransform.GetTransformCountPredicate(c => 
-            currentRoomTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+        return fireParentTransform.GetTransformCountPredicate(c => 
+            fireParentTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
     
     private void UpdateCurrentRoom(GameObject newRoom)
     {
         currentRoom = newRoom;
+        
+        // update current room controller
+        _currentRoomController = currentRoom.GetComponent<RoomController>();
+        fireParent = _currentRoomController.fireParent;
     }
 }

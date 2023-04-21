@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour
+public class PlayerInteractDoor : MonoBehaviour
 {
     private FireExtinguisherInteractableComponents _fireExtinguisherInteractableComponents;
 
@@ -15,7 +15,7 @@ public class PlayerInteract : MonoBehaviour
     private void Update() {
         // TODO: abstract to allow multiple keys depending on type of interaction
         // KeyCode.E
-        if (Input.GetKeyDown(Constants.InteractableKey)) {
+        if (Input.GetKeyDown(Constants.OpenDoorKey)) {
             IInteractable interactable = GetInteractableObject();
             if (interactable != null) {
                 Debug.Log("Found interactable...");
@@ -29,12 +29,11 @@ public class PlayerInteract : MonoBehaviour
         float interactRange = 3f;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
         foreach (Collider collider in colliderArray) {
-            // check if it is NOT a door
-            // interactable is not IInteractableDoor
-            // interactable.GetType().IsInstanceOfType(typeof(IInteractableDoor))
-            // && !Utilities.IsOfType(interactable, typeof(IInteractableDoor))
+            // check if it IS a door
+            // && interactable is IInteractableDoor
+            // && Utilities.IsOfType(interactable, typeof(IInteractableDoor))
             if (collider.TryGetComponent(out IInteractable interactable)
-                && !Utilities.IsOfType(interactable, typeof(IInteractableDoor))) {
+                && Utilities.IsOfType(interactable, typeof(IInteractableDoor))) {
                 interactableList.Add(interactable);
 
                 if (collider.TryGetComponent(out TerminalInteractable terminalInteractable))

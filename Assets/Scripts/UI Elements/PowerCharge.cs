@@ -22,12 +22,18 @@ namespace UI_Elements
         {
             DoorTrigger.doorOpenPowerCharge += ConsumePowerCharge;
             DoorTrigger.doorOpenPowerCharge += PowerChargeFiller;
+            
+            DoorInteractableStationary.doorOpenPowerCharge += ConsumePowerCharge;
+            DoorInteractableStationary.doorOpenPowerCharge += PowerChargeFiller;
         }
 
         private void OnDisable()
         {
             DoorTrigger.doorOpenPowerCharge -= ConsumePowerCharge;
             DoorTrigger.doorOpenPowerCharge -= PowerChargeFiller;
+            
+            DoorInteractableStationary.doorOpenPowerCharge -= ConsumePowerCharge;
+            DoorInteractableStationary.doorOpenPowerCharge -= PowerChargeFiller;
         }
 
         // Start is called before the first frame update

@@ -4,7 +4,16 @@
 #### CS 491 - Intro to Game Development
 #### Team Members: Alex, Andrew, Gale, John, Josue
 
+## TODO
+
+- door check on BOTH sides (or condition)
+
 ## Important Notes
+
+### Interactable (interface)
+
+- quick fix &mdash; create new script for different key bindings...not modular and scalable
+- `TryGetComponent()` will work for subclasses too (e.g., `IInteractable` and `IInteractableDoor` that inherits from `IInteractable`)
 
 ### Managers
 

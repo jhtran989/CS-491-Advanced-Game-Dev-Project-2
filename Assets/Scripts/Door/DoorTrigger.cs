@@ -61,44 +61,45 @@ public class DoorTrigger : MonoBehaviour
     //     }
     // }
 
+    // FIXME: still runs when disabled...
     // FIXME: need to restrict when a door charge is used (and only when there are door charges left)
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag(Constants.PlayerTag))
-        {
-            if (Input.GetKeyDown(Constants.FireKey))
-            {
-                if (_powerCharge.CurrentNumPowerCharges > 0)
-                {
-                    if (!_unlockFinish && _unlockCondition)
-                    {
-                        doorAnimator.SetTrigger(Constants.OpenDoorTrigger);
-                        doorOpenPowerCharge?.Invoke();
-                        _unlockFinish = true;
-                        
-                        // TODO: need to make corresponding fire visible and set fire to present
-                        _doorController.nextDoorFire.gameObject.SetActive(true);
-                        
-                        // set fire present to true for updated oxygen...
-                        _globalDoorManager.SetFirePresent();
-                        
-                        // update next room
-                        FireSpawn.updateCurrentRoom?.Invoke(_doorController.nextDoorObject);
-                        
-                        Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
-                    }
-                }
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Constants.PlayerTag))
-        {
-            doorAnimator.SetTrigger(Constants.CloseDoorTrigger);
-        }
-    }
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.CompareTag(Constants.PlayerTag))
+    //     {
+    //         if (Input.GetKeyDown(Constants.OpenDoorKey))
+    //         {
+    //             if (_powerCharge.CurrentNumPowerCharges > 0)
+    //             {
+    //                 if (!_unlockFinish && _unlockCondition)
+    //                 {
+    //                     doorAnimator.SetTrigger(Constants.OpenDoorTrigger);
+    //                     doorOpenPowerCharge?.Invoke();
+    //                     _unlockFinish = true;
+    //                     
+    //                     // TODO: need to make corresponding fire visible and set fire to present
+    //                     _doorController.nextDoorFire.gameObject.SetActive(true);
+    //                     
+    //                     // set fire present to true for updated oxygen...
+    //                     _globalDoorManager.SetFirePresent();
+    //                     
+    //                     // update next room
+    //                     FireSpawn.updateCurrentRoom?.Invoke(_doorController.nextDoorObject);
+    //                     
+    //                     Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    //
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.CompareTag(Constants.PlayerTag))
+    //     {
+    //         doorAnimator.SetTrigger(Constants.CloseDoorTrigger);
+    //     }
+    // }
 
     public void UnlockDoor()
     {

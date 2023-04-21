@@ -8,6 +8,8 @@ public class DoorController : MonoBehaviour
 {
     [FormerlySerializedAs("door")] [Space, Header("Door")]
     public DoorTrigger doorTrigger;
+
+    public DoorInteractableStationary doorInteractableStationary;
     
     // get objects that influence when a door is unlocked
     // without need of doing spatial checks...
@@ -26,7 +28,10 @@ public class DoorController : MonoBehaviour
     
     [Space, Header("Terminal")] 
     public string terminalObjectName;
-    private GameObject _terminalGameObject;
+    
+    [FormerlySerializedAs("_terminalGameObject")] 
+    public GameObject terminalGameObject;
+    
     private TerminalTrigger _terminalTrigger;
     private TerminalController _terminalController;
     private bool _terminalCheck = false;
@@ -62,10 +67,13 @@ public class DoorController : MonoBehaviour
     {
         // returns only the first component found - only the DoorCenterFrame should have it
         doorTrigger = gameObject.GetComponentInChildren<DoorTrigger>();
+        // also find the interactable script
+        doorInteractableStationary = gameObject.GetComponentInChildren<DoorInteractableStationary>();
         
         doorOptionCheck = true;
 
-        nextDoorObject = nextDoorFire.transform.parent.gameObject;
+        // FIXME: update to get top level parent (two levels up)
+        nextDoorObject = nextDoorFire.transform.parent.parent.gameObject;
     }
 
     private void OnEnable()
@@ -81,28 +89,28 @@ public class DoorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // FIXME: don't need to rely on string anymore since everything is in the same scene (just drag in inspector)
         // FIXME: need to check for empty string instead of null
         // get the corresponding fire and terminal (if applicable -- should be null otherwise)
-        if (fireObjectName != EmptyString)
-        {
-            // FIXME: move to one scene to get fires that are hidden...
-            // fire = GameObject.Find(fireObjectName).GetComponent<Fire>();
-            _fireCheck = true;
-        }
+        
+        // ALL rooms will have a fire to check
+        _fireCheck = true;
 
-        if (terminalObjectName != EmptyString)
+        // FIXME: don't need to rely on string anymore since everything is in the same scene (just drag in inspector)
+        // Debug.Log("Terminal: " + terminalObjectName);
+        // if (terminalObjectName == "")
+        // {
+        //     Debug.Log("Empty terminal, NOT NULL");
+        // }
+
+        // only doors leading OUT of a room with a terminal can be checked (NOT initial three doors)
+        if (terminalGameObject != null)
         {
-            // Debug.Log("Terminal: " + terminalObjectName);
-            // if (terminalObjectName == "")
-            // {
-            //     Debug.Log("Empty terminal, NOT NULL");
-            // }
-            
             // IMPORTANT: need to include inactive in search
-            _terminalGameObject = GameObject.Find(terminalObjectName);
-            _terminalTrigger = _terminalGameObject
+            // terminalGameObject = GameObject.Find(terminalObjectName);
+            _terminalTrigger = terminalGameObject
                 .GetComponentInChildren<TerminalTrigger>(true);
-            _terminalController = _terminalGameObject
+            _terminalController = terminalGameObject
                 .GetComponentInChildren<TerminalController>(true);
             _terminalCheck = true;
         }
@@ -152,7 +160,8 @@ public class DoorController : MonoBehaviour
             foreach (var doorOptionsEnum in Utilities.GetValues<DoorOptionsEnum>())
             {
                 unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
-                doorTrigger.UnlockCondition = unlockCondition;
+                // doorTrigger.UnlockCondition = unlockCondition;
+                doorInteractableStationary.UnlockCondition = unlockCondition;
             }
             
             // FIXME: removed constraint that fire needs to be put out to interact with terminal
@@ -170,7 +179,8 @@ public class DoorController : MonoBehaviour
             // FIXME: move to animation logic...
             if (unlockCondition)
             {
-                doorTrigger.UnlockDoor();
+                // doorTrigger.UnlockDoor();
+                doorInteractableStationary.UnlockDoor();
                 doorOptionCheck = false;
             }
         }

@@ -27,5 +27,25 @@ public static class Utilities
     {
         return t.Cast<Transform>().Count(predicate);
     }
+    
+    public static bool IsOfAnyType<T>(T obj, Type[] types)
+    {
+        bool isOfAnyType = false;
+
+        for (int i = 0; i < types.Length; i++)
+        {
+            if (types[i].IsAssignableFrom (obj.GetType()))
+            {
+                isOfAnyType = true;
+                break;
+            }
+        }
+        return isOfAnyType;
+    }
+
+    public static bool IsOfType<T>(T obj, Type type)
+    {
+        return type.IsInstanceOfType(obj);
+    }
 }
  
