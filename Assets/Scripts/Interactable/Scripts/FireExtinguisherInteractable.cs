@@ -14,10 +14,18 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
     
     private float _interactableSpeed;
 
+    private Rigidbody _rigidbodyFireExtinguisher;
+
     private void Awake()
     {
         fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
         _interactableSpeed = 17.0f;
+        
+        _rigidbodyFireExtinguisher = GetComponent<Rigidbody>();
+        
+        // set initial velocity to 0 (gravity is false now)
+        _rigidbodyFireExtinguisher.velocity = Vector3.zero;
+        _rigidbodyFireExtinguisher.angularVelocity = Vector3.zero;
     }
 
     // Start is called before the first frame update
