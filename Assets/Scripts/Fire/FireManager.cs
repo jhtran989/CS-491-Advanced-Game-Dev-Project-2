@@ -35,8 +35,9 @@ public class FireManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // need to initially calculate num of fires
-        RecalculateNumActiveFires();
+        // FIXME: moved to fire spawn (random order of Start)
+        // // need to initially calculate num of fires
+        // RecalculateNumActiveFires();
     }
 
     // Update is called once per frame

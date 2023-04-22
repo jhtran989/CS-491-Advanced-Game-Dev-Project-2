@@ -45,6 +45,9 @@ public class FireSpawn : MonoBehaviour
         _currentRoomController = currentRoom.GetComponent<RoomController>();
         fireParent = _currentRoomController.fireParent;
         
+        // need to initially calculate num of fires
+        fireManager.RecalculateNumActiveFires();
+        
         // start the coroutine to spawn fires in current room every few seconds
         InvokeRepeating("TrySpawnFire", _initialFireSpawnDelay, _fireSpawnDelay);
     }
