@@ -9,9 +9,7 @@ using static RoomLocations;
 public class FireSpawn : MonoBehaviour
 {
     public GameObject firePrefab;
-    public GameObject fireParent;
     public GameObject currentRoom;
-    public GameObject roomParent;
     private GameObject currentSpawnedFire;
 
     // FIXME: deprecated
@@ -19,6 +17,7 @@ public class FireSpawn : MonoBehaviour
 
     private RoomController _currentRoomController;
     private RoomLocationsEnum _currentRoomLocationEnum;
+    private GameObject _roomFireParent;
     private Vector3[] _currentFireLocationPositions;
 
     // change to a list of fire locations (containing enum and a specific location)
@@ -41,19 +40,9 @@ public class FireSpawn : MonoBehaviour
     {
         _initialFireSpawnDelay = 5.0f;
         _fireSpawnDelay = 15.0f;
-        
-        // set current room enum
-        _currentRoomController = currentRoom.GetComponent<RoomController>();
-        _currentRoomLocationEnum = _currentRoomController.roomLocationsEnum;
-        _currentFireLocationPositions = _currentRoomController.fireLocationPositions;
 
         // initialize list
         _roomFireLocationPositionsRandomList = new List<RoomFireEntry>();
-        UpdateFireLocations(_currentRoomController);
-        
-        // _roomFireLocationPositionsRandomList
-        //     .AddRange(_currentRoomController.GetRoomFireLocationsList());
-        // _roomFireLocationPositionsRandomList = _roomFireLocationPositionsRandomList.Shuffle();
     }
     
     private void OnEnable()
@@ -69,10 +58,9 @@ public class FireSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
-        // set initial room controller
-        _currentRoomControllerOld = currentRoom.GetComponent<RoomControllerOld>();
-        fireParent = _currentRoomControllerOld.fireParent;
-        
+        // set initial room controller and current parameters
+        UpdateFireSpawn();
+
         // need to initially calculate num of fires
         fireManager.RecalculateNumActiveFires();
         
@@ -94,6 +82,7 @@ public class FireSpawn : MonoBehaviour
         
         // FIXME: choose a random location in fire locations
         RoomFireEntry randomRoomFireEntry = _roomFireLocationPositionsRandomList[0];
+        RoomLocationsEnum randomRoomLocationEnum = randomRoomFireEntry.RoomLocationsEnum;
         Vector3 randomFireLocationPosition = randomRoomFireEntry.FireLocationPosition;
         GameObject randomFireParent = randomRoomFireEntry.RoomFireParent;
         
@@ -111,6 +100,7 @@ public class FireSpawn : MonoBehaviour
 
         fire.transform.localPosition = randomFireLocationPosition;
 
+        Debug.Log("Spawn room: " + randomRoomLocationEnum);
         Debug.Log("Spawned fire location: " + fire.transform.localPosition);
 
         // put constant first for searching below...initial fires
@@ -125,7 +115,9 @@ public class FireSpawn : MonoBehaviour
     {
         fireManager.RecalculateNumActiveFires();
         
-        if (fireManager.GetNumActiveFires() == 0)
+        // change to just number of spawned fires (at most two fires)
+        // fireManager.GetNumActiveFires() == 0
+        if (GetNumSpawnFires() == 0)
         {
             Debug.Log("SPAWNING FIRE...");
             SpawnFire();
@@ -136,44 +128,52 @@ public class FireSpawn : MonoBehaviour
         }
     }
 
-    private void TrySpawnFireWrapper()
-    {
-        // wait for initial delay
-        // yield return new WaitForSeconds(_initialFireSpawnDelay);
-    }
-    
     public int GetNumInitialFires()
     {
+        // FIXME: didn't use c in name check
+        
         // var currentRoomTransform = currentRoom.transform;
-        var fireParentTransform = fireParent.transform;
+        var fireParentTransform = _roomFireParent.transform;
         
         // if it is NOT a spawned fire
         return fireParentTransform.GetTransformCountPredicate(c => 
-            !fireParentTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+            !c.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
 
     public int GetNumSpawnFires()
     {
         // return currentRoom.transform.GetChildCountActive();
         // var currentRoomTransform = currentRoom.transform;
-        var fireParentTransform = fireParent.transform;
+        var fireParentTransform = _roomFireParent.transform;
         
         // if it is a spawned fire
         return fireParentTransform.GetTransformCountPredicate(c => 
-            fireParentTransform.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+            c.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
     }
     
     private void UpdateCurrentRoom(GameObject newRoom)
     {
         currentRoom = newRoom;
+
+        // update fire spawn stuff (controller and fire locations)
+        UpdateFireSpawn();
+
+        // TODO: update list of unlocked rooms
         
-        // update current room controller
-        _currentRoomControllerOld = currentRoom.GetComponent<RoomControllerOld>();
-        
-        
-        fireParent = _currentRoomControllerOld.fireParent;
-        
-        // update list of fire positions and list of unlocked rooms
+    }
+
+    private void UpdateFireSpawn()
+    {
+        UpdateCurrentRoomControllerParameters();
+        UpdateFireLocations(_currentRoomController);
+    }
+
+    private void UpdateCurrentRoomControllerParameters()
+    {
+        _currentRoomController = currentRoom.GetComponent<RoomController>();
+        _currentRoomLocationEnum = _currentRoomController.roomLocationsEnum;
+        _roomFireParent = _currentRoomController.roomFireParent;
+        _currentFireLocationPositions = _currentRoomController.fireLocationPositions;
     }
 
     private void UpdateFireLocations(RoomController roomController)

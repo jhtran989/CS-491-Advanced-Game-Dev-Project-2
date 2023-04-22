@@ -10,6 +10,7 @@
 - [ ] have array and check boundaries (keep list of UNLOCKED rooms) 
 - [ ] true random fire spawning (queue and shuffle)
 - [x] fire collision (ignore player)
+- [ ] update count of fires present (ALL unlocked rooms)
 
 ## Important Notes
 

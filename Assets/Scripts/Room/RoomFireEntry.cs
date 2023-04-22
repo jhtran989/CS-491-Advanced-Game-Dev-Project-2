@@ -8,7 +8,8 @@ namespace Room
         private RoomLocationsEnum roomLocationsEnum;
         private GameObject roomFireParent;
         private Vector3 fireLocationPosition;
-
+        
+        public RoomLocationsEnum RoomLocationsEnum => roomLocationsEnum;
         public GameObject RoomFireParent => roomFireParent;
         public Vector3 FireLocationPosition => fireLocationPosition;
         
