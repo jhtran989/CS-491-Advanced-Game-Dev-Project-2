@@ -7,6 +7,7 @@ using static RoomLocations;
 public class RoomManager : MonoBehaviour
 {
     private GameObject _currentRoomObject;
+    public RoomController initialRoomController;
 
     public GameObject CurrentRoomObject
     {

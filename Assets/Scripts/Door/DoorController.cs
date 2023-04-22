@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,6 +12,17 @@ public class DoorController : MonoBehaviour
 
     public DoorInteractableStationary doorInteractableStationary;
     
+    /**********************************************************************/
+    // [Space, Header("Managers")] 
+    
+    // TODO: put in inspector (PREFAB)
+    private RoomManager _roomManager;
+    
+    private GlobalDoorManager _globalDoorManager;
+
+    private bool _doorReachedCheck;
+
+    /**********************************************************************/
     // get objects that influence when a door is unlocked
     // without need of doing spatial checks...
     [Space, Header("Fire")] 
@@ -24,8 +36,14 @@ public class DoorController : MonoBehaviour
     [FormerlySerializedAs("nextFire")] 
     public Fire nextDoorFire;
 
+    // FIXME: change fire scripts to rooms...
+    // TODO: update unlocked boundary room controllers (or in controller itself) EVERY TIME A ROOM IS UNLOCKED
+    public RoomController[] boundaryRoomControllersList;
+    private RoomController[] _unlockedBoundaryRoomControllersList;
+
     public GameObject nextDoorObject;
     
+    /**********************************************************************/
     [Space, Header("Terminal")] 
     public string terminalObjectName;
     
@@ -35,8 +53,6 @@ public class DoorController : MonoBehaviour
     private TerminalTrigger _terminalTrigger;
     private TerminalController _terminalController;
     private bool _terminalCheck = false;
-
-    private GlobalDoorManager _globalDoorManager;
 
     public bool doorOptionCheck;
 
@@ -49,6 +65,7 @@ public class DoorController : MonoBehaviour
     
     private enum DoorOptionsEnum
     {
+        DoorReached,
         Fire,
         Terminal
     }
@@ -71,9 +88,6 @@ public class DoorController : MonoBehaviour
         doorInteractableStationary = gameObject.GetComponentInChildren<DoorInteractableStationary>();
         
         doorOptionCheck = true;
-
-        // FIXME: update to get top level parent (two levels up)
-        nextDoorObject = nextDoorFire.transform.parent.parent.gameObject;
     }
 
     private void OnEnable()
@@ -95,14 +109,7 @@ public class DoorController : MonoBehaviour
         
         // ALL rooms will have a fire to check
         _fireCheck = true;
-
-        // FIXME: don't need to rely on string anymore since everything is in the same scene (just drag in inspector)
-        // Debug.Log("Terminal: " + terminalObjectName);
-        // if (terminalObjectName == "")
-        // {
-        //     Debug.Log("Empty terminal, NOT NULL");
-        // }
-
+        
         // only doors leading OUT of a room with a terminal can be checked (NOT initial three doors)
         if (terminalGameObject != null)
         {
@@ -116,6 +123,22 @@ public class DoorController : MonoBehaviour
         }
 
         _globalDoorManager = transform.GetComponentInParent<GlobalDoorManager>();
+        
+        // FIXME: update to get top level parent (two levels up)
+        nextDoorObject = nextDoorFire.transform.parent.parent.gameObject;
+        
+        // TODO: update to get top level parent (two levels up)
+        _roomManager = transform.parent.parent.GetComponent<RoomManager>();
+        
+        // if EscapePodDoor is part of the boundary rooms
+        if (boundaryRoomControllersList.Contains(_roomManager.initialRoomController))
+        {
+            _doorReachedCheck = true;
+        }
+        else
+        {
+            _doorReachedCheck = false;
+        }
     }
 
     // Update is called once per frame
@@ -133,7 +156,13 @@ public class DoorController : MonoBehaviour
     /// <returns></returns>
     private bool CheckDoorOptions(DoorOptionsEnum doorOptionsEnum)
     {
-        if (doorOptionsEnum == DoorOptionsEnum.Fire)
+        // TODO: check boundary, update fire AND terminal of the door (ON THE ROOM NOT UNLOCKED)
+        // TODO: move stuff to room controller (not tied to door anymore...)
+        if (doorOptionsEnum == DoorOptionsEnum.DoorReached)
+        {
+            return _doorReachedCheck;
+        }
+        else if (doorOptionsEnum == DoorOptionsEnum.Fire)
         {
             return !_fireCheck || currentDoorFire.unlockDoor;
         } 
@@ -143,6 +172,13 @@ public class DoorController : MonoBehaviour
         }
 
         // default to false for testing
+        return false;
+    }
+
+    private bool CheckBoundaryRoomUnlock()
+    {
+        // for
+
         return false;
     }
 
@@ -162,6 +198,12 @@ public class DoorController : MonoBehaviour
                 unlockCondition = unlockCondition && CheckDoorOptions(doorOptionsEnum);
                 // doorTrigger.UnlockCondition = unlockCondition;
                 doorInteractableStationary.UnlockCondition = unlockCondition;
+                
+                // short circuit (break early if false)
+                if (!unlockCondition)
+                {
+                    break;
+                }
             }
             
             // FIXME: removed constraint that fire needs to be put out to interact with terminal
@@ -175,8 +217,7 @@ public class DoorController : MonoBehaviour
             //         _terminalTrigger.gameObject.SetActive(true);
             //     }
             // }
-
-            // FIXME: move to animation logic...
+            
             if (unlockCondition)
             {
                 // doorTrigger.UnlockDoor();

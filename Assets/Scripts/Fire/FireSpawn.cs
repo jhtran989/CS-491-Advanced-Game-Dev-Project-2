@@ -9,6 +9,8 @@ using static RoomLocations;
 public class FireSpawn : MonoBehaviour
 {
     public GameObject firePrefab;
+    
+    // TODO: change to use initial room in room manager (more modular)
     public GameObject currentRoom;
     private GameObject currentSpawnedFire;
 
@@ -44,6 +46,9 @@ public class FireSpawn : MonoBehaviour
 
         // initialize list
         _roomFireLocationPositionsRandomList = new List<RoomFireEntry>();
+        
+        // update initial current room object
+        currentRoom = roomManager.initialRoomController.gameObject;
     }
     
     private void OnEnable()

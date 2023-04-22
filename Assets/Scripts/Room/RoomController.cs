@@ -17,8 +17,10 @@ public class RoomController: MonoBehaviour
     // relative to corresponding FIRE CONTAINER local positions
     [FormerlySerializedAs("fireLocations")] 
     public Vector3[] fireLocationPositions;
-
+    
     private List<RoomFireEntry> roomFireLocationsList;
+
+    public List<DoorController> boundaryDoorControllersList;
 
     private int _numInitialFires;
     private int _numSpawnFires;

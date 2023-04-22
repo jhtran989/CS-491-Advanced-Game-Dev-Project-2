@@ -15,6 +15,14 @@
 
 ## Important Notes
 
+### Prefabs
+
+- not aware of specific scene hierarchies or instances of scripts (so find components during runtime...relying on scene hierarchy in scripts &mdash; not robust to changes to hierarchy...)
+
+### Inspector
+
+- to put headers, the first immediate variable below the header MUST be serializable (e.g., `public` or with the `SerializeField` field)
+
 ### Interactable (interface)
 
 - quick fix &mdash; create new script for different key bindings...not modular and scalable
