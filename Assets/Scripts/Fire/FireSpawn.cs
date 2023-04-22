@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Room;
 using UnityEngine;
 using static RoomLocations;
 
@@ -13,13 +14,15 @@ public class FireSpawn : MonoBehaviour
     public GameObject roomParent;
     private GameObject currentSpawnedFire;
 
-    private RoomController _currentRoomController;
+    // FIXME: deprecated
+    private RoomControllerOld _currentRoomControllerOld;
 
-    private FireLocations _currentFireLocations;
+    private RoomController _currentRoomController;
     private RoomLocationsEnum _currentRoomLocationEnum;
     private Vector3[] _currentFireLocationPositions;
 
-    private List<Vector3> _fireLocationPositionsRandomList;
+    // change to a list of fire locations (containing enum and a specific location)
+    private List<RoomFireEntry> _roomFireLocationPositionsRandomList;
 
     public FireManager fireManager;
 
@@ -30,20 +33,27 @@ public class FireSpawn : MonoBehaviour
     public delegate void UpdateCurrentRoomDelegate(GameObject newRoom);
     public static UpdateCurrentRoomDelegate updateCurrentRoom;
     
+    // [Space, Header("FireParentDictionary")]
+    private Dictionary<RoomLocationsEnum, GameObject> roomLocationFireParentDictionary = 
+        new Dictionary<RoomLocationsEnum, GameObject>();
+
     private void Awake()
     {
         _initialFireSpawnDelay = 5.0f;
         _fireSpawnDelay = 15.0f;
         
         // set current room enum
-        _currentFireLocations = currentRoom.GetComponent<FireLocations>();
-        _currentRoomLocationEnum = _currentFireLocations.roomLocationsEnum;
-        _currentFireLocationPositions = _currentFireLocations.fireLocationPositions;
+        _currentRoomController = currentRoom.GetComponent<RoomController>();
+        _currentRoomLocationEnum = _currentRoomController.roomLocationsEnum;
+        _currentFireLocationPositions = _currentRoomController.fireLocationPositions;
 
         // initialize list
-        _fireLocationPositionsRandomList = new List<Vector3>();
-        _fireLocationPositionsRandomList.AddRange(_currentFireLocationPositions);
-        _fireLocationPositionsRandomList = _fireLocationPositionsRandomList.Shuffle();
+        _roomFireLocationPositionsRandomList = new List<RoomFireEntry>();
+        UpdateFireLocations(_currentRoomController);
+        
+        // _roomFireLocationPositionsRandomList
+        //     .AddRange(_currentRoomController.GetRoomFireLocationsList());
+        // _roomFireLocationPositionsRandomList = _roomFireLocationPositionsRandomList.Shuffle();
     }
     
     private void OnEnable()
@@ -60,8 +70,8 @@ public class FireSpawn : MonoBehaviour
     void Start() 
     {
         // set initial room controller
-        _currentRoomController = currentRoom.GetComponent<RoomController>();
-        fireParent = _currentRoomController.fireParent;
+        _currentRoomControllerOld = currentRoom.GetComponent<RoomControllerOld>();
+        fireParent = _currentRoomControllerOld.fireParent;
         
         // need to initially calculate num of fires
         fireManager.RecalculateNumActiveFires();
@@ -79,38 +89,29 @@ public class FireSpawn : MonoBehaviour
     private void SpawnFire()
     {
         // FIXME: fireParent can change depending on key selected in dictionary...also shuffle for dictionary
-        
-        // spawn in the fire parent specified by the current room controller
-        // test spawn fire
-        Vector3 position = new Vector3(0, 0, 0);
-        // GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, currentRoom.transform);
-        GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, fireParent.transform);
-        
         // can't put it under current room to make math easier, need to keep track of all current fires...
         // Edit: split calculation into initial fires and spawned fires
         
-        // get relative position of current room to fire parent
-        // Vector3 fireParentPosition = fireParent.transform.position;
-        // Vector3 currentRoomPosition = currentRoom.transform.position;
-        // Vector3 relativePositionFireParentToCurrentRoom = currentRoomPosition - fireParentPosition;
+        // FIXME: choose a random location in fire locations
+        RoomFireEntry randomRoomFireEntry = _roomFireLocationPositionsRandomList[0];
+        Vector3 randomFireLocationPosition = randomRoomFireEntry.FireLocationPosition;
+        GameObject randomFireParent = randomRoomFireEntry.RoomFireParent;
         
+        // reshuffle again (don't remove from list)
+        _roomFireLocationPositionsRandomList = _roomFireLocationPositionsRandomList.Shuffle();
+        
+        // spawn in the fire parent specified by the current room controller
+        // test spawn fire
+        // update with random room fire parent (fireParent.transform)
+        Vector3 position = new Vector3(0, 0, 0);
+        GameObject fire = Instantiate(firePrefab, position, Quaternion.identity, randomFireParent.transform);
+
         // FIXME: already added height to each of the containers...
         // need to add a little height for the y component (smoke doesn't rise otherwise)
-        
-        // FIXME: choose a random location in fire locations
-        Vector3 randomFireLocationPosition = _fireLocationPositionsRandomList[0];
-        // reshuffle again (don't remove from list)
-        _fireLocationPositionsRandomList = _fireLocationPositionsRandomList.Shuffle();
-        
-        // fire.transform.localPosition = new Vector3(0, 0, 0);
-        // Vector3 displacementVector = new Vector3(0, 0, -1);
-        
+
         fire.transform.localPosition = randomFireLocationPosition;
-        
-        // fire.transform.localPosition = relativePositionFireParentToCurrentRoom + displacementVector;
-        
+
         Debug.Log("Spawned fire location: " + fire.transform.localPosition);
-        // fire.transform.position = currentRoom.transform.position;
 
         // put constant first for searching below...initial fires
         fire.name = Constants.SpawnedFireObjectName + currentRoom.name;
@@ -167,7 +168,18 @@ public class FireSpawn : MonoBehaviour
         currentRoom = newRoom;
         
         // update current room controller
-        _currentRoomController = currentRoom.GetComponent<RoomController>();
-        fireParent = _currentRoomController.fireParent;
+        _currentRoomControllerOld = currentRoom.GetComponent<RoomControllerOld>();
+        
+        
+        fireParent = _currentRoomControllerOld.fireParent;
+        
+        // update list of fire positions and list of unlocked rooms
+    }
+
+    private void UpdateFireLocations(RoomController roomController)
+    {
+        _roomFireLocationPositionsRandomList
+            .AddRange(roomController.GetRoomFireLocationsList());
+        _roomFireLocationPositionsRandomList = _roomFireLocationPositionsRandomList.Shuffle();
     }
 }

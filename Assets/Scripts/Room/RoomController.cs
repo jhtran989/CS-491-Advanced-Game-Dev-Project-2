@@ -1,20 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Room;
 using UnityEngine;
+using UnityEngine.Serialization;
+using static RoomLocations;
 
-public class RoomController : MonoBehaviour
+public class RoomController: MonoBehaviour
 {
-    public GameObject fireParent;
+    public RoomLocationsEnum roomLocationsEnum;
     
-    // Start is called before the first frame update
-    void Start()
+    [FormerlySerializedAs("fireParent")] 
+    public GameObject roomFireParent;
+    
+    // relative to corresponding FIRE CONTAINER local positions
+    [FormerlySerializedAs("fireLocations")] 
+    public Vector3[] fireLocationPositions;
+
+    private List<RoomFireEntry> roomFireLocationsList;
+
+    private RoomLocationsEnum a = RoomLocationsEnum.BlueRoom;
+
+    private void Awake()
     {
-        
+        roomFireLocationsList = new List<RoomFireEntry>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public List<RoomFireEntry> GetRoomFireLocationsList()
     {
-        
+        if (!roomFireLocationsList.Any())
+        {
+            foreach (var fireLocationPosition in fireLocationPositions)
+            {
+                roomFireLocationsList.Add(
+                    new RoomFireEntry(roomLocationsEnum, roomFireParent, fireLocationPosition));
+            }
+        }
+
+        return roomFireLocationsList;
     }
 }

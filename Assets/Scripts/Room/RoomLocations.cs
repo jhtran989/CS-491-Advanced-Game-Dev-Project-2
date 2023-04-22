@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomLocations : MonoBehaviour
+public class RoomLocations
 {
     public enum RoomLocationsEnum
     {
@@ -11,17 +11,5 @@ public class RoomLocations : MonoBehaviour
         OrangeRoom,
         BlueRoom,
         WhiteRoom
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
