@@ -6,7 +6,8 @@
 
 ## TODO
 
-- door check on BOTH sides (or condition)
+- door check on BOTH sides (or condition) -- have array and check boundaries (keep list of UNLOCKED rooms)
+- fire collision trigger check
 
 ## Important Notes
 
