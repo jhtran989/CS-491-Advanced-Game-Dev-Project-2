@@ -22,7 +22,8 @@ public class DropInteractable : MonoBehaviour
     void Update()
     {
         // FIXME: race condition when both checking for interaction and drop...easiest way is to bind to different keys
-        if (Input.GetKeyDown(Constants.DropInteractableKey))
+        // TODO: rebind to right mouse click
+        if (Input.GetMouseButton(1))
         {
             if (fireExtinguisherInteractableComponents.currentInteractableRigidbody != null)
             {

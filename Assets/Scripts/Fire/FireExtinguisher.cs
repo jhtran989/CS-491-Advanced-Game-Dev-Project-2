@@ -148,8 +148,9 @@ public class FireExtinguisher : MonoBehaviour
         // TODO: only activate when holding fire extinguisher
         if (fireExtinguisherInteractableComponents.isHoldingFireExtinguisher)
         {
+            // TODO: rebind to left mouse button
             // for Right mouse button (pressed down)
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0))
             {
                 EnableWater();
             }

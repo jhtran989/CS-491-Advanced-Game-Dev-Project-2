@@ -29,7 +29,8 @@
     /*************************************************/
     
     // Keypresses (controls)
-    public const string OpenDoorKey = "f";
+    // TODO: change open door from F to spacebar
+    public const string OpenDoorKey = "space";
     public const string InteractableKey = "e";
     public const string DropInteractableKey = "r";
     
