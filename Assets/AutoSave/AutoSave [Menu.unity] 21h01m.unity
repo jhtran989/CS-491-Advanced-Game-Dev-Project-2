@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427, y: -117}
+  m_AnchoredPosition: {x: -439, y: -117}
   m_SizeDelta: {x: 278.4347, y: 77.6022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315741736
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -222,8 +222,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 5e1aeffc6effd374084b4b64785d5b0c, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 5e1aeffc6effd374084b4b64785d5b0c, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 5e1aeffc6effd374084b4b64785d5b0c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c8d83d678a8900142a02fb304e350887, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c8d83d678a8900142a02fb304e350887, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -353,7 +353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427, y: 28}
+  m_AnchoredPosition: {x: -439, y: 28}
   m_SizeDelta: {x: 278.4347, y: 77.6022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172231712
@@ -386,8 +386,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 86b752537dfd7af4fa278c4e33208425, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 86b752537dfd7af4fa278c4e33208425, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 86b752537dfd7af4fa278c4e33208425, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c8d83d678a8900142a02fb304e350887, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c8d83d678a8900142a02fb304e350887, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
