@@ -86,6 +86,9 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
         UpdateInteractableVelocity();
 
         fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = true;
+        
+        // show the UI
+        fireExtinguisherInteractableComponents.PlayerInteractUIIconFireExtinguisher.Show();
     }
 
     private void UpdateInteractableVelocity()

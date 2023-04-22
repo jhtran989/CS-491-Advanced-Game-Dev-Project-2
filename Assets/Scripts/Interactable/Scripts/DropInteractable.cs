@@ -39,6 +39,9 @@ public class DropInteractable : MonoBehaviour
             }
             
             fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
+            
+            // hide the UI
+            fireExtinguisherInteractableComponents.PlayerInteractUIIconFireExtinguisher.Hide();
         }
 
         // if (interactableComponents.currentInteractableRigidbody)

@@ -15,6 +15,15 @@ public class FireExtinguisherInteractableComponents : MonoBehaviour
     // FIXME: only for fire extinguisher...
     public bool isHoldingFireExtinguisher;
 
+    private PlayerInteractUIIconFireExtinguisher _playerInteractUIIconFireExtinguisher;
+
+    public PlayerInteractUIIconFireExtinguisher PlayerInteractUIIconFireExtinguisher => _playerInteractUIIconFireExtinguisher;
+
+    private void Awake()
+    {
+        _playerInteractUIIconFireExtinguisher = GetComponent<PlayerInteractUIIconFireExtinguisher>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
