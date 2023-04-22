@@ -126,7 +126,9 @@ public class Fire : MonoBehaviour
         // enabled = false;
         gameObject.SetActive(false);
         
+        // TODO: fix with room manager
         // update num fires
-        FireManager.updateNumFires?.Invoke();
+        // FireManager.updateNumFires?.Invoke();
+        RoomManager.updateNumFires?.Invoke();
     }
 }

@@ -19,7 +19,7 @@ public class FireManager : MonoBehaviour
     private void Awake()
     {
         _fireParentTransform = fireParent.transform;
-        Debug.Log("Num fires: " + GetNumActiveFires());
+        // Debug.Log("Num fires: " + GetNumActiveFires());
     }
 
     private void OnEnable()
@@ -66,6 +66,4 @@ public class FireManager : MonoBehaviour
         
         Debug.Log("num total fires: " + GetNumActiveFires());
     }
-
-    
 }

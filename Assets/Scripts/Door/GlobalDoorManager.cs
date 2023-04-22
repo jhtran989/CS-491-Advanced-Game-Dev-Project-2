@@ -7,8 +7,9 @@ public class GlobalDoorManager : MonoBehaviour
     [Space, Header("HUD")] 
     public HUDManager hudManager;
     
-    [Space, Header("Fire")] 
+    [Space, Header("Managers")] 
     public FireManager fireManager;
+    public RoomManager roomManager;
 
     public Oxygen oxygen;
     
@@ -29,7 +30,9 @@ public class GlobalDoorManager : MonoBehaviour
         // set fire present to true for updated oxygen...
         oxygen.firePresent = true;
         
+        // TODO: fix with room manager
         // update number of fires
-        fireManager.RecalculateNumActiveFires();
+        // fireManager.RecalculateNumActiveFires();
+        roomManager.RecalculateTotalNumActiveFires();
     }
 }

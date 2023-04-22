@@ -20,11 +20,13 @@ public class RoomController: MonoBehaviour
 
     private List<RoomFireEntry> roomFireLocationsList;
 
-    private RoomLocationsEnum a = RoomLocationsEnum.BlueRoom;
+    private int _numInitialFires;
+    private int _numSpawnFires;
 
     private void Awake()
     {
         roomFireLocationsList = new List<RoomFireEntry>();
+        // Debug.Log("Num fires: " + GetNumActiveFires());
     }
 
     public List<RoomFireEntry> GetRoomFireLocationsList()
@@ -39,5 +41,49 @@ public class RoomController: MonoBehaviour
         }
 
         return roomFireLocationsList;
+    }
+    
+    public int GetNumInitialFires()
+    {
+        // FIXME: didn't use c in name check
+        
+        // var currentRoomTransform = currentRoom.transform;
+        var fireParentTransform = roomFireParent.transform;
+        
+        // if it is NOT a spawned fire
+        return fireParentTransform.GetTransformCountPredicate(c => 
+            !c.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+    }
+
+    public int GetNumSpawnFires()
+    {
+        // return currentRoom.transform.GetChildCountActive();
+        // var currentRoomTransform = currentRoom.transform;
+        var fireParentTransform = roomFireParent.transform;
+        
+        // if it is a spawned fire
+        return fireParentTransform.GetTransformCountPredicate(c => 
+            c.name.StartsWith(Constants.SpawnedFireObjectName) && c.gameObject.activeSelf);
+    }
+    
+    public int GetNumActiveFires()
+    {
+        return _numInitialFires + _numSpawnFires;
+    }
+    
+    public void RecalculateNumActiveFires()
+    {
+        // return both initial fires and spawned fires
+        // need to check if null
+        
+        // numInitialFires = 0;
+        // numInitialFires = _fireParentTransform.GetChildCountActive();
+        
+        _numInitialFires = GetNumInitialFires();
+        _numSpawnFires = GetNumSpawnFires();
+        
+        // Debug.Log("num initial fires: " + _numInitialFires);
+        // Debug.Log("num spawn fires: " + _numSpawnFires);
+        // Debug.Log("num total fires: " + GetNumActiveFires());
     }
 }

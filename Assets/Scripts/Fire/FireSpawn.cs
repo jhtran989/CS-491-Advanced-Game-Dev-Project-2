@@ -24,6 +24,7 @@ public class FireSpawn : MonoBehaviour
     private List<RoomFireEntry> _roomFireLocationPositionsRandomList;
 
     public FireManager fireManager;
+    public RoomManager roomManager;
 
     private float _startTime;
     private float _initialFireSpawnDelay;
@@ -59,10 +60,11 @@ public class FireSpawn : MonoBehaviour
     void Start() 
     {
         // set initial room controller and current parameters
-        UpdateFireSpawn();
+        UpdateFireSpawnParameters();
 
         // need to initially calculate num of fires
-        fireManager.RecalculateNumActiveFires();
+        // fireManager.RecalculateNumActiveFires();
+        roomManager.RecalculateTotalNumActiveFires();
         
         // start the coroutine to spawn fires in current room every few seconds
         InvokeRepeating("TrySpawnFire", _initialFireSpawnDelay, _fireSpawnDelay);
@@ -107,13 +109,18 @@ public class FireSpawn : MonoBehaviour
         fire.name = Constants.SpawnedFireObjectName + currentRoom.name;
         currentSpawnedFire = fire;
         
-        fireManager.RecalculateNumActiveFires();
-        Debug.Log("Num fires after spawn: " + fireManager.GetNumActiveFires());
+        // TODO: fix with room manager
+        // fireManager.RecalculateNumActiveFires();
+        // Debug.Log("Num fires after spawn: " + fireManager.GetNumActiveFires());
+        
+        roomManager.RecalculateTotalNumActiveFires();
     }
 
     private void TrySpawnFire()
     {
-        fireManager.RecalculateNumActiveFires();
+        // TODO: fix with room manager
+        // fireManager.RecalculateNumActiveFires();
+        roomManager.RecalculateTotalNumActiveFires();
         
         // change to just number of spawned fires (at most two fires)
         // fireManager.GetNumActiveFires() == 0
@@ -154,15 +161,13 @@ public class FireSpawn : MonoBehaviour
     private void UpdateCurrentRoom(GameObject newRoom)
     {
         currentRoom = newRoom;
+        roomManager.CurrentRoomObject = newRoom;
 
         // update fire spawn stuff (controller and fire locations)
-        UpdateFireSpawn();
-
-        // TODO: update list of unlocked rooms
-        
+        UpdateFireSpawnParameters();
     }
 
-    private void UpdateFireSpawn()
+    private void UpdateFireSpawnParameters()
     {
         UpdateCurrentRoomControllerParameters();
         UpdateFireLocations(_currentRoomController);
@@ -174,6 +179,9 @@ public class FireSpawn : MonoBehaviour
         _currentRoomLocationEnum = _currentRoomController.roomLocationsEnum;
         _roomFireParent = _currentRoomController.roomFireParent;
         _currentFireLocationPositions = _currentRoomController.fireLocationPositions;
+        
+        // update list of unlocked rooms
+        roomManager.AddRoom(_currentRoomController);
     }
 
     private void UpdateFireLocations(RoomController roomController)

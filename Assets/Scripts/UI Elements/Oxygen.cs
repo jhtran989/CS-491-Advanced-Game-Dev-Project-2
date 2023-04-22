@@ -22,8 +22,11 @@ public class Oxygen : MonoBehaviour
     public CameraShake cameraShake;
     private float _oxygenDrainTimeDelay;
 
+    [Space, Header("Managers")]
     public FireManager fireManager;
+    public RoomManager roomManager;
 
+    [Space, Header("Oxygen Stuff")]
     [SerializeField]
     private float speedStationaryThreshold = 0.5f;
 
@@ -219,8 +222,9 @@ public class Oxygen : MonoBehaviour
             _isIdle = true;
         }
         
+        // TODO: get from room manager instead (fireManager.GetNumActiveFires() > 0)
         // set fire present depending on how many fires are present (greater than 0)
-        if (fireManager.GetNumActiveFires() > 0)
+        if (roomManager.GetTotalNumFies() > 0)
         {
             firePresent = true;
         }
