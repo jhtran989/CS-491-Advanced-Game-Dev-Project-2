@@ -42,6 +42,8 @@ public class Oxygen : MonoBehaviour
     
     [SerializeField]
     private float currentOxygenLevel;
+
+    private float _currentOxygenLevelPercent;
     
     // oxygen rate stuff
     public float oxygenRateNormal;
@@ -76,7 +78,10 @@ public class Oxygen : MonoBehaviour
         oxygenDrainPerSecond = 1.0f;
         lerpSpeedMultiplier = 100.0f;
         
+        // update current oxygen levels
         currentOxygenLevel = maxOxygenLevel;
+        UpdateCurrentOxygenLevelPercent();
+        
         _startTime = Time.time;
         _totalTime = maxOxygenLevel / oxygenDrainPerSecond;
 
@@ -139,6 +144,9 @@ public class Oxygen : MonoBehaviour
                 currentOxygenLevel -= currentOxygenRate * Time.deltaTime;
 
                 lerpSpeed = lerpSpeedMultiplier * Time.deltaTime;
+                
+                // need to update current oxygen level
+                UpdateCurrentOxygenLevelPercent();
         
                 OxygenMeterFiller();
                 ColorChanger();
@@ -146,6 +154,11 @@ public class Oxygen : MonoBehaviour
 
             UpdateOxygenIndicator();
         }
+    }
+
+    private void UpdateCurrentOxygenLevelPercent()
+    {
+        _currentOxygenLevelPercent = (currentOxygenLevel / maxOxygenLevel) * 100.0f;
     }
 
     private void OxygenMeterFiller()
@@ -161,7 +174,8 @@ public class Oxygen : MonoBehaviour
         
         // oxygenText.SetText(Math.Ceiling(oxygenMeter.fillAmount * maxOxygenLevel).ToString());
         
-        oxygenText.SetText(Math.Ceiling(currentOxygenLevel).ToString()+"%");
+        // FIXME: need to use percent and not level (currentOxygenLevel)
+        oxygenText.SetText(Math.Ceiling(_currentOxygenLevelPercent).ToString()+"%");
     }
 
     private void ColorChanger()

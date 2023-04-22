@@ -10,7 +10,8 @@
 - [x] have array and check boundaries (keep list of UNLOCKED rooms) -- CENTER ROOMS
 - [x] true random fire spawning (queue and shuffle)
 - [x] fire collision (ignore player)
-- [x] update count of fires present (ALL unlocked rooms)
+- [x] update count of fires present (ALL unlocked rooms)\
+- [x] update UI buttons (when they are available to use)
 
 ## Important Notes
 

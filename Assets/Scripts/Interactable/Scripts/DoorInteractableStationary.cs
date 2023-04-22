@@ -71,10 +71,10 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                         
                 // TODO: need to make corresponding fire visible and set fire to present
                 _doorController.nextDoorFire.gameObject.SetActive(true);
-                        
+                
                 // set fire present to true for updated oxygen...
                 _globalDoorManager.SetFirePresent();
-                        
+
                 // update next room
                 FireSpawn.updateCurrentRoom?.Invoke(_doorController.nextDoorObject);
                         
