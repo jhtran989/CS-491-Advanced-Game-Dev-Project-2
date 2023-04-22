@@ -6,8 +6,10 @@
 
 ## TODO
 
-- door check on BOTH sides (or condition) -- have array and check boundaries (keep list of UNLOCKED rooms)
-- fire collision trigger check
+- [ ] door check on BOTH sides (or condition)
+- [ ] have array and check boundaries (keep list of UNLOCKED rooms) 
+- [ ] true random fire spawning (queue and shuffle)
+- [x] fire collision (ignore player)
 
 ## Important Notes
 

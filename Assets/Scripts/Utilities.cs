@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = System.Random;
 
 public static class Utilities
 {
     public static readonly string EmptyString = "";
+    private static Random rng = new Random();
     
     public static IReadOnlyList<T> GetValues<T>()
     {
@@ -46,6 +48,11 @@ public static class Utilities
     public static bool IsOfType<T>(T obj, Type type)
     {
         return type.IsInstanceOfType(obj);
+    }
+
+    public static List<T> Shuffle<T>(this List<T> list)
+    {
+        return list.OrderBy(a => rng.Next()).ToList();
     }
 }
  

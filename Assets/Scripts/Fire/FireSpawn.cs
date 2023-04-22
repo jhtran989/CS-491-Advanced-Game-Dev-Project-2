@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static RoomLocations;
 
 public class FireSpawn : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class FireSpawn : MonoBehaviour
     private GameObject currentSpawnedFire;
 
     private RoomController _currentRoomController;
+
+    private FireLocations _currentFireLocations;
+    private RoomLocationsEnum _currentRoomLocationEnum;
+    private Vector3[] _currentFireLocationPositions;
+
+    private List<Vector3> _fireLocationPositionsRandomList;
 
     public FireManager fireManager;
 
@@ -26,6 +34,16 @@ public class FireSpawn : MonoBehaviour
     {
         _initialFireSpawnDelay = 5.0f;
         _fireSpawnDelay = 15.0f;
+        
+        // set current room enum
+        _currentFireLocations = currentRoom.GetComponent<FireLocations>();
+        _currentRoomLocationEnum = _currentFireLocations.roomLocationsEnum;
+        _currentFireLocationPositions = _currentFireLocations.fireLocationPositions;
+
+        // initialize list
+        _fireLocationPositionsRandomList = new List<Vector3>();
+        _fireLocationPositionsRandomList.AddRange(_currentFireLocationPositions);
+        _fireLocationPositionsRandomList = _fireLocationPositionsRandomList.Shuffle();
     }
     
     private void OnEnable()
@@ -60,6 +78,8 @@ public class FireSpawn : MonoBehaviour
 
     private void SpawnFire()
     {
+        // FIXME: fireParent can change depending on key selected in dictionary...also shuffle for dictionary
+        
         // spawn in the fire parent specified by the current room controller
         // test spawn fire
         Vector3 position = new Vector3(0, 0, 0);
@@ -76,8 +96,17 @@ public class FireSpawn : MonoBehaviour
         
         // FIXME: already added height to each of the containers...
         // need to add a little height for the y component (smoke doesn't rise otherwise)
-        fire.transform.localPosition = new Vector3(0, 0, 0);
+        
+        // FIXME: choose a random location in fire locations
+        Vector3 randomFireLocationPosition = _fireLocationPositionsRandomList[0];
+        // reshuffle again (don't remove from list)
+        _fireLocationPositionsRandomList = _fireLocationPositionsRandomList.Shuffle();
+        
+        // fire.transform.localPosition = new Vector3(0, 0, 0);
         // Vector3 displacementVector = new Vector3(0, 0, -1);
+        
+        fire.transform.localPosition = randomFireLocationPosition;
+        
         // fire.transform.localPosition = relativePositionFireParentToCurrentRoom + displacementVector;
         
         Debug.Log("Spawned fire location: " + fire.transform.localPosition);
