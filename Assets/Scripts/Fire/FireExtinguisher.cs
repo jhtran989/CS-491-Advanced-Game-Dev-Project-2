@@ -100,7 +100,7 @@ public class FireExtinguisher : MonoBehaviour
         // Debug.Log("Current Fire: " + _currentFire);
         // Debug.Log("Input fire: " + fire);
         
-        if (!fireExtinguished)
+        if (!fireExtinguished) 
         {
             // need to use Time.fixedDeltaTime instead of Time.deltaTime for physics
             fireExtinguished = fire.TryExtinguish(extinguishedPerSecond * Time.fixedDeltaTime);
