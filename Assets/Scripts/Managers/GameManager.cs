@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject escapePodDoor, escapeTrigger;
-    private static string[] playerCodes = new string[4]; // 0: pod, 1: nav, 2: dock, 3: launch
+    private static string[] playerCodes = {"", "", "", ""}; // 0: pod, 1: nav, 2: dock, 3: launch
     private static bool oxygenDepleted = false;
 
     private void Awake() {

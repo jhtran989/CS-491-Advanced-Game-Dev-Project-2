@@ -6,22 +6,25 @@ using TMPro;
 
 public class EpilogueManager : MonoBehaviour
 {
-    public static TextMeshProUGUI missionReportTMP, codeLogTMP;
-    public GameManager gameManager;
-    RawImage epilogueImage;
+    public TextMeshProUGUI missionReportTMP;
+    public TextMeshProUGUI codeLogTMP;
+    private GameManager gameManager;
+    public RawImage epilogueImage;
     public Texture[] epilogueImages;
     private string missionReport = "";
     private string codeLog = "";
 
     private void Start() {
-        missionReportTMP = GameObject.Find("MissionReport").GetComponent<TextMeshProUGUI>();
-        codeLogTMP = GameObject.Find("CodeLog").GetComponent<TextMeshProUGUI>();
+        gameManager = GameManager.instance;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;  
         GenerateMissionReport();
     }
 
     public void GenerateMissionReport() {
         string[] playerCodes = gameManager.GetCodes();
-        bool oxygenDepleted = gameManager.IsOxygenDepleted();
+        bool oxygenDepleted = gameManager.IsOxygenDepleted();   
+
         // 0: pod, 1: nav, 2: dock
         foreach (string code in playerCodes) {
             if (code == "") codeLog += "----<br>";
@@ -75,7 +78,7 @@ public class EpilogueManager : MonoBehaviour
             }
         }
         missionReportTMP.SetText(missionReport);     
-        codeLogTMP.SetText(codeLog);   
+        codeLogTMP.SetText(codeLog);
         gameManager.clearRunData();
     }
 }
