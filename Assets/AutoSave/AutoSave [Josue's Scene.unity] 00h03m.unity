@@ -1416,36 +1416,8 @@ PrefabInstance:
       value: Space station chair Hallway
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151388028547126963, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: 6.43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6d1c0769782f6e4b8207db28313d755, type: 3}
@@ -3775,7 +3747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147558545}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 71.98, y: 0, z: 4}
+  m_LocalPosition: {x: 72.18, y: 0, z: 3.94}
   m_LocalScale: {x: 1, y: 1, z: 1.5166}
   m_ConstrainProportionsScale: 0
   m_Children: []
