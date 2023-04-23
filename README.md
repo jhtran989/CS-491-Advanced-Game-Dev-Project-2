@@ -6,7 +6,7 @@
 
 ## TODO
 
-- [ ] door check on BOTH sides (or condition)
+- [x] door check on BOTH sides (or condition)
 - [x] have array and check boundaries (keep list of UNLOCKED rooms) -- CENTER ROOMS
 - [x] true random fire spawning (queue and shuffle)
 - [x] fire collision (ignore player)
@@ -71,5 +71,33 @@ https://github.com/cwgtech/UICalc
 ### Interactable Code (`SphereOverlap` with abstracted `IInterface`)
 
 https://www.youtube.com/watch?v=LdoImzaY6M4
+
+### Sound Credits
+
+*Copied over from the `README.txt` under the `Assets/Sound` folder made by Alex
+
+***ALL SOUNDS ARE USED IN ACCORDANCE WITH THE LICENSE THEY WERE PUBLISHED UNDER, ALL CREDIT FOR SOUNDS REMAINS WITH 
+THE ORIGINAL AUTHORS***
+
+#### Sound cues
+
+Crackling of fire (when the player is close to it) - Fire Sound Efftect - Sound Effect by MaxHammarbäck - https://pixabay.com/sound-effects/id-21991/
+
+Fire being put out with water - extinguishing fire - Sound Effect by soundslikewillem - https://freesound.org/people/soundslikewillem/sounds/399548/
+
+Fire extinguisher - ONOMATOPOEIC sounds by human » 01674 fire extenguisher.wav - Sound Effect by Robinhood76 - https://freesound.org/people/Robinhood76/sounds/96176/#
+
+Puzzle solved (doesn’t have to be a negative sound but some subtle difference between the two)
+correctly - Correct-2 - Sound Effect by bwg2020 - https://pixabay.com/sound-effects/id-46134/
+incorrectly - System error notice - Sound Effect by UNIVERSFIELD - https://pixabay.com/sound-effects/id-132470/
+
+low oxygen - system trouble - Sound Effect by seewalker - https://pixabay.com/sound-effects/id-32321/
+
+Escape pod launch - escape_pod - Sound Effect by Alexander Atencio using sounds by bolkmar - https://freesound.org/people/bolkmar/sounds/434136/, MGA95 - https://freesound.org/people/MGA95/sounds/555745/, vartioh - https://freesound.org/people/vartioh/sounds/338837/
+
+Space Ambience - spaceship ambience with effects - Sound Effect by Placidplace - https://pixabay.com/sound-effects/id-21420/
+
+Main Menu - spacesound - Sound Effect by SamuelFrancisJohnson - https://pixabay.com/sound-effects/id-7547/
+
 
 

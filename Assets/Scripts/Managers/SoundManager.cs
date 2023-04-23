@@ -1,0 +1,102 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum SoundTypes
+{
+    CracklingFire,
+    B
+}
+
+public class SoundManager : MonoBehaviour
+{
+    public static SoundManager instance;
+    
+    // audio clips
+    private static AudioClip _cracklingFire;
+    private static AudioClip _firePutOutWater;
+    private static AudioClip _puzzleSolvedCorrect;
+    private static AudioClip _puzzleSolvedIncorrect;
+    private static AudioClip _lowOxygen;
+    private static AudioClip _escapePodLaunch;
+    
+    private static AudioClip _spaceAmbienceBackground;
+
+    private static AudioClip _mainMenuTheme;
+    
+    private AudioSource _audioSource;
+    
+    // TODO: use _audioSource.PlayOneShot(<AudioClip>) for sound effects (one time effects -- can play multiple at once...)
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+
+        // get audio clips
+        _cracklingFire = Resources
+            .Load<AudioClip>("Sounds/fire-sound-efftect-21991");
+        _firePutOutWater = Resources
+            .Load<AudioClip>("Sounds/399548__soundslikewillem__extinguishing-fire");
+        _puzzleSolvedCorrect = Resources
+            .Load<AudioClip>("Sounds/correct-2-46134");
+        _puzzleSolvedIncorrect = Resources
+            .Load<AudioClip>("Sounds/system-error-notice-132470");
+        _lowOxygen = Resources
+            .Load<AudioClip>("Sounds/system_trouble-32321");
+        _escapePodLaunch = Resources
+            .Load<AudioClip>("Sounds/EscapePod/escape_pod");
+        _spaceAmbienceBackground = Resources
+            .Load<AudioClip>("Sounds/spaceship-ambience-with-effects-21420");
+        
+        _mainMenuTheme = Resources
+            .Load<AudioClip>("Sounds/spacesound-7547");
+        
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        UpdateAndPlaySound();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    
+    private bool IsSceneLoaded(String sceneName)
+    {
+        return SceneManager.GetSceneByName(sceneName).isLoaded;
+    }
+
+    private void UpdateAndPlaySound()
+    {
+        if (IsSceneLoaded(Constants.MainMenuSceneName))
+        {
+            // _audioSource.PlayOneShot(_mainMenuTheme);
+            _audioSource.clip = _mainMenuTheme;
+            _audioSource.loop = true;
+        }
+        // when the game starts up
+        else
+        {
+            // _audioSource.PlayOneShot(_spaceAmbienceBackground);
+            _audioSource.clip = _spaceAmbienceBackground;
+            _audioSource.loop = true;
+        }
+
+        _audioSource.loop = true;
+        _audioSource.Play();
+
+        // FIXME:
+        // _audioSource.PlayOneShot(_firePutOutWater);
+    }
+}
