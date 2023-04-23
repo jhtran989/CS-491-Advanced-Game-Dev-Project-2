@@ -154,6 +154,13 @@ public class Oxygen : MonoBehaviour
 
             UpdateOxygenIndicator();
         }
+
+        if (currentOxygenLevel <= 0) {
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.SetOxygenDepletion();
+            gameManager.EndGame();
+        }
+
     }
 
     private void UpdateCurrentOxygenLevelPercent()
