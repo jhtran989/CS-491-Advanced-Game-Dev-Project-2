@@ -100,7 +100,7 @@ public class RoomManager : MonoBehaviour
 
     private void PrintAllFireStats()
     {
-        Debug.Log("-----------------------------------------------");
+        // Debug.Log("-----------------------------------------------");
         
         foreach (var unlockedRoomController in _unlockedRoomControllersList)
         {

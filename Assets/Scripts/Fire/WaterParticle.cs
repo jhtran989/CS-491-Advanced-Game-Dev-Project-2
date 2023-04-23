@@ -71,15 +71,15 @@ public class WaterParticle : MonoBehaviour
         
         // layer already specified in Inspector
         var fire = other.GetComponent<Fire>();
-
+    
         // Debug.Log("Water collided with fire...");
         // Debug.Log("Current fire: " + fire);
-
+    
         WaterFireInteract?.Invoke(fire);
         
         _timeLastWatered = Time.time;
     }
-    
+
     private bool CheckSteamStopDelay()
     {
         // Debug.Log("current time: " + Time.time);

@@ -103,11 +103,16 @@ public class RoomController: MonoBehaviour
 
     public void UpdateBoundaryDoorReachedList()
     {
+        Debug.Log("-----------------------------------------------");
+        Debug.Log("boundary room check: " + this.roomLocationsEnum);
+        
         foreach (var boundaryDoorController in boundaryDoorControllersList)
         {
             // feed itself into the update
             boundaryDoorController.UpdateDoorReached(this);
         }
+        
+        Debug.Log("-----------------------------------------------");
     }
 
     public void UpdateInitialUnlock()

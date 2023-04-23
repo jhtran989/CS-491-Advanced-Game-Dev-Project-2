@@ -60,6 +60,7 @@ namespace Player
             if (other.CompareTag(Constants.FireTag))
             {
                 UpdateOxygenRateFire?.Invoke();
+                // other.isTrigger = true;
             }
         }
         
@@ -68,6 +69,7 @@ namespace Player
             if (other.CompareTag(Constants.FireTag))
             {
                 UpdateOxygenRateExit?.Invoke();
+                // other.isTrigger = false;
             }
         }
 
