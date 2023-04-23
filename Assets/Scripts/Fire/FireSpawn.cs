@@ -126,6 +126,10 @@ public class FireSpawn : MonoBehaviour
         // Debug.Log("Num fires after spawn: " + fireManager.GetNumActiveFires());
         
         roomManager.RecalculateTotalNumActiveFires();
+        
+        // change the color of the lights to red
+        RoomController randomRoomController = randomRoomFireEntry.RoomController;
+        randomRoomController.UpdateRedLights();
     }
 
     private void TrySpawnFire()

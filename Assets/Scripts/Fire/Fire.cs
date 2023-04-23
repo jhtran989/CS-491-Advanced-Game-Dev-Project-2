@@ -130,5 +130,8 @@ public class Fire : MonoBehaviour
         // update num fires
         // FireManager.updateNumFires?.Invoke();
         RoomManager.updateNumFires?.Invoke();
+        
+        // change the lights back to normal if there are no fires left
+        RoomController.updateNormalLight?.Invoke();
     }
 }

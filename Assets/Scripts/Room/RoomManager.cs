@@ -58,6 +58,10 @@ public class RoomManager : MonoBehaviour
         if (!_unlockedRoomControllersList.Contains(roomController))
         {
             _unlockedRoomControllersList.Add(roomController);
+            
+            // FIXME: too coupled...check elsewhere (in DoorInteractableStationary)
+            // change the lights to red (initial fire)
+            roomController.UpdateRedLights();
         }
     }
 

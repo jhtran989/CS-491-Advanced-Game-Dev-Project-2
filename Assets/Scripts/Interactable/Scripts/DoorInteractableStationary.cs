@@ -72,7 +72,11 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                 // TODO: check the NEXT ROOM if it was already unlocked
                 // update next room
                 var nextRoomObject = _doorController.nextRoomObject;
-                var nextRoomController = _doorController.nextRoomObject.GetComponent<RoomController>();
+                var nextRoomController = 
+                    _doorController.nextRoomObject.GetComponent<RoomController>();
+                
+                // need to recalculate fires as well BEFORE fire spawning (and updating room)
+                nextRoomController.RecalculateNumActiveFires();
                 
                 FireSpawn.updateCurrentRoom?.Invoke(nextRoomObject);
                 
@@ -90,6 +94,9 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                     
                     // TODO: need to update initial unlock right after
                     nextRoomController.UpdateInitialUnlock();
+                    
+                    // change the lights to red (initial fire when unlocking room)
+                    nextRoomController.UpdateRedLights();
                 }
             }
         }

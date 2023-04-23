@@ -69,6 +69,14 @@ public class Oxygen : MonoBehaviour
     public bool firePresent;
     
     private bool _isIdle;
+    
+    /****************/
+    
+    // Colors
+    private Color _initialColor;
+    private Color _finalColor;
+    
+    /****************/
 
 
     // FIXME: from Start()
@@ -98,6 +106,19 @@ public class Oxygen : MonoBehaviour
         _isIdle = true;
 
         _startTime = Time.time;
+        
+        // set colors
+        // blue
+        if (!ColorUtility.TryParseHtmlString("#0046FF", out _initialColor))
+        {
+            Debug.LogError("Invalid color for INITIAL...");
+        }
+        
+        // red
+        if (!ColorUtility.TryParseHtmlString("#C61F5F", out _finalColor))
+        {
+            Debug.LogError("Invalid color for FINAL...");
+        }
     }
 
     private void OnEnable()
@@ -187,7 +208,11 @@ public class Oxygen : MonoBehaviour
 
     private void ColorChanger()
     {
-        Color oxygenColor = Color.Lerp(Color.red, Color.blue, currentOxygenLevel / maxOxygenLevel);
+        // TODO: switch to custom Color32 (uses 0-255 values) or HEX (html) above in Awake()
+        // Color oxygenColor = Color.Lerp(Color.red, Color.blue, 
+        //     currentOxygenLevel / maxOxygenLevel);
+        Color oxygenColor = Color.Lerp(_finalColor, _initialColor, 
+            currentOxygenLevel / maxOxygenLevel);
 
         oxygenMeter.color = oxygenColor;
         //oxygenText.color = oxygenColor;

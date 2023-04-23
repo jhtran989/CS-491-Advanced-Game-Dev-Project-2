@@ -13,7 +13,19 @@ public class RoomController: MonoBehaviour
     
     [FormerlySerializedAs("fireParent")] 
     public GameObject roomFireParent;
+
+    public GameObject roomLightParent;
+    private Light[] _roomLightChildrenList;
+    private Color _normalRoomLightColor;
+    private Color _redRoomLightColor;
+    private bool _isRedLight;
     
+    // delegate to change lights back to normal
+    public delegate void UpdateNormalLightDelegate();
+    public static UpdateNormalLightDelegate updateNormalLight;
+
+    public bool IsRedLight => _isRedLight;
+
     // relative to corresponding FIRE CONTAINER local positions
     [FormerlySerializedAs("fireLocations")] 
     public Vector3[] fireLocationPositions;
@@ -41,6 +53,39 @@ public class RoomController: MonoBehaviour
         // Debug.Log("Num fires: " + GetNumActiveFires());
 
         _initialUnlock = true;
+        
+        // get the children lights
+        _roomLightChildrenList = GetComponentsInChildren<Light>();
+        
+        // set the initial colors (normal and red)
+        // _normalRoomLightColor = new Color32(236, 181, 95, 255);
+
+        _isRedLight = false;
+            
+        // normal - golden
+        if (!ColorUtility.TryParseHtmlString("#FFBD4E", out _normalRoomLightColor))
+        {
+            Debug.LogError("Invalid color for NORMAL LIGHT...");
+        }
+        
+        // red - warm red
+        if (!ColorUtility.TryParseHtmlString("#FF4EB1", out _redRoomLightColor))
+        {
+            Debug.LogError("Invalid color for RED LIGHT...");
+        }
+        
+        // IMPORTANT - need to initially recalculate fires (especially for initial room - Escape Pod)
+        RecalculateNumActiveFires();
+    }
+
+    private void OnEnable()
+    {
+        updateNormalLight += UpdateNormalLights;
+    }
+    
+    private void OnDisable()
+    {
+        updateNormalLight -= UpdateNormalLights;
     }
 
     public List<RoomFireEntry> GetRoomFireLocationsList()
@@ -50,7 +95,8 @@ public class RoomController: MonoBehaviour
             foreach (var fireLocationPosition in fireLocationPositions)
             {
                 _roomFireLocationsList.Add(
-                    new RoomFireEntry(roomLocationsEnum, roomFireParent, fireLocationPosition));
+                    new RoomFireEntry(roomLocationsEnum, roomFireParent, 
+                        fireLocationPosition, this));
             }
         }
 
@@ -118,5 +164,39 @@ public class RoomController: MonoBehaviour
     public void UpdateInitialUnlock()
     {
         _initialUnlock = false;
+    }
+
+    public void UpdateRedLights()
+    {
+        Debug.Log("Initial room");
+        Debug.Log("is red light: " + _isRedLight);
+        Debug.Log("num active fires: " + GetNumActiveFires());
+        
+        // only update to red if there are fires in the room 
+        // to improve performance, just check if the room was NOT red before
+        if (!_isRedLight && GetNumActiveFires() > 0)
+        {
+            foreach (var roomLight in _roomLightChildrenList)
+            {
+                roomLight.color = _redRoomLightColor;
+            }
+
+            _isRedLight = true;
+        }
+    }
+    
+    public void UpdateNormalLights()
+    {
+        // only update to normal if there are no fires left in the room 
+        // to improve performance, just check if the room was red before
+        if (_isRedLight && GetNumActiveFires() == 0)
+        {
+            foreach (var roomLight in _roomLightChildrenList)
+            {
+                roomLight.color = _normalRoomLightColor;
+            }
+
+            _isRedLight = false;
+        }
     }
 }
