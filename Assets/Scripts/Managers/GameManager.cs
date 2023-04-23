@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
     private static bool oxygenDepleted = false;
 
     private void Awake() {
-        if (instance == null) instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
         else Destroy(gameObject);
     }
 
