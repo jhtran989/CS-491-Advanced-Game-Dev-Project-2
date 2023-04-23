@@ -4,5 +4,44 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 43f4816bc44678c48a895c6ff5893101
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 8fbd58f40c703fc4783e3d27594e250f
+  - enabled: 1
+    path: Assets/Scenes/Space Station.unity
+    guid: c2e45d63bebef448f9dcc23fd36611f7
+  - enabled: 1
+    path: Assets/Scenes/Furniture.unity
+    guid: fb06fa928ca41467797e85490c0660d9
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 2dc78c154071c5048ad2a8c1489a2f2c
+  - enabled: 1
+    path: Assets/Scenes/MainOld.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Space.unity
+    guid: 425b8a4a53ce0fd4db2cbc259c68ef09
+  - enabled: 1
+    path: Assets/Scenes/Station.unity
+    guid: 2904f5f6bdb5d264da8f1896655390dd
+  - enabled: 1
+    path: Assets/Scenes/Terminal.unity
+    guid: 86ffbc0f038c87a43b474a72ccfa0fc6
+  - enabled: 1
+    path: Assets/Scenes/Doors.unity
+    guid: b9bc2abb4eebdc241971e55cc86ce1c4
+  - enabled: 1
+    path: Assets/Scenes/Fire.unity
+    guid: dbf35cb5bbd9324448ac093f1b8b4c74
+  - enabled: 1
+    path: Assets/Scenes/Gale's Scene.unity
+    guid: e047e8c1205124de6940ead0323db4b1
+  - enabled: 1
+    path: Assets/Scenes/Andrew's Scene.unity
+    guid: c5c647ce8a84cf94290228de9a8253d4
   m_configObjects: {}

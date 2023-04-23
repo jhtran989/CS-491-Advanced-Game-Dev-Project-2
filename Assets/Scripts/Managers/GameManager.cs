@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlayGame() {
+        // TODO: make sure to add all the scenes
         SceneManager.LoadScene("Main");
         SceneManager.LoadScene("Space Station", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Furniture", LoadSceneMode.Additive);
         clearRunData();
     }
 
