@@ -36,8 +36,9 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {       
         Cursor.lockState = CursorLockMode.Locked;
-        Application.targetFrameRate = 60;
         Cursor.visible = false;
+        Application.targetFrameRate = 60;
+        
     }
 
     private void FixedUpdate() 
