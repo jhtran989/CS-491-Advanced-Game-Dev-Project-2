@@ -11,6 +11,10 @@ public class EscapeTrigger : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     private void OnTriggerEnter(Collider other) {
-        gameManager.EndGame();
+        if (other.CompareTag(Constants.PlayerTag))
+        {
+            Debug.Log("Entered escape pod...");
+            gameManager.EndGame();
+        }
     }
 }
