@@ -74,7 +74,7 @@ public class Oxygen : MonoBehaviour
     // FIXME: from Start()
     void Awake()
     {
-        maxOxygenLevel = 200.0f;
+        maxOxygenLevel = 300.0f;
         oxygenDrainPerSecond = 1.0f;
         lerpSpeedMultiplier = 100.0f;
         
