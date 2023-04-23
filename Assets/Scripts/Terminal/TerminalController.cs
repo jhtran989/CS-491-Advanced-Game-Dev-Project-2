@@ -12,6 +12,8 @@ public class TerminalController : MonoBehaviour
     private bool[] letterIsUsed = new bool[10];
     private bool codeTested = false;
     public char[] letters = new char[9];
+    public int terminalIndex;
+    public bool isLaunchTerminal;
     public GameManager gameManager;
     public delegate void TerminalControllerDelegate();
     public static TerminalControllerDelegate TerminalControllerPlayerLeave;
@@ -57,8 +59,10 @@ public class TerminalController : MonoBehaviour
 
         if (Input.GetKeyDown("return")) {
                 gameObject.SetActive(false);
-                GameObject.Find("GameManager").GetComponent<GameManager>().SaveTerminalCode(playerCode);
-                
+                gameManager.SaveTerminalCode(playerCode, terminalIndex);
+                if (isLaunchTerminal) {
+                    gameManager.ActivateEscapePod();
+                }
                 // need to unlock the constraints on Player position
                 // need to enable the player camera again
                 TerminalControllerPlayerLeave?.Invoke();
