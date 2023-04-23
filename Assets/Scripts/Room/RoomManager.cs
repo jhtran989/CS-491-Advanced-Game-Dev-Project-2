@@ -105,17 +105,18 @@ public class RoomManager : MonoBehaviour
         foreach (var unlockedRoomController in _unlockedRoomControllersList)
         {
             RoomLocationsEnum roomLocationsEnum = unlockedRoomController.roomLocationsEnum;
-            Debug.Log("Room: " + roomLocationsEnum);
-            Debug.Log("Initial fires: " + unlockedRoomController.GetNumInitialFires());
-            Debug.Log("Spawn fires: " + unlockedRoomController.GetNumSpawnFires());
-            Debug.Log("Total room fires: " + unlockedRoomController.GetNumActiveFires());
-            Debug.Log("-----------------------------------------------");
+            
+            // Debug.Log("Room: " + roomLocationsEnum);
+            // Debug.Log("Initial fires: " + unlockedRoomController.GetNumInitialFires());
+            // Debug.Log("Spawn fires: " + unlockedRoomController.GetNumSpawnFires());
+            // Debug.Log("Total room fires: " + unlockedRoomController.GetNumActiveFires());
+            // Debug.Log("-----------------------------------------------");
         }
         
-        Debug.Log("Total stats");
-        Debug.Log("Initial fires: " + _totalNumInitialFires);
-        Debug.Log("Spawn fires: " + _totalNumSpawnFires);
-        Debug.Log("Total fires: " + _totalNumFires);
-        Debug.Log("-----------------------------------------------");
+        // Debug.Log("Total stats");
+        // Debug.Log("Initial fires: " + _totalNumInitialFires);
+        // Debug.Log("Spawn fires: " + _totalNumSpawnFires);
+        // Debug.Log("Total fires: " + _totalNumFires);
+        // Debug.Log("-----------------------------------------------");
     }
 }

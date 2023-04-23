@@ -18,31 +18,43 @@ public class RoomController: MonoBehaviour
     [FormerlySerializedAs("fireLocations")] 
     public Vector3[] fireLocationPositions;
     
-    private List<RoomFireEntry> roomFireLocationsList;
+    private List<RoomFireEntry> _roomFireLocationsList;
 
     public List<DoorController> boundaryDoorControllersList;
+
+    private bool _initialUnlock;
+
+    public bool InitialUnlock => _initialUnlock;
+
+    /*************************/
+    // moved stuff from other scripts
+    public TerminalController terminalController;
+    
+    /*************************/
 
     private int _numInitialFires;
     private int _numSpawnFires;
 
     private void Awake()
     {
-        roomFireLocationsList = new List<RoomFireEntry>();
+        _roomFireLocationsList = new List<RoomFireEntry>();
         // Debug.Log("Num fires: " + GetNumActiveFires());
+
+        _initialUnlock = true;
     }
 
     public List<RoomFireEntry> GetRoomFireLocationsList()
     {
-        if (!roomFireLocationsList.Any())
+        if (!_roomFireLocationsList.Any())
         {
             foreach (var fireLocationPosition in fireLocationPositions)
             {
-                roomFireLocationsList.Add(
+                _roomFireLocationsList.Add(
                     new RoomFireEntry(roomLocationsEnum, roomFireParent, fireLocationPosition));
             }
         }
 
-        return roomFireLocationsList;
+        return _roomFireLocationsList;
     }
     
     public int GetNumInitialFires()
@@ -87,5 +99,19 @@ public class RoomController: MonoBehaviour
         // Debug.Log("num initial fires: " + _numInitialFires);
         // Debug.Log("num spawn fires: " + _numSpawnFires);
         // Debug.Log("num total fires: " + GetNumActiveFires());
+    }
+
+    public void UpdateBoundaryDoorReachedList()
+    {
+        foreach (var boundaryDoorController in boundaryDoorControllersList)
+        {
+            // feed itself into the update
+            boundaryDoorController.UpdateDoorReached(this);
+        }
+    }
+
+    public void UpdateInitialUnlock()
+    {
+        _initialUnlock = false;
     }
 }

@@ -37,10 +37,10 @@ public class PlayerInteract : MonoBehaviour
                 && !Utilities.IsOfType(interactable, typeof(IInteractableDoor))) {
                 interactableList.Add(interactable);
 
-                if (collider.TryGetComponent(out TerminalInteractable terminalInteractable))
-                {
-                    Debug.Log("TERMINAL");
-                }
+                // if (collider.TryGetComponent(out TerminalInteractable terminalInteractable))
+                // {
+                //     Debug.Log("TERMINAL");
+                // }
             }
         }
 

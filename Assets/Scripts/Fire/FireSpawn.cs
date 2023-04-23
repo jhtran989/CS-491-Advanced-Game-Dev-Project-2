@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Room;
+using Unity.VisualScripting;
 using UnityEngine;
 using static RoomLocations;
 
@@ -20,7 +21,7 @@ public class FireSpawn : MonoBehaviour
     private RoomController _currentRoomController;
     private RoomLocationsEnum _currentRoomLocationEnum;
     private GameObject _roomFireParent;
-    private Vector3[] _currentFireLocationPositions;
+    private List<Vector3> _currentFireLocationPositions;
 
     // change to a list of fire locations (containing enum and a specific location)
     private List<RoomFireEntry> _roomFireLocationPositionsRandomList;
@@ -45,6 +46,7 @@ public class FireSpawn : MonoBehaviour
         _fireSpawnDelay = 15.0f;
 
         // initialize list
+        _currentFireLocationPositions = new List<Vector3>();
         _roomFireLocationPositionsRandomList = new List<RoomFireEntry>();
         
         // update initial current room object
@@ -64,8 +66,10 @@ public class FireSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
+        // FIXME: call update room instead with initial room
         // set initial room controller and current parameters
-        UpdateFireSpawnParameters();
+        UpdateCurrentRoom(roomManager.initialRoomController.gameObject);
+        // UpdateFireSpawnParameters();
 
         // need to initially calculate num of fires
         // fireManager.RecalculateNumActiveFires();
@@ -129,7 +133,8 @@ public class FireSpawn : MonoBehaviour
         
         // change to just number of spawned fires (at most two fires)
         // fireManager.GetNumActiveFires() == 0
-        if (GetNumSpawnFires() == 0)
+        // FIXME: need to use room manager version...
+        if (roomManager.GetTotalNumSpawnFies() == 0)
         {
             Debug.Log("SPAWNING FIRE...");
             SpawnFire();
@@ -183,10 +188,15 @@ public class FireSpawn : MonoBehaviour
         _currentRoomController = currentRoom.GetComponent<RoomController>();
         _currentRoomLocationEnum = _currentRoomController.roomLocationsEnum;
         _roomFireParent = _currentRoomController.roomFireParent;
-        _currentFireLocationPositions = _currentRoomController.fireLocationPositions;
+        
+        // for DEBUG purposes - see which fire locations are added
+        _currentFireLocationPositions.AddRange(_currentRoomController.fireLocationPositions);
         
         // update list of unlocked rooms
         roomManager.AddRoom(_currentRoomController);
+        
+        // TODO: update door reached check (get list of doors in the room...)
+        _currentRoomController.UpdateBoundaryDoorReachedList();
     }
 
     private void UpdateFireLocations(RoomController roomController)
