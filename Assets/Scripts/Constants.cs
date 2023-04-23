@@ -8,6 +8,7 @@
     
     // Layers
     public const string FireLayer = "Fire";
+    public const string PlayerLayer = "Player";
     
     // Door triggers
     public const string OpenDoorTrigger = "OpenDoorTrigger";

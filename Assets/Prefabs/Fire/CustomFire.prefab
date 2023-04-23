@@ -19040,6 +19040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Fire
+  playerMovement: {fileID: 484591948086245571, guid: 5c0c3fa3ebf2d5e41b4734a76f5f01d7, type: 3}
 --- !u!1 &2608166301394337902
 GameObject:
   m_ObjectHideFlags: 0

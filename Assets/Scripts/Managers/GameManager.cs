@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private static string[] playerCodes = {"", "", "", ""}; // 0: pod, 1: nav, 2: dock, 3: launch
     private static bool oxygenDepleted = false;
 
+    public GameObject playerObject;
+
     private void Awake() {
         if (instance == null)
         {
