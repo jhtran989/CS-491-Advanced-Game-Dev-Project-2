@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject escapePodDoor, escapeTrigger;
-    private static string[] playerCodes = new string[4];
+    private static string[] playerCodes = new string[4]; // 0: pod, 1: nav, 2: dock, 3: launch
     private static bool oxygenDepleted = false;
 
     private void Awake() {
@@ -30,8 +30,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void ActivateEscapePod() {
-        escapePodDoor.SetActive(false);
-        escapeTrigger.SetActive(true);
+        if (playerCodes[3] != "TIME") {
+            escapePodDoor.SetActive(false);
+            escapeTrigger.SetActive(true);
+            // TODO: play announcement
+        } else {
+            // TODO: play announcement
+        }
     }
 
     public void SaveTerminalCode(string code, int index) 

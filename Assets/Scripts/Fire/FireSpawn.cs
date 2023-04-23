@@ -42,8 +42,8 @@ public class FireSpawn : MonoBehaviour
 
     private void Awake()
     {
-        _initialFireSpawnDelay = 5.0f;
-        _fireSpawnDelay = 15.0f;
+        _initialFireSpawnDelay = 60.0f;
+        _fireSpawnDelay = 120.0f;
 
         // initialize list
         _currentFireLocationPositions = new List<Vector3>();

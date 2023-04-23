@@ -35,29 +35,29 @@ public class EpilogueManager : MonoBehaviour
                         + "No survivors.<br>";
             epilogueImage.texture = epilogueImages[0];
         } else {
-            if (playerCodes[0] != "5297") {
-                // invalid dock pod code
+            if (playerCodes[2] != "5297" || playerCodes[0] != "LUNA") {
+                // invalid dock or pod code
                 missionReport += "No escape pod launched.<br><br>"
                             + "Space station consumed by flames.<br><br>"
                             + "No survivors.<br>";
                 epilogueImage.texture = epilogueImages[1];    
             } else {
                 switch(playerCodes[1]) {
-                    case "3084":
+                    case "4896":
                         // earth nav code
                         missionReport += "Escape pod launched.<br><br>"
                                     + "Destination: Earch.<br><br>"
                                     + "One survivor.<br>";
                         epilogueImage.texture = epilogueImages[2];
                         break;
-                    case "3831":
+                    case "3951":
                         // mars nav code
                         missionReport += "Escape pod launched.<br><br>"
                                     + "Destination: Mars.<br><br>"
                                     + "No survivors.<br>";
                         epilogueImage.texture = epilogueImages[3];
                         break;
-                    case "3309":
+                    case "3491":
                         // sun nav code
                         missionReport += "Escape pod launched.<br><br>"
                                     + "Destination: Sun.<br><br>"
