@@ -71,7 +71,7 @@ public class RoomController: MonoBehaviour
         // FIXME: dark red for better contrast
         // red - warm red "#FF4EB1"
         // red - dark red 
-        if (!ColorUtility.TryParseHtmlString("#FF4EB1", out _redRoomLightColor))
+        if (!ColorUtility.TryParseHtmlString("#FC2819", out _redRoomLightColor))
         {
             Debug.LogError("Invalid color for RED LIGHT...");
         }

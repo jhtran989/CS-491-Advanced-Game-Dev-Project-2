@@ -52,7 +52,7 @@ public class EpilogueManager : MonoBehaviour
                     case "4896":
                         // earth nav code
                         missionReport += "Escape pod launched.<br><br>"
-                                    + "Destination: Earch.<br><br>"
+                                    + "Destination: Earth.<br><br>"
                                     + "One survivor.<br>";
                         epilogueImage.texture = epilogueImages[2];
                         break;

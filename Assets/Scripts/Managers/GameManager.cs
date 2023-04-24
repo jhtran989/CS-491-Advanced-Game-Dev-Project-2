@@ -78,12 +78,12 @@ public class GameManager : MonoBehaviour
             audio.PlayOneShot(sfx[1]);
             fireTutorialComplete = true;
         } else {
-        //    audio.PlayOneShot(sfx[2]);
+            audio.PlayOneShot(sfx[2]);
         }
     }
 
     public void PlayEscPodLaunch() {
-        audio.PlayOneShot(sfx[4]);
+        secondaryAudio.PlayOneShot(sfx[4]);
     }
 
     public void ActivateEscapePod() {

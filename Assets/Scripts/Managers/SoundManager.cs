@@ -108,7 +108,7 @@ public class SoundManager : MonoBehaviour
         else if (IsSceneLoaded(Constants.EndScreenSceneName))
         {
             // _audioSource.PlayOneShot(_spaceAmbienceBackground);
-            _audioSource.clip = _escapePodLaunch;
+            //_audioSource.clip = _escapePodLaunch;
         }
 
         _audioSource.loop = true;
