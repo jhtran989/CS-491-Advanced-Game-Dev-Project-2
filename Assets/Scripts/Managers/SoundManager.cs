@@ -20,7 +20,10 @@ public class SoundManager : MonoBehaviour
     
     // audio clips
     private static AudioClip _cracklingFire;
+    
     private static AudioClip _firePutOutWater;
+    private static bool _firePutOutWaterCheck;
+    
     private static AudioClip _puzzleSolvedCorrect;
     private static AudioClip _puzzleSolvedIncorrect;
     private static AudioClip _lowOxygen;
@@ -29,6 +32,8 @@ public class SoundManager : MonoBehaviour
     private static AudioClip _spaceAmbienceBackground;
 
     private static AudioClip _mainMenuTheme;
+
+    private List<CustomAudioClip> customAudioClipsList;
     
     private AudioSource _audioSource;
     
@@ -62,7 +67,12 @@ public class SoundManager : MonoBehaviour
         _mainMenuTheme = Resources
             .Load<AudioClip>("Sounds/spacesound-7547");
         
+        // create list
+        customAudioClipsList = CreateCustomAudioClipList();
+
         _audioSource = GetComponent<AudioSource>();
+
+        _firePutOutWaterCheck = false;
     }
 
     // Start is called before the first frame update
@@ -77,26 +87,28 @@ public class SoundManager : MonoBehaviour
         
     }
     
-    private bool IsSceneLoaded(String sceneName)
+    public static bool IsSceneLoaded(String sceneName)
     {
         return SceneManager.GetSceneByName(sceneName).isLoaded;
     }
 
-    private void PlayStartingSound()
+    public void PlayStartingSound()
     {
         // play menu music
         if (IsSceneLoaded(Constants.MainMenuSceneName))
         {
             // _audioSource.PlayOneShot(_mainMenuTheme);
             _audioSource.clip = _mainMenuTheme;
-            _audioSource.loop = true;
         }
         // when the game starts up
-        else
+        else if (IsSceneLoaded(Constants.MainSceneName))
+        {
+            _audioSource.clip = _spaceAmbienceBackground;
+        }
+        else if (IsSceneLoaded(Constants.EndScreenSceneName))
         {
             // _audioSource.PlayOneShot(_spaceAmbienceBackground);
-            _audioSource.clip = _spaceAmbienceBackground;
-            _audioSource.loop = true;
+            _audioSource.clip = _escapePodLaunch;
         }
 
         _audioSource.loop = true;
@@ -137,6 +149,66 @@ public class SoundManager : MonoBehaviour
 
         return audioClip;
     }
+    
+    private CustomAudioClip GetCustomAudioClipFromSoundType(SoundTypesEnum soundTypesEnum)
+    {
+        var audioCheck = false;
+        CustomAudioClip customAudioClip = null;
+
+        switch (soundTypesEnum)
+        {
+            case SoundTypesEnum.CracklingFire:
+                customAudioClip = new CustomAudioClip(_cracklingFire, audioCheck, soundTypesEnum);
+                break; 
+            case SoundTypesEnum.LowOxygen:
+                customAudioClip = new CustomAudioClip(_lowOxygen, audioCheck, soundTypesEnum);
+                break;
+            case SoundTypesEnum.EscapePodLaunch:
+                customAudioClip = new CustomAudioClip(_escapePodLaunch, audioCheck, soundTypesEnum);
+                break;
+            case SoundTypesEnum.FirePutOutWater:
+                customAudioClip = new CustomAudioClip(_firePutOutWater, audioCheck, soundTypesEnum);
+                break;
+            case SoundTypesEnum.PuzzleSolvedCorrect:
+                customAudioClip = new CustomAudioClip(_puzzleSolvedCorrect, audioCheck, soundTypesEnum);
+                break;
+            case SoundTypesEnum.PuzzleSolvedIncorrect:
+                customAudioClip = new CustomAudioClip(_puzzleSolvedIncorrect, audioCheck, soundTypesEnum);
+                break;
+            default:
+                Debug.LogError("Invalid sound type audio...");
+                break;
+        }
+
+        return customAudioClip;
+    }
+
+    private List<CustomAudioClip> CreateCustomAudioClipList()
+    {
+        List<CustomAudioClip> customAudioClips = new List<CustomAudioClip>();
+
+        foreach (var soundTypeEnum in Utilities.GetValues<SoundTypesEnum>())
+        {
+            customAudioClips.Add(GetCustomAudioClipFromSoundType(soundTypeEnum));
+        }
+
+        return customAudioClips;
+    }
+
+    public CustomAudioClip GetCustomAudioClip(SoundTypesEnum soundTypesEnum)
+    {
+        // FIXME: lazy way to do so (should use a dictionary instead)
+        foreach (var customAudioClip in customAudioClipsList)
+        {
+            if (customAudioClip.SoundTypesEnum == soundTypesEnum)
+            {
+                return customAudioClip;
+            }
+        }
+
+        // FIXME: should not happen
+        return null;
+    }
 
     public void PlayFireCracklingLocation(Vector3 fireLocation)
     {
@@ -146,20 +218,43 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundEffectLocation(SoundTypesEnum soundTypesEnum, Vector3 fireLocation)
     {
         AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
+        CustomAudioClip customAudioClip = GetCustomAudioClip(soundTypesEnum);
 
-        if (audioClip != null)
+        if (!customAudioClip.AudioCheck && audioClip != null)
         {
             AudioSource.PlayClipAtPoint(audioClip, fireLocation);
+            customAudioClip.AudioCheck = true;
+            customAudioClip.InitialPlayTime = Time.time;
+        }
+
+        if (Time.time - customAudioClip.InitialPlayTime > customAudioClip.AudioClip.length)
+        {
+            customAudioClip.AudioCheck = false;
         }
     }
 
     public void PlaySoundEffect(SoundTypesEnum soundTypesEnum)
     {
+        // AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
+        //
+        // if (audioClip != null)
+        // {
+        //     _audioSource.PlayOneShot(audioClip);
+        // }
+        
         AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
+        CustomAudioClip customAudioClip = GetCustomAudioClip(soundTypesEnum);
 
-        if (audioClip != null)
+        if (!customAudioClip.AudioCheck && audioClip != null)
         {
-            _audioSource.PlayOneShot(audioClip);
+            _audioSource.PlayOneShot(customAudioClip.AudioClip);
+            customAudioClip.AudioCheck = true;
+            customAudioClip.InitialPlayTime = Time.time;
+        }
+
+        if (Time.time - customAudioClip.InitialPlayTime > customAudioClip.AudioClip.length)
+        {
+            customAudioClip.AudioCheck = false;
         }
     }
 }

@@ -45,6 +45,8 @@
     public const string HUDObjectName = "HUD";
     public const string DoorPowerBarObjectName = "DoorPowerBar";
     public const string OxygenObjectName = "Oxygen";
+
+    public const string PlayerContainerName = "PlayerFireExtinguisher";
     
     /*************************************************/
     
@@ -52,5 +54,7 @@
      * Scene Names
      */
     public const string MainMenuSceneName = "Menu";
+    public const string MainSceneName = "Main";
+    public const string EndScreenSceneName = "EndScreen";
 }
 

@@ -19,6 +19,9 @@ public class EpilogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;  
         GenerateMissionReport();
+        
+        // update the music when loading
+        SoundManager.instance.PlayStartingSound();
     }
 
     public void GenerateMissionReport() {

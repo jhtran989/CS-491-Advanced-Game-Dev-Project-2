@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -95,6 +94,10 @@ public class Fire : MonoBehaviour
             PutOutFire();
             return true;
         }
+        
+        // play sound of water
+        SoundManager.instance.PlaySoundEffectLocation(
+            SoundTypesEnum.FirePutOutWater, transform.position);
 
         return false;
     }

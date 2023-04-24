@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +17,7 @@ public class GameManager : MonoBehaviour
     public AudioSource secondaryAudio;
     public AudioClip[] sfx;
     public GameObject playerObject;
+    
     private void Awake() {
         if (instance == null)
         {
@@ -21,6 +25,31 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(instance);
         }
         else Destroy(gameObject);
+
+        UpdatePlayerObject();
+    }
+
+    public void UpdatePlayerObject()
+    {
+        Debug.Log("Generating game manager...");
+        Debug.Log("main scene loaded " + SoundManager.IsSceneLoaded(Constants.MainSceneName));
+        
+        if (SoundManager.IsSceneLoaded(Constants.MainSceneName) && playerObject == null)
+        {
+            var player1 = GameObject.Find(Constants.PlayerContainerName);
+            Assert.IsNotNull(player1);
+            
+            var player2 = player1.GetComponentInChildren<PlayerMovement>();
+            Assert.IsNotNull(player2);
+            
+            playerObject = GameObject.Find(Constants.PlayerContainerName).GetComponentInChildren<PlayerMovement>()
+                .gameObject;
+        }
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void EndGame() {
@@ -35,6 +64,9 @@ public class GameManager : MonoBehaviour
         clearRunData();
         audio.PlayOneShot(sfx[0]);
         secondaryAudio.PlayOneShot(sfx[4]);
+        
+        // update the music when loading
+        SoundManager.instance.PlayStartingSound();
     }
 
     public void QuitGame() {

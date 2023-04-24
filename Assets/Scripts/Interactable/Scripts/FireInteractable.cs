@@ -29,6 +29,12 @@ public class FireInteractable : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("fire interactable...");
+        Debug.Log("main scene loaded " + SoundManager.IsSceneLoaded(Constants.MainSceneName));
+        
+        // FIXME: the Awake() of the game manager happens before the scene is loaded
+        GameManager.instance.UpdatePlayerObject();
+        
         playerMovement = GameManager.instance.playerObject.GetComponent<PlayerMovement>();
     }
 
@@ -47,7 +53,8 @@ public class FireInteractable : MonoBehaviour, IInteractable
             
             // play the fire music
             // SoundManager.instance.PlaySoundEffect(SoundTypesEnum.CracklingFire);
-            SoundManager.instance.PlayFireCracklingLocation(transform.position);
+            SoundManager.instance
+                .PlaySoundEffectLocation(SoundTypesEnum.CracklingFire, transform.position);
         }
         else if (playerWithinRange && playerCollider == null)
         {
