@@ -22,7 +22,8 @@ public class FireInteractable : MonoBehaviour, IInteractable
     {
         playerWithinRange = false;
 
-        _interactRadius = 5.0f;
+        // good moderate distance
+        _interactRadius = 4.0f;
     }
 
     // Start is called before the first frame update
@@ -43,6 +44,10 @@ public class FireInteractable : MonoBehaviour, IInteractable
             playerMovement.UpdateOxygenRateFire?.Invoke();
             
             playerWithinRange = true;
+            
+            // play the fire music
+            // SoundManager.instance.PlaySoundEffect(SoundTypesEnum.CracklingFire);
+            SoundManager.instance.PlayFireCracklingLocation(transform.position);
         }
         else if (playerWithinRange && playerCollider == null)
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum SoundTypes
+public enum SoundTypesEnum
 {
     CracklingFire,
     FirePutOutWater,
@@ -55,6 +55,7 @@ public class SoundManager : MonoBehaviour
             .Load<AudioClip>("Sounds/system_trouble-32321");
         _escapePodLaunch = Resources
             .Load<AudioClip>("Sounds/EscapePod/escape_pod");
+        
         _spaceAmbienceBackground = Resources
             .Load<AudioClip>("Sounds/spaceship-ambience-with-effects-21420");
         
@@ -67,7 +68,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateAndPlaySound();
+        PlayStartingSound();
     }
 
     // Update is called once per frame
@@ -81,7 +82,7 @@ public class SoundManager : MonoBehaviour
         return SceneManager.GetSceneByName(sceneName).isLoaded;
     }
 
-    private void UpdateAndPlaySound()
+    private void PlayStartingSound()
     {
         // play menu music
         if (IsSceneLoaded(Constants.MainMenuSceneName))
@@ -103,5 +104,52 @@ public class SoundManager : MonoBehaviour
 
         // FIXME:
         // _audioSource.PlayOneShot(_firePutOutWater);
+    }
+
+    private AudioClip GetAudioClipFromSoundType(SoundTypesEnum soundTypesEnum)
+    {
+        AudioClip audioClip = null;
+
+        switch (soundTypesEnum)
+        {
+            case SoundTypesEnum.CracklingFire:
+                audioClip = _cracklingFire;
+                break; 
+            case SoundTypesEnum.LowOxygen:
+                audioClip = _lowOxygen;
+                break;
+            case SoundTypesEnum.EscapePodLaunch:
+                audioClip = _escapePodLaunch;
+                break;
+            case SoundTypesEnum.FirePutOutWater:
+                audioClip = _firePutOutWater;
+                break;
+            case SoundTypesEnum.PuzzleSolvedCorrect:
+                audioClip = _puzzleSolvedCorrect;
+                break;
+            case SoundTypesEnum.PuzzleSolvedIncorrect:
+                audioClip = _puzzleSolvedIncorrect;
+                break;
+            default:
+                Debug.LogError("Invalid sound type audio...");
+                break;
+        }
+
+        return audioClip;
+    }
+
+    public void PlayFireCracklingLocation(Vector3 fireLocation)
+    {
+        AudioSource.PlayClipAtPoint(_cracklingFire, fireLocation);
+    }
+
+    public void PlaySoundEffect(SoundTypesEnum soundTypesEnum)
+    {
+        AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
+
+        if (audioClip != null)
+        {
+            _audioSource.PlayOneShot(audioClip);
+        }
     }
 }
