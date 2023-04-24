@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.033448555, g: 0.02589402, b: 0.015466982, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escapePodDoor: {fileID: 0}
   escapeTrigger: {fileID: 0}
+  audio: {fileID: 0}
+  secondaryAudio: {fileID: 0}
+  sfx: []
   playerObject: {fileID: 0}
 --- !u!4 &42701128
 Transform:
@@ -347,8 +350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427, y: -117}
-  m_SizeDelta: {x: 278.4347, y: 77.6022}
+  m_AnchoredPosition: {x: -588.812, y: -159.256}
+  m_SizeDelta: {x: 383.614, y: 107.175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315741736
 MonoBehaviour:
@@ -479,8 +482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1396, y: 785}
+  m_AnchoredPosition: {x: -0.511, y: 2.334}
+  m_SizeDelta: {x: 1923.339, y: 1084.162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584534770
 MonoBehaviour:
@@ -615,8 +618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427, y: 28}
-  m_SizeDelta: {x: 278.4347, y: 77.6022}
+  m_AnchoredPosition: {x: -588.812, y: 41.005}
+  m_SizeDelta: {x: 383.614, y: 107.175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172231712
 MonoBehaviour:
@@ -955,8 +958,8 @@ Canvas:
   m_GameObject: {fileID: 1916932946}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1418114921}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
