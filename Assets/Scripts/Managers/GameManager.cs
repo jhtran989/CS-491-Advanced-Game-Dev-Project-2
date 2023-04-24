@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ActivateEscapePod() {
-        if (playerCodes[3] != "TIME") {
+        if (playerCodes[3] == "TIME") {
             escapePodDoor.SetActive(false);
             escapeTrigger.SetActive(true);
             audio.PlayOneShot(sfx[3]);
@@ -116,5 +116,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < playerCodes.Length; i++) {
             playerCodes[i] = "";
         }
+    }
+
+    public void SetEscapeObjects(GameObject door, GameObject trigger) {
+        escapePodDoor = door;
+        escapeTrigger = trigger;
     }
 }

@@ -8,6 +8,7 @@ public class TerminalController : MonoBehaviour
     public TextMeshProUGUI codeText;
     private string playerCode = "";
     public GameObject goodLight, badLight;
+    public GameObject door, trigger;
     [SerializeField] private string[] correctCodes = new string[3];
     private bool[] letterIsUsed = new bool[10];
     private bool codeTested = false;
@@ -22,6 +23,10 @@ public class TerminalController : MonoBehaviour
     
     // need player camera to re-enable
     public GameObject playerCamera;
+
+    void Start() {
+        gameManager = GameManager.instance;
+    }
 
     void Update()
     {
@@ -62,6 +67,8 @@ public class TerminalController : MonoBehaviour
                 gameManager.SaveTerminalCode(playerCode, terminalIndex);
                 if (isLaunchTerminal) {
                     gameManager.ActivateEscapePod();
+                    // door.SetActive(false);
+                    // trigger.SetActive(true);
                 }
                 // need to unlock the constraints on Player position
                 // need to enable the player camera again
