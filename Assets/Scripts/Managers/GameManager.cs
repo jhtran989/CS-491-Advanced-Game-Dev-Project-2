@@ -23,11 +23,6 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Start() {
-        audio.PlayOneShot(sfx[0]);
-        secondaryAudio.PlayOneShot(sfx[4]);
-    }
-
     public void EndGame() {
         SceneManager.LoadScene("EndScreen");
     }
@@ -38,6 +33,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Space Station", LoadSceneMode.Additive);
         SceneManager.LoadScene("Furniture", LoadSceneMode.Additive);
         clearRunData();
+        audio.PlayOneShot(sfx[0]);
+        secondaryAudio.PlayOneShot(sfx[4]);
     }
 
     public void QuitGame() {
