@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 public enum SoundTypes
 {
     CracklingFire,
-    B
+    FirePutOutWater,
+    PuzzleSolvedCorrect,
+    PuzzleSolvedIncorrect,
+    LowOxygen,
+    EscapePodLaunch
 }
 
 public class SoundManager : MonoBehaviour
@@ -79,6 +83,7 @@ public class SoundManager : MonoBehaviour
 
     private void UpdateAndPlaySound()
     {
+        // play menu music
         if (IsSceneLoaded(Constants.MainMenuSceneName))
         {
             // _audioSource.PlayOneShot(_mainMenuTheme);

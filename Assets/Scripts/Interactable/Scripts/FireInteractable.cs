@@ -12,12 +12,17 @@ public class FireInteractable : MonoBehaviour, IInteractable
 
     // FIXME: pulling script from ANOTHER PREFAB doesn't work...
     public PlayerMovement playerMovement;
+    
+    // interact radius (sphere overlap below)
+    private float _interactRadius;
 
     private bool playerWithinRange;
 
     private void Awake()
     {
         playerWithinRange = false;
+
+        _interactRadius = 5.0f;
     }
 
     // Start is called before the first frame update
@@ -59,14 +64,11 @@ public class FireInteractable : MonoBehaviour, IInteractable
 
     public Collider GetPlayerCollider() {
         List<IInteractable> interactableList = new List<IInteractable>();
-        
-        // FIXME: edit for appropriate radius
-        float interactRange = 3f;
-        
+
         // TODO: add layer mask
         // int playerLayerIndex = LayerMask.NameToLayer(Constants.PlayerLayer);
         LayerMask playerLayerMask = LayerMask.GetMask(Constants.PlayerLayer);
-        Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, playerLayerMask);
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position, _interactRadius, playerLayerMask);
         
         // foreach (Collider collider in colliderArray) {
         //     if (collider.TryGetComponent(out IInteractable interactable)
