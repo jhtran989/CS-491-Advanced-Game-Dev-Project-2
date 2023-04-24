@@ -142,6 +142,16 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(_cracklingFire, fireLocation);
     }
+    
+    public void PlaySoundEffectLocation(SoundTypesEnum soundTypesEnum, Vector3 fireLocation)
+    {
+        AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
+
+        if (audioClip != null)
+        {
+            AudioSource.PlayClipAtPoint(audioClip, fireLocation);
+        }
+    }
 
     public void PlaySoundEffect(SoundTypesEnum soundTypesEnum)
     {
