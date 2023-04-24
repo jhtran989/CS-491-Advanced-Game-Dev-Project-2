@@ -14,6 +14,7 @@ public class EscapeTrigger : MonoBehaviour
         if (other.CompareTag(Constants.PlayerTag))
         {
             Debug.Log("Entered escape pod...");
+            gameManager.PlayEscPodLaunch();
             gameManager.EndGame();
         }
     }

@@ -130,6 +130,9 @@ public class FireSpawn : MonoBehaviour
         // change the color of the lights to red
         RoomController randomRoomController = randomRoomFireEntry.RoomController;
         randomRoomController.UpdateRedLights();
+
+        // AUDIO
+        GameManager.instance.PlayFireAlert();
     }
 
     private void TrySpawnFire()

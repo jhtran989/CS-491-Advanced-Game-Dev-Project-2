@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject escapePodDoor, escapeTrigger;
     private static string[] playerCodes = {"", "", "", ""}; // 0: pod, 1: nav, 2: dock, 3: launch
     private static bool oxygenDepleted = false;
+    private bool fireTutorialComplete = false;
+
+    public AudioSource audio;
+
+    public AudioClip[] sfx;
 
     public GameObject playerObject;
 
@@ -21,6 +26,10 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Start() {
+        audio.PlayOneShot(sfx[4]);
+    }
+
     public void EndGame() {
         SceneManager.LoadScene("EndScreen");
     }
@@ -30,6 +39,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main");
         SceneManager.LoadScene("Space Station", LoadSceneMode.Additive);
         SceneManager.LoadScene("Furniture", LoadSceneMode.Additive);
+        
         clearRunData();
     }
 
@@ -37,13 +47,24 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void PlayFireAlert() {
+        if (!fireTutorialComplete) {
+            audio.PlayOneShot(sfx[1]);
+            fireTutorialComplete = true;
+        } else {
+        //    audio.PlayOneShot(sfx[2]);
+        }
+    }
+
+    public void PlayEscPodLaunch() {
+        audio.PlayOneShot(sfx[4]);
+    }
+
     public void ActivateEscapePod() {
         if (playerCodes[3] != "TIME") {
             escapePodDoor.SetActive(false);
             escapeTrigger.SetActive(true);
-            // TODO: play announcement
-        } else {
-            // TODO: play announcement
+            audio.PlayOneShot(sfx[3]);
         }
     }
 
