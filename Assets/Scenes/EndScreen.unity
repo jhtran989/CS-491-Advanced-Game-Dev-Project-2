@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.442, y: -334.9294}
-  m_SizeDelta: {x: 1944.5496, y: 1765.79}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295562962
 MonoBehaviour:
@@ -232,8 +232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.35706, y: -457.42358}
-  m_SizeDelta: {x: 185.5336, y: 53.0274}
+  m_AnchoredPosition: {x: -319.76398, y: -192}
+  m_SizeDelta: {x: 87.8538, y: 28.8653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315741736
 MonoBehaviour:
@@ -364,8 +364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310.09674, y: 2.2097}
-  m_SizeDelta: {x: 1310.167, y: 1077.6085}
+  m_AnchoredPosition: {x: 150, y: 0.030994}
+  m_SizeDelta: {x: 500, y: 451}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584534770
 MonoBehaviour:
@@ -437,8 +437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -730.0322, y: 358.4163}
-  m_SizeDelta: {x: 278.5888, y: 69.5229}
+  m_AnchoredPosition: {x: -248.37999, y: 111}
+  m_SizeDelta: {x: 226.75, y: 100.6961}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629501566
 MonoBehaviour:
@@ -460,7 +460,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'No escape pod launched.
+
+
+    Space station consumed by flames.
+
+
+    No
+    Survivors.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -487,8 +494,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -523,7 +530,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4.819336, y: 8.716309, z: -172.88171, w: -164.488}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -572,8 +579,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -727.24634, y: -51.000008}
-  m_SizeDelta: {x: 278.5888, y: 69.5229}
+  m_AnchoredPosition: {x: -289.76, y: -64.60431}
+  m_SizeDelta: {x: 144.01, y: 128.7843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863354754
 MonoBehaviour:
@@ -595,15 +602,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'pod:
-
-    nav:
-
-    dock:
-
-    launch:
-
-'
+  m_text: "Escape Pod - - - - \nNavigation - - - - -\nDock - - - - - - - - - \nLaunch
+    - - - - - - - "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -630,8 +630,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.0088348, y: -24.530487, z: -3.197876, w: -122.99132}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -716,8 +716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.35706, y: -358.34204}
-  m_SizeDelta: {x: 185.5336, y: 53.0274}
+  m_AnchoredPosition: {x: -319.76398, y: -149}
+  m_SizeDelta: {x: 87.8538, y: 28.8653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172231712
 MonoBehaviour:
@@ -848,8 +848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -727.24634, y: 55.926758}
-  m_SizeDelta: {x: 278.5888, y: 69.5229}
+  m_AnchoredPosition: {x: -248.38, y: 28}
+  m_SizeDelta: {x: 226.76, y: 35.8123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215463028
 MonoBehaviour:
@@ -873,7 +873,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Code Log
 
-    ----------------'
+    - - - - - - - - - - - - - - - - - - - -'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -900,8 +900,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.9223938, y: -9.415649, z: -3.197876, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -983,10 +983,10 @@ RectTransform:
   m_Father: {fileID: 1916932947}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1622.442, y: 108.96719}
-  m_SizeDelta: {x: 278.5888, y: 69.5229}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 151.62001, y: -50}
+  m_SizeDelta: {x: 226.75, y: 69.6397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305658530
 MonoBehaviour:
@@ -1010,7 +1010,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Mission Report
 
-    -------------------------'
+    - - - - - - - - - - - - - - - - - - - -'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1037,8 +1037,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1395.4509, y: -323.0298, z: 997.69476, w: 291.44476}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1470,8 +1470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.442, y: 2.2084}
-  m_SizeDelta: {x: 1944.5496, y: 1091.5137}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1964990784
 MonoBehaviour:
@@ -1543,8 +1543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -727.24634, y: -51}
-  m_SizeDelta: {x: 278.5888, y: 69.5229}
+  m_AnchoredPosition: {x: -173.09277, y: -70}
+  m_SizeDelta: {x: 109.6877, y: 137.9886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027513760
 MonoBehaviour:
@@ -1566,7 +1566,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'LUNA
+
+    1234
+
+    5678
+
+    TIME'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1593,8 +1599,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1629,7 +1635,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 111.04288, y: -24.530487, z: -3.197876, w: -122.99132}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
