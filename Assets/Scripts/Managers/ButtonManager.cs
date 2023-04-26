@@ -5,6 +5,8 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour {
 
     public GameObject HUD, PauseScreen;
+    public PlayerCamera cameraMovement;
+    public Player.PlayerMovement playerMovemeent;
     private bool isPaused;
 
     private GameManager gm;
@@ -15,7 +17,7 @@ public class ButtonManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown("Escape")) {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             if (isPaused) ResumeButton();
             else PauseButton();
         }
@@ -30,19 +32,25 @@ public class ButtonManager : MonoBehaviour {
     }
 
     public void ResumeButton() {
-        HUD.GetComponent<Renderer>().enabled = true;
+        HUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 10f);
+        // HUD.transform.position = new Vector3(0, 10.0f, 0);
         PauseScreen.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;  
         isPaused = false;
+        playerMovemeent.enabled = true;
+        cameraMovement.enabled = true;
     }
 
     public void PauseButton() {
-        HUD.GetComponent<Renderer>().enabled = false;
+        HUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 50f);
+        // HUD.transform.position = new Vector3(0, 50.0f, 0);
         PauseScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;  
         isPaused = true;
+        playerMovemeent.enabled = false;
+        cameraMovement.enabled = false;
     }
 
 }
