@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     private bool fireTutorialComplete = false;
     public AudioSource audio;
     public AudioSource secondaryAudio;
-    public AudioClip[] sfx;
+    public AudioClip[] sfx; // 0: opening, 1; fire, 2: short fire, 3: esc run, 4: esc pod sound
     public GameObject playerObject;
+    public bool firstRun = true;
     
     private void Awake() {
         if (instance == null)
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame() {
         SceneManager.LoadScene("EndScreen");
+        firstRun = false;
     }
 
     public void PlayGame() {
@@ -62,7 +64,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Space Station", LoadSceneMode.Additive);
         SceneManager.LoadScene("Furniture", LoadSceneMode.Additive);
         clearRunData();
-        audio.PlayOneShot(sfx[0]);
+        if (firstRun) {
+            audio.PlayOneShot(sfx[0]);
+        }
         secondaryAudio.PlayOneShot(sfx[4]);
         
         // update the music when loading
@@ -74,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlayFireAlert() {
-        if (!fireTutorialComplete) {
+        if (!fireTutorialComplete & firstRun) {
             audio.PlayOneShot(sfx[1]);
             fireTutorialComplete = true;
         } else {

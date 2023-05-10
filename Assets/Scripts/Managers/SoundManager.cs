@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public enum SoundTypesEnum
 {
     CracklingFire,
@@ -17,6 +18,8 @@ public enum SoundTypesEnum
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+
+    public AudioSource oneShotAudioSource;
     
     // audio clips
     private static AudioClip _cracklingFire;
@@ -35,9 +38,9 @@ public class SoundManager : MonoBehaviour
 
     private List<CustomAudioClip> customAudioClipsList;
     
-    private AudioSource _audioSource;
+    private AudioSource loopingAudioSource;
     
-    // TODO: use _audioSource.PlayOneShot(<AudioClip>) for sound effects (one time effects -- can play multiple at once...)
+    // TODO: use loopingAudioSource.PlayOneShot(<AudioClip>) for sound effects (one time effects -- can play multiple at once...)
 
     private void Awake()
     {
@@ -70,7 +73,7 @@ public class SoundManager : MonoBehaviour
         // create list
         customAudioClipsList = CreateCustomAudioClipList();
 
-        _audioSource = GetComponent<AudioSource>();
+        loopingAudioSource = GetComponent<AudioSource>();
 
         _firePutOutWaterCheck = false;
     }
@@ -97,25 +100,25 @@ public class SoundManager : MonoBehaviour
         // play menu music
         if (IsSceneLoaded(Constants.MainMenuSceneName))
         {
-            // _audioSource.PlayOneShot(_mainMenuTheme);
-            _audioSource.clip = _mainMenuTheme;
+            // loopingAudioSource.PlayOneShot(_mainMenuTheme);
+            loopingAudioSource.clip = _mainMenuTheme;
         }
         // when the game starts up
         else if (IsSceneLoaded(Constants.MainSceneName))
         {
-            _audioSource.clip = _spaceAmbienceBackground;
+            loopingAudioSource.clip = _spaceAmbienceBackground;
         }
         else if (IsSceneLoaded(Constants.EndScreenSceneName))
         {
-            // _audioSource.PlayOneShot(_spaceAmbienceBackground);
-            //_audioSource.clip = _escapePodLaunch;
+            // loopingAudioSource.PlayOneShot(_spaceAmbienceBackground);
+            //loopingAudioSource.clip = _escapePodLaunch;
         }
 
-        _audioSource.loop = true;
-        _audioSource.Play();
+        loopingAudioSource.loop = true;
+        loopingAudioSource.Play();
 
         // FIXME:
-        // _audioSource.PlayOneShot(_firePutOutWater);
+        // loopingAudioSource.PlayOneShot(_firePutOutWater);
     }
 
     private AudioClip GetAudioClipFromSoundType(SoundTypesEnum soundTypesEnum)
@@ -239,7 +242,7 @@ public class SoundManager : MonoBehaviour
         //
         // if (audioClip != null)
         // {
-        //     _audioSource.PlayOneShot(audioClip);
+        //     loopingAudioSource.PlayOneShot(audioClip);
         // }
         
         AudioClip audioClip = GetAudioClipFromSoundType(soundTypesEnum);
@@ -247,7 +250,7 @@ public class SoundManager : MonoBehaviour
 
         if (!customAudioClip.AudioCheck && audioClip != null)
         {
-            _audioSource.PlayOneShot(customAudioClip.AudioClip);
+            oneShotAudioSource.PlayOneShot(customAudioClip.AudioClip);
             customAudioClip.AudioCheck = true;
             customAudioClip.InitialPlayTime = Time.time;
         }
