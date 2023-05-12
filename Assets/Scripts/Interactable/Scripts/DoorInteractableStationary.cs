@@ -29,6 +29,7 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
 
     private void Awake()
     {
+        // FIXME FINAL: set to true
         _unlockCondition = false;
         _unlockFinish = false;
     }
@@ -63,12 +64,16 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
         
         if (_powerCharge.CurrentNumPowerCharges > 0)
         {
+            Debug.Log(!_unlockFinish + ", " + _unlockCondition);
+            _doorController.CheckUnlockDoor();
+            
             if (!_unlockFinish && _unlockCondition)
             {
+                Debug.Log("Opening door...");
+                
                 doorAnimator.SetTrigger(Constants.OpenDoorTrigger);
                 doorOpenPowerCharge?.Invoke();
-                _unlockFinish = true;
-                
+
                 // TODO: check the NEXT ROOM if it was already unlocked
                 // update next room
                 var nextRoomObject = _doorController.nextRoomObject;
@@ -98,6 +103,8 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                     // change the lights to red (initial fire when unlocking room)
                     nextRoomController.UpdateRedLights();
                 }
+                
+                _unlockFinish = true;
             }
         }
         else

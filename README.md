@@ -4,6 +4,25 @@
 #### CS 491 - Intro to Game Development
 #### Team Members: Alex, Andrew, Gale, John, Josue
 
+## Final Tweaks 
+
+- [ ] door bugs
+- [ ] fire extinguisher bug (hold and release)
+- [ ] add unlimited door charges
+- [ ] remove initial fires in each room
+- [ ] increase oxygen meter (more balanced)
+- [ ] fix beeping sound (at beginning) &mdash; looping
+- [ ] softer music
+- [ ] different buttons for check and code submission
+- [ ] highlight interactable
+- [ ] remove lock with fire extinguisher and terminal
+
+### Extra Ideas
+
+- blue fire
+- golden apple
+- achievements...
+
 ## TODO
 
 - [x] door check on BOTH sides (or condition)

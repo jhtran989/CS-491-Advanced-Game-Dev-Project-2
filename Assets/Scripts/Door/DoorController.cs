@@ -100,7 +100,8 @@ public class DoorController : MonoBehaviour
         _doorReachedCheck = false;
         
         // ALL rooms will have a fire to check
-        _fireCheck = true;
+        // FIXME FINAL: set to false
+        _fireCheck = false;
         
         // initially set terminal check to false, then update when adding rooms
         _terminalCheck = false;
@@ -197,6 +198,9 @@ public class DoorController : MonoBehaviour
             
             // TODO: need to update next room object
             nextRoomObject = nextRoomController.gameObject;
+            
+            // FIXME FINAL: check unlock door
+            CheckUnlockDoor();
         }
     }
 
@@ -233,24 +237,28 @@ public class DoorController : MonoBehaviour
     /// <returns></returns>
     private bool CheckDoorOptions(DoorOptionsEnum doorOptionsEnum)
     {
+        // default to false for testing
+        var finalDoorCheck = false;
+        
         // TODO: check when door is unlocked
         // TODO: check boundary, update fire AND terminal of the door (ON THE ROOM NOT UNLOCKED)
         // TODO: move stuff to room controller (not tied to door anymore...)
         if (doorOptionsEnum == DoorOptionsEnum.DoorReached)
         {
-            return _doorReachedCheck;
+            finalDoorCheck = _doorReachedCheck;
         }
         else if (doorOptionsEnum == DoorOptionsEnum.Fire)
         {
-            return !_fireCheck || currentRoomFire.unlockDoor;
+            finalDoorCheck = !_fireCheck || currentRoomFire.unlockDoor;
         } 
         else if (doorOptionsEnum == DoorOptionsEnum.Terminal)
         {
-            return !_terminalCheck || _terminalController.unlockDoor;
+            finalDoorCheck = !_terminalCheck || _terminalController.unlockDoor;
         }
-
-        // default to false for testing
-        return false;
+        
+        Debug.Log(doorOptionsEnum + ", " + finalDoorCheck);
+        
+        return finalDoorCheck;
     }
 
     private bool CheckBoundaryRoomUnlock()
@@ -265,7 +273,7 @@ public class DoorController : MonoBehaviour
     /// </summary>
     public void CheckUnlockDoor()
     {
-        // Debug.Log("Door manager, check unlock door");
+        Debug.Log("Checking unlock door...");
         
         if (doorOptionCheck)
         {
@@ -299,6 +307,8 @@ public class DoorController : MonoBehaviour
             
             if (unlockCondition)
             {
+                Debug.Log("Door successfully unlocked");
+                
                 // doorTrigger.UnlockDoor();
                 doorInteractableStationary.UnlockDoor();
                 doorOptionCheck = false;
