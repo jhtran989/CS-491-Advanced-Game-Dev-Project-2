@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ActivateEscapePod() {
-        if (playerCodes[3] == "TIME") {
+        if (playerCodes[3] == "MYTH") {
             escapePodDoor.SetActive(false);
             escapeTrigger.SetActive(true);
             audio.PlayOneShot(sfx[3]);
