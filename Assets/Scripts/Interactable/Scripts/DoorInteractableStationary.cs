@@ -115,6 +115,10 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                 // }
                 
                 _unlockFinish = true;
+                
+                // FIXME FINAL: disable collider to not make it interactable anymore
+                _collider = GetComponent<Collider>();
+                DisableInteract();
             }
         }
         else

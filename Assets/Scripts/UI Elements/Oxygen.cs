@@ -185,7 +185,9 @@ public class Oxygen : MonoBehaviour
 
         // FIXME: change location to be near the player...
         // when low oxygen
-        if (_currentOxygenLevelPercent < 99.0f)
+        // FIXME FINAL: forgot to change the beeping for LOW oxygen
+        // 99.9
+        if (_currentOxygenLevelPercent < 30.0f)
         {
             SoundManager.instance.PlaySoundEffect(SoundTypesEnum.LowOxygen);
         }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public AudioClip[] sfx; // 0: opening, 1; fire, 2: short fire, 3: esc run, 4: esc pod sound
     public GameObject playerObject;
     public bool firstRun = true;
+
+    private float _volumeScale;
     
     private void Awake() {
         if (instance == null)
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(instance);
         }
         else Destroy(gameObject);
+
+        _volumeScale = 0.2f;
 
         UpdatePlayerObject();
     }
@@ -64,10 +68,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Space Station", LoadSceneMode.Additive);
         SceneManager.LoadScene("Furniture", LoadSceneMode.Additive);
         clearRunData();
-        if (firstRun) {
-            audio.PlayOneShot(sfx[0]);
-        }
-        secondaryAudio.PlayOneShot(sfx[4]);
+        
+        // if (firstRun) {
+        //     audio.PlayOneShot(sfx[0], 0.2f);
+        // }
+        secondaryAudio.PlayOneShot(sfx[4], _volumeScale);
         
         // update the music when loading
         SoundManager.instance.PlayStartingSound();
@@ -79,10 +84,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayFireAlert() {
         if (!fireTutorialComplete & firstRun) {
-            audio.PlayOneShot(sfx[1]);
+            audio.PlayOneShot(sfx[1], _volumeScale);
             fireTutorialComplete = true;
         } else {
-            audio.PlayOneShot(sfx[2]);
+            audio.PlayOneShot(sfx[2], _volumeScale);
         }
     }
 
@@ -94,7 +99,7 @@ public class GameManager : MonoBehaviour
         if (playerCodes[3] == "MYTH") {
             escapePodDoor.SetActive(false);
             escapeTrigger.SetActive(true);
-            audio.PlayOneShot(sfx[3]);
+            audio.PlayOneShot(sfx[3], _volumeScale);
         }
     }
 

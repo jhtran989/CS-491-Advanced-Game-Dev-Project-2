@@ -74,6 +74,7 @@ public class SoundManager : MonoBehaviour
         customAudioClipsList = CreateCustomAudioClipList();
 
         loopingAudioSource = GetComponent<AudioSource>();
+        loopingAudioSource.volume = 0.2f;
 
         _firePutOutWaterCheck = false;
     }

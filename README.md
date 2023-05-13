@@ -34,6 +34,11 @@
 
 ## Important Notes
 
+### Highlight
+
+- need to set the `Read/Write` option in the import settings shown in the `Inspector` to `true` (or ticked) for the 
+  highlighting to work (gives an error otherwise)
+
 ### Prefabs
 
 - not aware of specific scene hierarchies or instances of scripts (so find components during runtime...relying on scene hierarchy in scripts &mdash; not robust to changes to hierarchy...)

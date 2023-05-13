@@ -222,7 +222,9 @@ public class DoorController : MonoBehaviour
             terminalGameObject = transform.parent.gameObject;
             _terminalTrigger = terminalGameObject
                 .GetComponentInChildren<TerminalTrigger>(true);
-            _terminalCheck = true;
+            
+            // FIXME FINAL: no more terminal checks
+            _terminalCheck = false;
         }
         
         return terminalController;
