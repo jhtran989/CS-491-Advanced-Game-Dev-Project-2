@@ -5,10 +5,10 @@ using System.Linq;
 using Player;
 using UnityEngine;
 
-public class FireInteractable : MonoBehaviour, IInteractable
+public class FireInteractable : AbstractInteractable, IInteractable
 {
-    [SerializeField] 
-    private string interactText;
+    // [SerializeField] 
+    // private string interactText;
 
     // FIXME: pulling script from ANOTHER PREFAB doesn't work...
     public PlayerMovement playerMovement;
@@ -18,8 +18,18 @@ public class FireInteractable : MonoBehaviour, IInteractable
 
     private bool playerWithinRange;
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     // playerWithinRange = false;
+    //     //
+    //     // // good moderate distance
+    //     // _interactRadius = 4.0f;
+    // }
+
+    protected override void Awake()
     {
+        base.Awake();
+        
         playerWithinRange = false;
 
         // good moderate distance

@@ -61,9 +61,10 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
-
+        
         // FIXME FINAL: highlight...
-        if (closestInteractable != null)
+        // just the fire extinguisher for now (ONLY one that works...because of renderer)
+        if (closestInteractable != null && closestInteractable is FireExtinguisherInteractable)
         {
             if (_currentInteractable == null)
             {

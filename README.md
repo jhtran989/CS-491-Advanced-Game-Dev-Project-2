@@ -14,7 +14,7 @@
 - [x] fix beeping sound (at beginning) &mdash; looping
 - [ ] softer music
 - [ ] different buttons for check and code submission
-- [ ] highlight interactable
+- [x] highlight interactable
 - [x] remove lock with fire extinguisher and terminal
 
 ### Extra Ideas

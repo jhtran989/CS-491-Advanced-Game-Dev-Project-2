@@ -45,6 +45,8 @@ public class FireSpawn : MonoBehaviour
         // set fire dealays
         // _initialFireSpawnDelay = 10.0f;
         // _fireSpawnDelay = 15.0f;
+        
+        // 20
         _initialFireSpawnDelay = 20.0f;
         _fireSpawnDelay = 120.0f;
 

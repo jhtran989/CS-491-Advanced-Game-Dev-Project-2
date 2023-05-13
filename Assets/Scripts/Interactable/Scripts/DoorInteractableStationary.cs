@@ -27,8 +27,17 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
         set => _unlockCondition = value;
     }
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     // FIXME FINAL: set to true
+    //     _unlockCondition = false;
+    //     _unlockFinish = false;
+    // }
+
+    protected override void Awake()
     {
+        base.Awake();
+        
         // FIXME FINAL: set to true
         _unlockCondition = false;
         _unlockFinish = false;
