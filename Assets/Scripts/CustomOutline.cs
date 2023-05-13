@@ -6,11 +6,11 @@ public class CustomOutline : Outline
 {
     protected override void Awake()
     {
-        base.Awake();
-        
         this.OutlineMode = Outline.Mode.OutlineAll;
         this.OutlineColor = Color.white;
         this.OutlineWidth = 10f;
+        
+        base.Awake();
         
         enabled = false;
     }
@@ -18,14 +18,19 @@ public class CustomOutline : Outline
     // Start is called before the first frame update
     void Start()
     {
-        
+        // this.OutlineMode = Outline.Mode.OutlineAll;
+        // this.OutlineColor = Color.white;
+        // this.OutlineWidth = 10f;
+        //
+        // enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // FIXME FINAL: if not commented out, it will override from base class
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     
+    // }
 
     public void EnableOutline()
     {

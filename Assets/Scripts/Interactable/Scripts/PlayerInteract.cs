@@ -7,10 +7,14 @@ using UnityEngine.Assertions;
 public class PlayerInteract : MonoBehaviour
 {
     private FireExtinguisherInteractableComponents _fireExtinguisherInteractableComponents;
+    private IInteractable _currentInteractable;
+    private AbstractInteractable _currentAbstractInteractable;
 
     private void Awake()
     {
         _fireExtinguisherInteractableComponents = GetComponent<FireExtinguisherInteractableComponents>();
+        _currentInteractable = null;
+        _currentAbstractInteractable = null;
     }
 
     private void Update() {
@@ -58,15 +62,59 @@ public class PlayerInteract : MonoBehaviour
             }
         }
 
+        // FIXME FINAL: highlight...
         if (closestInteractable != null)
         {
-            // cast to AbstractInteractable and ACTIVATE highlight
-            var closestAbstractInteractable = (AbstractInteractable)closestInteractable;
-
-            if (closestAbstractInteractable != null)
+            if (_currentInteractable == null)
             {
-                Assert.IsNotNull(closestAbstractInteractable.customOutline);
-                closestAbstractInteractable.customOutline.EnableOutline();
+                // enable highlight
+                _currentInteractable = closestInteractable;
+            
+                // cast to AbstractInteractable and ACTIVATE highlight
+                _currentAbstractInteractable = (AbstractInteractable)_currentInteractable;
+
+                if (_currentAbstractInteractable != null)
+                {
+                    Assert.IsNotNull(_currentAbstractInteractable.customOutline);
+                    _currentAbstractInteractable.customOutline.EnableOutline();
+                }
+            } 
+            else if (_currentInteractable != closestInteractable)
+            {
+                // disable first
+                
+                // disable highlight
+                _currentAbstractInteractable.customOutline.DisableOutline();
+            
+                // reset current stuff
+                _currentInteractable = null;
+                _currentAbstractInteractable = null;
+                
+                // then reenable highlight
+                
+                // enable highlight
+                _currentInteractable = closestInteractable;
+            
+                // cast to AbstractInteractable and ACTIVATE highlight
+                _currentAbstractInteractable = (AbstractInteractable)_currentInteractable;
+
+                if (_currentAbstractInteractable != null)
+                {
+                    Assert.IsNotNull(_currentAbstractInteractable.customOutline);
+                    _currentAbstractInteractable.customOutline.EnableOutline();
+                }
+            }
+        }
+        else
+        {
+            if (_currentInteractable != null)
+            {
+                // disable highlight
+                _currentAbstractInteractable.customOutline.DisableOutline();
+            
+                // reset current stuff
+                _currentInteractable = null;
+                _currentAbstractInteractable = null;
             }
         }
 
