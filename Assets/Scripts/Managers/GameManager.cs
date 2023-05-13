@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         if (playerCodes[3] == "MYTH") {
             escapePodDoor.SetActive(false);
             escapeTrigger.SetActive(true);
+            escapePodDoor = escapeTrigger = null;
             audio.PlayOneShot(sfx[3], _volumeScale);
         }
     }
