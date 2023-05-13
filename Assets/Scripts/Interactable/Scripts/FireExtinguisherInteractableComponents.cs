@@ -19,6 +19,8 @@ public class FireExtinguisherInteractableComponents : MonoBehaviour
 
     public PlayerInteractUIIconFireExtinguisher PlayerInteractUIIconFireExtinguisher => _playerInteractUIIconFireExtinguisher;
 
+    [FormerlySerializedAs("_fireExtinguisher")] public FireExtinguisher fireExtinguisher;
+
     private void Awake()
     {
         _playerInteractUIIconFireExtinguisher = GetComponent<PlayerInteractUIIconFireExtinguisher>();
@@ -27,7 +29,8 @@ public class FireExtinguisherInteractableComponents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // FIXME FINAL: set the fire extinguisher in hand (child)
+        fireExtinguisher = GetComponentInChildren<FireExtinguisher>();
     }
 
     // Update is called once per frame

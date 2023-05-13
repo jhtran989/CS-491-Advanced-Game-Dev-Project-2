@@ -27,6 +27,9 @@ public class DropInteractable : MonoBehaviour
         {
             if (fireExtinguisherInteractableComponents.currentInteractableRigidbody != null)
             {
+                // FIXME FINAL: stop water first
+                fireExtinguisherInteractableComponents.fireExtinguisher.DisableWater();
+                
                 // interactableComponents.currentInteractableRigidbody.isKinematic = false;
                 fireExtinguisherInteractableComponents.currentInteractableRigidbody.useGravity = true;
                 fireExtinguisherInteractableComponents.currentInteractableCollider.enabled = true;

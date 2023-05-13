@@ -52,10 +52,11 @@ namespace UI_Elements
 
         private void ConsumePowerCharge()
         {
-            if (currentNumPowerCharges > 0)
-            {
-                currentNumPowerCharges -= 1;
-            }
+            // FIXME FINAL: don't consume power (LAZY version)
+            // if (currentNumPowerCharges > 0)
+            // {
+            //     currentNumPowerCharges -= 1;
+            // }
         }
 
         private bool DisplayPowerCharge(int currentNumPowerCharges, int powerChargeNum)

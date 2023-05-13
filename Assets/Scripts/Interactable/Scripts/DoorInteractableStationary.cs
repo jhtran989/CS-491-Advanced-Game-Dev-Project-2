@@ -87,22 +87,23 @@ public class DoorInteractableStationary : AbstractInteractable, IInteractableDoo
                 
                 // TODO: only create new fire ONLY if was FIRST reached (ORDER MATTERS - before updating next room for fire spawn)
 
-                if (nextRoomController.InitialUnlock)
-                {
-                    // TODO: need to make corresponding fire visible and set fire to present
-                    _doorController.nextRoomFire.gameObject.SetActive(true);
-                
-                    // set fire present to true for updated oxygen...
-                    _globalDoorManager.SetFirePresent();
-                
-                    Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
-                    
-                    // TODO: need to update initial unlock right after
-                    nextRoomController.UpdateInitialUnlock();
-                    
-                    // change the lights to red (initial fire when unlocking room)
-                    nextRoomController.UpdateRedLights();
-                }
+                // FIXME FINAL: don't activate initial fires
+                // if (nextRoomController.InitialUnlock)
+                // {
+                //     // TODO: need to make corresponding fire visible and set fire to present
+                //     _doorController.nextRoomFire.gameObject.SetActive(true);
+                //
+                //     // set fire present to true for updated oxygen...
+                //     _globalDoorManager.SetFirePresent();
+                //
+                //     Debug.Log("fire present: " + _globalDoorManager.oxygen.firePresent);
+                //     
+                //     // TODO: need to update initial unlock right after
+                //     nextRoomController.UpdateInitialUnlock();
+                //     
+                //     // change the lights to red (initial fire when unlocking room)
+                //     nextRoomController.UpdateRedLights();
+                // }
                 
                 _unlockFinish = true;
             }

@@ -135,7 +135,7 @@ public class FireExtinguisher : MonoBehaviour
         waterHoseObject.SetActive(true);
     }
 
-    private void DisableWater()
+    public void DisableWater()
     {
         if (waterHoseObject.activeSelf)
         {

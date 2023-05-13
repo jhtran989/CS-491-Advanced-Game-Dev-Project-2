@@ -6,10 +6,10 @@
 
 ## Final Tweaks 
 
-- [ ] door bugs
-- [ ] fire extinguisher bug (hold and release)
-- [ ] add unlimited door charges
-- [ ] remove initial fires in each room
+- [x] door bugs
+- [x] fire extinguisher bug (hold and release)
+- [x] add unlimited door charges
+- [x] remove initial fires in each room
 - [ ] increase oxygen meter (more balanced)
 - [ ] fix beeping sound (at beginning) &mdash; looping
 - [ ] softer music
