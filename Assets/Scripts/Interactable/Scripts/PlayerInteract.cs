@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -54,6 +55,18 @@ public class PlayerInteract : MonoBehaviour
                     // Closer
                     closestInteractable = interactable;
                 }
+            }
+        }
+
+        if (closestInteractable != null)
+        {
+            // cast to AbstractInteractable and ACTIVATE highlight
+            var closestAbstractInteractable = (AbstractInteractable)closestInteractable;
+
+            if (closestAbstractInteractable != null)
+            {
+                Assert.IsNotNull(closestAbstractInteractable.customOutline);
+                closestAbstractInteractable.customOutline.EnableOutline();
             }
         }
 

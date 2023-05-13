@@ -10,12 +10,12 @@
 - [x] fire extinguisher bug (hold and release)
 - [x] add unlimited door charges
 - [x] remove initial fires in each room
-- [ ] increase oxygen meter (more balanced)
-- [ ] fix beeping sound (at beginning) &mdash; looping
+- [x] increase oxygen meter (more balanced)
+- [x] fix beeping sound (at beginning) &mdash; looping
 - [ ] softer music
 - [ ] different buttons for check and code submission
 - [ ] highlight interactable
-- [ ] remove lock with fire extinguisher and terminal
+- [x] remove lock with fire extinguisher and terminal
 
 ### Extra Ideas
 
@@ -81,7 +81,8 @@
 https://www.youtube.com/watch?v=5Mw6NpSEb2o
 
 (New)
-Unity Particle Pack
+Unity Particle Pack (Unity Asset Store)
+https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325
 
 ### Calculator
 
@@ -118,5 +119,9 @@ Space Ambience - spaceship ambience with effects - Sound Effect by Placidplace -
 
 Main Menu - spacesound - Sound Effect by SamuelFrancisJohnson - https://pixabay.com/sound-effects/id-7547/
 
+### Outline
 
+When interacting with objects, there will now be a highlight to make it easier what the player is interacting with
 
+Quick Outline (Unity Asset Store)
+https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488

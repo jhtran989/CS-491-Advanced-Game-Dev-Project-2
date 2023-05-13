@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class AbstractInteractable : MonoBehaviour
 {
@@ -8,6 +10,14 @@ public abstract class AbstractInteractable : MonoBehaviour
     protected string interactText;
 
     protected Collider _collider;
+    
+    [FormerlySerializedAs("_customOutline")] public CustomOutline customOutline;
+
+    protected virtual void Awake()
+    {
+        // FIXME FINAL: add outline script
+        customOutline = gameObject.AddComponent<CustomOutline>();
+    }
 
     public string GetInteractText()
     {

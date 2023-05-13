@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
+public class FireExtinguisherInteractable : AbstractInteractable, IInteractable
 {
-    [SerializeField] 
-    private string interactText;
+    // [SerializeField] 
+    // private string interactText;
     
     [FormerlySerializedAs("interactableComponents")] [SerializeField]
     private FireExtinguisherInteractableComponents fireExtinguisherInteractableComponents;
@@ -16,8 +16,24 @@ public class FireExtinguisherInteractable : MonoBehaviour, IInteractable
 
     private Rigidbody _rigidbodyFireExtinguisher;
 
-    private void Awake()
+    // private CustomOutline _customOutline;
+
+    // private void Awake()
+    // {
+    //     fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
+    //     _interactableSpeed = 17.0f;
+    //     
+    //     _rigidbodyFireExtinguisher = GetComponent<Rigidbody>();
+    //     
+    //     // set initial velocity to 0 (gravity is false now)
+    //     _rigidbodyFireExtinguisher.velocity = Vector3.zero;
+    //     _rigidbodyFireExtinguisher.angularVelocity = Vector3.zero;
+    // }
+
+    protected override void Awake()
     {
+        base.Awake();
+        
         fireExtinguisherInteractableComponents.isHoldingFireExtinguisher = false;
         _interactableSpeed = 17.0f;
         
